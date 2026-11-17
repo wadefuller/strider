@@ -1,0 +1,87 @@
+{
+ "fetched_at": "2027-03-26T07:15:00",
+ "result": {
+  "activity_id": 9100002019,
+  "lap_count": 6,
+  "laps": [
+   {
+    "lap_number": 1,
+    "start_time_gmt": "2027-03-12T06:30:00.0",
+    "distance_meters": 1622.22,
+    "duration_seconds": 567.274,
+    "avg_hr_bpm": 138.0,
+    "max_hr_bpm": 142.0,
+    "avg_cadence": 170.57,
+    "avg_power_watts": 216.0,
+    "intensity_type": "ACTIVE",
+    "elevation_gain_meters": 2.0,
+    "elevation_loss_meters": 4.0
+   },
+   {
+    "lap_number": 2,
+    "start_time_gmt": "2027-03-12T06:39:27.274115.0",
+    "distance_meters": 1622.22,
+    "duration_seconds": 556.676,
+    "avg_hr_bpm": 140.0,
+    "max_hr_bpm": 144.0,
+    "avg_cadence": 170.23,
+    "avg_power_watts": 218.0,
+    "intensity_type": "ACTIVE",
+    "elevation_gain_meters": 5.0,
+    "elevation_loss_meters": 6.0
+   },
+   {
+    "lap_number": 3,
+    "start_time_gmt": "2027-03-12T06:48:43.950233.0",
+    "distance_meters": 1622.22,
+    "duration_seconds": 563.242,
+    "avg_hr_bpm": 141.0,
+    "max_hr_bpm": 145.0,
+    "avg_cadence": 170.37,
+    "avg_power_watts": 216.0,
+    "intensity_type": "ACTIVE",
+    "elevation_gain_meters": 4.0,
+    "elevation_loss_meters": 4.0
+   },
+   {
+    "lap_number": 4,
+    "start_time_gmt": "2027-03-12T06:58:07.192494.0",
+    "distance_meters": 1622.22,
+    "duration_seconds": 560.476,
+    "avg_hr_bpm": 142.0,
+    "max_hr_bpm": 146.0,
+    "avg_cadence": 170.06,
+    "avg_power_watts": 217.0,
+    "intensity_type": "ACTIVE",
+    "elevation_gain_meters": 5.0,
+    "elevation_loss_meters": 6.0
+   },
+   {
+    "lap_number": 5,
+    "start_time_gmt": "2027-03-12T07:07:27.668631.0",
+    "distance_meters": 1622.22,
+    "duration_seconds": 565.604,
+    "avg_hr_bpm": 143.0,
+    "max_hr_bpm": 147.0,
+    "avg_cadence": 170.39,
+    "avg_power_watts": 214.0,
+    "intensity_type": "ACTIVE",
+    "elevation_gain_meters": 3.0,
+    "elevation_loss_meters": 6.0
+   },
+   {
+    "lap_number": 6,
+    "start_time_gmt": "2027-03-12T07:16:53.272413.0",
+    "distance_meters": 1622.26,
+    "duration_seconds": 567.566,
+    "avg_hr_bpm": 143.0,
+    "max_hr_bpm": 147.0,
+    "avg_cadence": 170.27,
+    "avg_power_watts": 216.0,
+    "intensity_type": "ACTIVE",
+    "elevation_gain_meters": 5.0,
+    "elevation_loss_meters": 3.0
+   }
+  ]
+ }
+}

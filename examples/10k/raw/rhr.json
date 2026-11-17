@@ -1,0 +1,35 @@
+{
+ "fetched_at": "2027-04-23T07:15:00",
+ "result": {
+  "days": [
+   {
+    "date": "2027-04-17",
+    "resting_hr_bpm": 53
+   },
+   {
+    "date": "2027-04-18",
+    "resting_hr_bpm": 53
+   },
+   {
+    "date": "2027-04-19",
+    "resting_hr_bpm": 53
+   },
+   {
+    "date": "2027-04-20",
+    "resting_hr_bpm": 54
+   },
+   {
+    "date": "2027-04-21",
+    "resting_hr_bpm": 52
+   },
+   {
+    "date": "2027-04-22",
+    "resting_hr_bpm": 52
+   },
+   {
+    "date": "2027-04-23",
+    "resting_hr_bpm": 51
+   }
+  ]
+ }
+}

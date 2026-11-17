@@ -1,0 +1,404 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//strider//training plan//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-02-09@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270209
+DTEND;VALUE=DATE:20270210
+SUMMARY:Done: W1 Easy 5 mi + 6 strides
+DESCRIPTION:5.0 mi easy\; 6 x 20 s strides. HR cap 148.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-02-10@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270210
+DTEND;VALUE=DATE:20270211
+SUMMARY:Done: W1 4 x 5 min at threshold
+DESCRIPTION:1.9 mi warm-up\; 4 x (5:00 min at 7:10 to 7:23/mi\, HR cap 16
+ 6\, 1:00 min jog)\; 1.2 mi cool-down.\nGo/no-go: under 12h of recovery t
+ ime left\, go. 12 to 24h\, the heart-rate cap is absolute. Over 24h\, mo
+ ve it a day.\nStrength: Strength\, 10 minutes after the run: calf raises
+ \, side planks\, single-leg balance. Low soreness only\; heavy lifting w
+ aits for the next block.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-02-12@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270212
+DTEND;VALUE=DATE:20270213
+SUMMARY:Done: W1 Easy 5 mi
+DESCRIPTION:5.0 mi easy. HR cap 148.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-02-14@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270214
+DTEND;VALUE=DATE:20270215
+SUMMARY:Done: W1 Long 9.5 mi easy
+DESCRIPTION:9.5 mi easy. HR cap 148.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-02-16@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270216
+DTEND;VALUE=DATE:20270217
+SUMMARY:Done: W2 Easy 6.5 mi + 6 strides
+DESCRIPTION:6.5 mi easy\; 6 x 20 s strides. HR cap 148.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-02-17@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270217
+DTEND;VALUE=DATE:20270218
+SUMMARY:Done: W2 Max heart rate test: 2 x 3 min hard\, then 2 min all-out
+DESCRIPTION:1.9 mi warm-up\; 2 x (3:00 min at 6:41 to 6:54/mi\, HR cap 18
+ 5\, 2:00 min jog)\; 2:00 min\; 1.2 mi cool-down.\nGo/no-go: under 12h of
+  recovery time left\, go. 12 to 24h\, the heart-rate cap is absolute. Ov
+ er 24h\, move it a day.\nSets the ceiling every zone hangs from. Only ru
+ n it healthy and rested\; skip and reschedule within a week rather than 
+ dropping it.\nStrength: Strength\, 10 minutes after the run: calf raises
+ \, side planks\, single-leg balance. Low soreness only\; heavy lifting w
+ aits for the next block.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-02-19@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270219
+DTEND;VALUE=DATE:20270220
+SUMMARY:Done: W2 Easy 6.5 mi
+DESCRIPTION:6.5 mi easy. HR cap 148.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-02-21@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270221
+DTEND;VALUE=DATE:20270222
+SUMMARY:Done: W2 Long 10.5 mi easy
+DESCRIPTION:10.5 mi easy. HR cap 148.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-02-23@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270223
+DTEND;VALUE=DATE:20270224
+SUMMARY:Done: W3 Easy 6 mi + 6 strides
+DESCRIPTION:6.0 mi easy\; 6 x 20 s strides. HR cap 148.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-02-24@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270224
+DTEND;VALUE=DATE:20270225
+SUMMARY:Done: W3 3 x 8 min at threshold
+DESCRIPTION:1.9 mi warm-up\; 3 x (8:00 min at 7:10 to 7:23/mi\, HR cap 16
+ 6\, 1:30 min jog)\; 1.2 mi cool-down.\nGo/no-go: under 12h of recovery t
+ ime left\, go. 12 to 24h\, the heart-rate cap is absolute. Over 24h\, mo
+ ve it a day.\nStrength: Strength\, 10 minutes after the run: calf raises
+ \, side planks\, single-leg balance. Low soreness only\; heavy lifting w
+ aits for the next block.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-02-26@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270226
+DTEND;VALUE=DATE:20270227
+SUMMARY:Done: W3 Easy 6 mi
+DESCRIPTION:6.0 mi easy. HR cap 148.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-02-28@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270228
+DTEND;VALUE=DATE:20270301
+SUMMARY:Done: W3 Long 12 mi easy
+DESCRIPTION:12.0 mi easy. HR cap 148.\nFuel: Long run: practise one race 
+ gel around 40 minutes in\, with the breakfast you plan for race morning.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-03-02@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270302
+DTEND;VALUE=DATE:20270303
+SUMMARY:Done: W4 Easy 4 mi + 6 strides
+DESCRIPTION:4.0 mi easy\; 6 x 20 s strides. HR cap 148.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-03-03@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270303
+DTEND;VALUE=DATE:20270304
+SUMMARY:Done: W4 3 x 10 min at threshold
+DESCRIPTION:1.9 mi warm-up\; 3 x (10:00 min at 7:10 to 7:23/mi\, HR cap 1
+ 66\, 2:00 min jog)\; 1.2 mi cool-down.\nGo/no-go: under 12h of recovery 
+ time left\, go. 12 to 24h\, the heart-rate cap is absolute. Over 24h\, m
+ ove it a day.\nStrength: Strength\, 10 minutes after the run: calf raise
+ s\, side planks\, single-leg balance. Low soreness only\; heavy lifting 
+ waits for the next block.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-03-05@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270305
+DTEND;VALUE=DATE:20270306
+SUMMARY:Done: W4 Easy 4 mi
+DESCRIPTION:4.0 mi easy. HR cap 148.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-03-07@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270307
+DTEND;VALUE=DATE:20270308
+SUMMARY:Done: W4 Long 9 mi easy
+DESCRIPTION:9.0 mi easy. HR cap 148.\nFuel: Long run: practise one race g
+ el around 40 minutes in\, with the breakfast you plan for race morning.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-03-09@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270309
+DTEND;VALUE=DATE:20270310
+SUMMARY:Done: W5 Easy 6 mi + 6 strides
+DESCRIPTION:6.0 mi easy\; 6 x 20 s strides. HR cap 148.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-03-10@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270310
+DTEND;VALUE=DATE:20270311
+SUMMARY:Done: W5 4 x 8 min at threshold
+DESCRIPTION:1.9 mi warm-up\; 4 x (8:00 min at 7:10 to 7:23/mi\, HR cap 16
+ 6\, 1:30 min jog)\; 1.2 mi cool-down.\nGo/no-go: under 12h of recovery t
+ ime left\, go. 12 to 24h\, the heart-rate cap is absolute. Over 24h\, mo
+ ve it a day.\nStrength: Strength\, 10 minutes after the run: calf raises
+ \, side planks\, single-leg balance. Low soreness only\; heavy lifting w
+ aits for the next block.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-03-12@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270312
+DTEND;VALUE=DATE:20270313
+SUMMARY:Done: W5 Easy 6 mi
+DESCRIPTION:6.0 mi easy. HR cap 148.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-03-14@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270314
+DTEND;VALUE=DATE:20270315
+SUMMARY:Moved: W5 Long 13 mi easy
+DESCRIPTION:13.0 mi easy. HR cap 148.\nFuel: Long run: practise one race 
+ gel around 40 minutes in\, with the breakfast you plan for race morning.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-03-16@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270316
+DTEND;VALUE=DATE:20270317
+SUMMARY:Done: W6 Easy 5.5 mi + 6 strides
+DESCRIPTION:5.5 mi easy\; 6 x 20 s strides. HR cap 148.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-03-17@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270317
+DTEND;VALUE=DATE:20270318
+SUMMARY:Done: W6 3 x 2 mi at race pace
+DESCRIPTION:1.9 mi warm-up\; 3 x (2.0 mi at 7:26 to 7:31/mi\, HR cap 164\
+ , 2:00 min jog)\; 1.2 mi cool-down.\nGo/no-go: under 12h of recovery tim
+ e left\, go. 12 to 24h\, the heart-rate cap is absolute. Over 24h\, move
+  it a day.\nStrength: Strength\, 10 minutes after the run: calf raises\,
+  side planks\, single-leg balance. Low soreness only\; heavy lifting wai
+ ts for the next block.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-03-19@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270319
+DTEND;VALUE=DATE:20270320
+SUMMARY:Missed: W6 Easy 5.5 mi
+DESCRIPTION:5.5 mi easy. HR cap 148.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-03-21@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270321
+DTEND;VALUE=DATE:20270322
+SUMMARY:Done: W6 Long 13.5 mi\, last 3.5 mi steady
+DESCRIPTION:10.0 mi easy\; 3.5 mi steady at 7:51 to 8:17/mi\, HR cap 156.
+  HR cap 156.\nFuel: Long run: practise one race gel around 40 minutes in
+ \, with the breakfast you plan for race morning.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-03-23@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270323
+DTEND;VALUE=DATE:20270324
+SUMMARY:Done: W7 Easy 5.5 mi + 6 strides
+DESCRIPTION:5.5 mi easy\; 6 x 20 s strides. HR cap 148.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-03-24@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270324
+DTEND;VALUE=DATE:20270325
+SUMMARY:Done: W7 2 x 3 mi at race pace\, the decision session
+DESCRIPTION:1.9 mi warm-up\; 2 x (3.0 mi at 7:22 to 7:31/mi\, HR cap 164\
+ , 3:00 min jog)\; 1.2 mi cool-down.\nGo/no-go: under 12h of recovery tim
+ e left\, go. 12 to 24h\, the heart-rate cap is absolute. Over 24h\, move
+  it a day.\nDecides the race goal. Run it rested\, in race shoes\, by ef
+ fort inside the band\; the heart-rate cap matters more than the fast end
+  of the band.\nStrength: Strength\, 10 minutes after the run: calf raise
+ s\, side planks\, single-leg balance. Low soreness only\; heavy lifting 
+ waits for the next block.\nShoes: Run the decision session in the shoes 
+ you intend to race in. Decide today\, not race week.\nCaffeine: If you w
+ ill use caffeine on race day\, take the same dose at the same lead time 
+ before this session.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-03-26@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270326
+DTEND;VALUE=DATE:20270327
+SUMMARY:W7 Easy 5.5 mi
+DESCRIPTION:5.5 mi easy. HR cap 148.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-03-28@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270328
+DTEND;VALUE=DATE:20270329
+SUMMARY:W7 Long 13.5 mi\, last 3.5 mi steady
+DESCRIPTION:10.0 mi easy\; 3.5 mi steady at 7:51 to 8:17/mi\, HR cap 156.
+  HR cap 156.\nFuel: Long run: practise one race gel around 40 minutes in
+ \, with the breakfast you plan for race morning.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-03-30@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270330
+DTEND;VALUE=DATE:20270331
+SUMMARY:W8 Easy 5.5 mi + 6 strides
+DESCRIPTION:5.5 mi easy\; 6 x 20 s strides. HR cap 148.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-03-31@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270331
+DTEND;VALUE=DATE:20270401
+SUMMARY:W8 2 x 3 mi at race pace
+DESCRIPTION:1.9 mi warm-up\; 2 x (3.0 mi at 7:26 to 7:31/mi\, HR cap 164\
+ , 3:00 min jog)\; 1.2 mi cool-down.\nGo/no-go: under 12h of recovery tim
+ e left\, go. 12 to 24h\, the heart-rate cap is absolute. Over 24h\, move
+  it a day.\nStrength: Strength\, 10 minutes after the run: calf raises\,
+  side planks\, single-leg balance. Low soreness only\; heavy lifting wai
+ ts for the next block.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-04-02@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270402
+DTEND;VALUE=DATE:20270403
+SUMMARY:W8 Easy 5.5 mi
+DESCRIPTION:5.5 mi easy. HR cap 148.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-04-04@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270404
+DTEND;VALUE=DATE:20270405
+SUMMARY:W8 Long 13.5 mi\, last 3.5 mi steady
+DESCRIPTION:10.0 mi easy\; 3.5 mi steady at 7:51 to 8:17/mi\, HR cap 156.
+  HR cap 156.\nFuel: Long run: practise one race gel around 40 minutes in
+ \, with the breakfast you plan for race morning.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-04-06@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270406
+DTEND;VALUE=DATE:20270407
+SUMMARY:W9 Easy 2.5 mi + 6 strides
+DESCRIPTION:2.5 mi easy\; 6 x 20 s strides. HR cap 148.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-04-07@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270407
+DTEND;VALUE=DATE:20270408
+SUMMARY:W9 3 x 2 mi at race pace
+DESCRIPTION:1.9 mi warm-up\; 3 x (2.0 mi at 7:26 to 7:31/mi\, HR cap 164\
+ , 2:00 min jog)\; 1.2 mi cool-down.\nGo/no-go: under 12h of recovery tim
+ e left\, go. 12 to 24h\, the heart-rate cap is absolute. Over 24h\, move
+  it a day.\nStrength: Strength\, 10 minutes after the run: calf raises\,
+  side planks\, single-leg balance. Low soreness only\; heavy lifting wai
+ ts for the next block.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-04-09@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270409
+DTEND;VALUE=DATE:20270410
+SUMMARY:W9 Easy 2.5 mi
+DESCRIPTION:2.5 mi easy. HR cap 148.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-04-11@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270411
+DTEND;VALUE=DATE:20270412
+SUMMARY:W9 Long 9.5 mi easy
+DESCRIPTION:9.5 mi easy. HR cap 148.\nCheck: First look at the race-day f
+ orecast. Note start-time temperature and wind.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-04-13@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270413
+DTEND;VALUE=DATE:20270414
+SUMMARY:W10 Easy 3.5 mi
+DESCRIPTION:3.5 mi easy. HR cap 148.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-04-14@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270414
+DTEND;VALUE=DATE:20270415
+SUMMARY:W10 3 x 1 mi at race pace\, sharpen
+DESCRIPTION:1.9 mi warm-up\; 3 x (1.0 mi at 7:26 to 7:31/mi\, HR cap 164\
+ , 2:00 min jog)\; 1.2 mi cool-down.\nGo/no-go: under 12h of recovery tim
+ e left\, go. 12 to 24h\, the heart-rate cap is absolute. Over 24h\, move
+  it a day.\nLast run in race shoes. Short on purpose: you are checking t
+ he pace\, not building.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-04-16@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270416
+DTEND;VALUE=DATE:20270417
+SUMMARY:W10 Easy 3.5 mi + 6 strides
+DESCRIPTION:3.5 mi easy\; 6 x 20 s strides. HR cap 148.\nCheck: Final for
+ ecast\, final kit choice\, and confirm the race workout and pace chart a
+ re on the watch.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-04-17-notes@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270417
+DTEND;VALUE=DATE:20270418
+SUMMARY:Gear\; Fuel
+DESCRIPTION:Gear: Lay out kit\, bib\, shoes\, gels. Charge the watch.\nFu
+ el: Carbohydrate-rich dinner\; nothing new.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-04-18-2027-04-18@strider
+DTSTAMP:20000101T000000Z
+DTSTART;TZID=Etc/UTC:20270418T080000
+DURATION:PT4H
+LOCATION:Example City
+SUMMARY:W10 Riverbend Half Marathon (example): goal 1:38:00
+DESCRIPTION:13.1 mi at 7:26 to 7:31/mi\, HR cap 164.\nPace by the elapsed
+ -time chart at course markers\, not the watch's average pace.
+END:VEVENT
+END:VCALENDAR

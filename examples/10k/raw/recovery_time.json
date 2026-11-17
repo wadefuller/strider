@@ -1,0 +1,11 @@
+{
+ "fetched_at": "2027-04-23T07:15:00",
+ "result": {
+  "remaining_hours": 9.0,
+  "value_type": "snapshot",
+  "as_of": "2027-04-23T07:12:00.0",
+  "state": "recovering",
+  "source": "training_readiness",
+  "date": "2027-04-23"
+ }
+}

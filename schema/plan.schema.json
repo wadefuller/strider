@@ -1,0 +1,242 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:strider:plan:1",
+  "title": "Strider training plan",
+  "description": "One file is the source of truth for a training block. Garmin workouts, calendar events and the dashboard are generated from it. All distances are metres, all durations seconds, all paces seconds per kilometre as [fast, slow]. The `units` field only changes how values are displayed.",
+  "type": "object",
+  "required": ["schema_version", "units", "athlete", "race", "goal", "bands", "rules", "weeks"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 1},
+    "synthetic": {"type": "boolean", "description": "True for bundled example data. Never set on a real plan."},
+    "units": {"enum": ["km", "mi"]},
+    "athlete": {"$ref": "#/$defs/athlete"},
+    "race": {"$ref": "#/$defs/race"},
+    "goal": {"$ref": "#/$defs/goal"},
+    "bands": {
+      "type": "object",
+      "description": "Named intensity bands. Session steps copy their targets from here, so changing a band and regenerating changes every session that uses it.",
+      "additionalProperties": {"$ref": "#/$defs/band"}
+    },
+    "rules": {"$ref": "#/$defs/rules"},
+    "weeks": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/week"}},
+    "logistics": {"type": "array", "items": {"$ref": "#/$defs/logistic"}},
+    "log": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["date", "text"],
+        "additionalProperties": false,
+        "properties": {"date": {"$ref": "#/$defs/date"}, "text": {"type": "string"}}
+      }
+    }
+  },
+  "$defs": {
+    "date": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+    "paceBand": {
+      "type": "array",
+      "description": "[fast, slow] in seconds per kilometre of true distance.",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {"type": "number", "minimum": 120, "maximum": 900}
+    },
+    "athlete": {
+      "type": "object",
+      "description": "The few profile values the tools and dashboard need. The full profile lives in athlete.md.",
+      "required": ["lthr", "max_hr", "max_hr_verified", "watch_distance_factor"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {"type": "string"},
+        "lthr": {"type": "integer", "minimum": 100, "maximum": 220},
+        "max_hr": {"type": "integer", "minimum": 120, "maximum": 230},
+        "max_hr_verified": {"type": "boolean", "description": "True only after an all-out effort confirmed it."},
+        "resting_hr": {"type": "integer", "minimum": 25, "maximum": 100},
+        "hrv_baseline_ms": {
+          "type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number", "minimum": 5, "maximum": 250},
+          "description": "[low, high] of the runner's normal overnight HRV."
+        },
+        "watch_distance_factor": {
+          "type": "number", "minimum": 0.95, "maximum": 1.05,
+          "description": "Watch distance divided by certified distance, from races. 1.01 means the watch reads 1% long."
+        }
+      }
+    },
+    "race": {
+      "type": "object",
+      "required": ["name", "date", "start", "tz", "distance", "distance_m"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {"type": "string"},
+        "date": {"$ref": "#/$defs/date"},
+        "start": {"type": "string", "pattern": "^[0-2][0-9]:[0-5][0-9]$"},
+        "tz": {"type": "string"},
+        "distance": {"enum": ["5k", "10k", "half", "marathon"]},
+        "distance_m": {"type": "number", "minimum": 1000},
+        "location": {"type": "string"},
+        "terrain": {"enum": ["track", "flat", "rolling", "hilly"]},
+        "course_notes": {"type": "string"}
+      }
+    },
+    "goal": {
+      "type": "object",
+      "required": ["time_s", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "time_s": {"type": "number", "minimum": 600},
+        "status": {"enum": ["provisional", "confirmed"]},
+        "set_on": {"$ref": "#/$defs/date"},
+        "baseline_pace_s_per_km": {"type": "number", "description": "Work-rep pace at the start of the block, for the progress tile."},
+        "decision": {"$ref": "#/$defs/decision"}
+      }
+    },
+    "decision": {
+      "type": "object",
+      "description": "The rule that sets the race goal from one session. Tiers are tried in order and the first match wins; the last tier must be `otherwise`, so every result lands somewhere.",
+      "required": ["session_date", "tiers", "borderline", "runner_confirms"],
+      "additionalProperties": false,
+      "properties": {
+        "session_date": {"$ref": "#/$defs/date"},
+        "tiers": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["id", "goal_time_s", "when"],
+            "additionalProperties": false,
+            "properties": {
+              "id": {"type": "string"},
+              "goal_time_s": {"type": "number", "minimum": 600},
+              "when": {
+                "oneOf": [
+                  {"const": "otherwise"},
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "minProperties": 1,
+                    "properties": {
+                      "slowest_rep_pace_max_s_per_km": {"type": "number"},
+                      "highest_rep_hr_max": {"type": "integer"}
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "borderline": {
+          "type": "object",
+          "required": ["pace_s_per_km", "hr_bpm", "default"],
+          "additionalProperties": false,
+          "properties": {
+            "pace_s_per_km": {"type": "number", "minimum": 0},
+            "hr_bpm": {"type": "number", "minimum": 0},
+            "default": {"const": "slower_tier", "description": "A result within the margin of a boundary takes the slower tier until the runner says otherwise."}
+          }
+        },
+        "runner_confirms": {"const": true},
+        "result": {"type": "object"}
+      }
+    },
+    "band": {
+      "type": "object",
+      "required": ["source"],
+      "additionalProperties": false,
+      "properties": {
+        "pace_s_per_km": {"$ref": "#/$defs/paceBand"},
+        "hr_cap": {"type": "integer", "minimum": 90, "maximum": 230},
+        "source": {"type": "string", "description": "Where the numbers came from: which sessions, or which estimate."}
+      }
+    },
+    "rules": {
+      "type": "object",
+      "required": ["recovery_go_h", "recovery_move_h", "match_window_days", "pace_tolerance_s_per_km"],
+      "additionalProperties": false,
+      "properties": {
+        "recovery_go_h": {"type": "number", "description": "Under this many hours of Garmin recovery time left: run the key session."},
+        "recovery_move_h": {"type": "number", "description": "Over this many hours: move the key session a day. In between: run it with the heart-rate cap absolute."},
+        "match_window_days": {"type": "integer", "minimum": 0, "maximum": 3},
+        "pace_tolerance_s_per_km": {"type": "number", "minimum": 0},
+        "fade_pct": {"type": "number", "description": "Power fade inside a rep above this means the rep was too hard to hold."},
+        "rep_spread_s_per_km": {"type": "number", "description": "Fastest-to-slowest rep gap above this is an uneven session."},
+        "sleep_floor": {"type": "number"},
+        "readiness_floor": {"type": "number"},
+        "rhr_rise_bpm": {"type": "number"},
+        "vo2_noise": {"type": "number"},
+        "max_snapshot_age_h": {"type": "number"},
+        "blocked_weekdays": {"type": "array", "items": {"enum": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]}},
+        "max_hr_test_waived": {"type": "string", "description": "Reason there is no max-heart-rate test in this block."}
+      }
+    },
+    "week": {
+      "type": "object",
+      "required": ["n", "start", "phase", "planned_m", "days"],
+      "additionalProperties": false,
+      "properties": {
+        "n": {"type": "integer", "minimum": 1},
+        "start": {"$ref": "#/$defs/date"},
+        "phase": {"enum": ["base", "build", "specific", "taper"]},
+        "planned_m": {"type": "number", "minimum": 0},
+        "down_week": {"type": "boolean"},
+        "note": {"type": "string"},
+        "days": {"type": "array", "items": {"$ref": "#/$defs/day"}}
+      }
+    },
+    "day": {
+      "type": "object",
+      "required": ["date", "kind", "title", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "date": {"$ref": "#/$defs/date"},
+        "kind": {"enum": ["key", "long", "easy", "test", "race", "strength", "cross", "rest"]},
+        "session": {"enum": ["threshold", "vo2", "goal_pace", "marathon_pace", "long", "long_steady_finish", "easy", "strides", "max_hr_test", "race", "strength", "other"]},
+        "title": {"type": "string"},
+        "distance_m": {"type": "number", "minimum": 0},
+        "terrain": {"enum": ["track", "flat", "rolling", "hilly"]},
+        "hr_cap": {"type": "integer", "minimum": 90, "maximum": 230},
+        "steps": {"type": "array", "items": {"$ref": "#/$defs/step"}},
+        "decision": {"type": "boolean"},
+        "notes": {"type": "string"},
+        "status": {"enum": ["planned", "done", "moved", "missed", "skipped"]},
+        "ran_on": {"$ref": "#/$defs/date"},
+        "actual": {"type": "object"},
+        "garmin": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "workout_id": {"type": ["integer", "null"]},
+            "scheduled_id": {"type": ["integer", "null"]}
+          }
+        },
+        "calendar_event_id": {"type": ["string", "null"]}
+      }
+    },
+    "step": {
+      "type": "object",
+      "required": ["type"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {"enum": ["warmup", "work", "steady", "easy", "recovery", "strides", "cooldown", "repeat"]},
+        "distance_m": {"type": "number", "minimum": 0},
+        "time_s": {"type": "number", "minimum": 0},
+        "pace_s_per_km": {"$ref": "#/$defs/paceBand"},
+        "hr_cap": {"type": "integer", "minimum": 90, "maximum": 230},
+        "band": {"type": "string", "description": "Name of the band these targets were copied from."},
+        "count": {"type": "integer", "minimum": 1},
+        "steps": {"type": "array", "items": {"$ref": "#/$defs/step"}},
+        "note": {"type": "string"}
+      }
+    },
+    "logistic": {
+      "type": "object",
+      "description": "Dated non-running items: strength sessions, shoe rotation, caffeine and gel rehearsals, travel, the weather check.",
+      "required": ["date", "kind", "text"],
+      "additionalProperties": false,
+      "properties": {
+        "date": {"$ref": "#/$defs/date"},
+        "kind": {"enum": ["strength", "fuel", "caffeine", "shoes", "gear", "travel", "check", "other"]},
+        "text": {"type": "string"},
+        "done": {"type": "boolean"}
+      }
+    }
+  }
+}

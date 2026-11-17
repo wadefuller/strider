@@ -1,0 +1,182 @@
+{
+ "activity_id": 2,
+ "lap_count": 16,
+ "laps": [
+  {
+   "lap_number": 1,
+   "distance_meters": 1000,
+   "duration_seconds": 330,
+   "avg_hr_bpm": 138,
+   "avg_power_watts": 232,
+   "avg_cadence": 172.0,
+   "intensity_type": "ACTIVE",
+   "elevation_gain_meters": 1.0,
+   "elevation_loss_meters": 1.0
+  },
+  {
+   "lap_number": 2,
+   "distance_meters": 1000,
+   "duration_seconds": 329,
+   "avg_hr_bpm": 139,
+   "avg_power_watts": 232,
+   "avg_cadence": 172.0,
+   "intensity_type": "ACTIVE",
+   "elevation_gain_meters": 1.0,
+   "elevation_loss_meters": 1.0
+  },
+  {
+   "lap_number": 3,
+   "distance_meters": 1000,
+   "duration_seconds": 328,
+   "avg_hr_bpm": 140,
+   "avg_power_watts": 232,
+   "avg_cadence": 172.0,
+   "intensity_type": "ACTIVE",
+   "elevation_gain_meters": 1.0,
+   "elevation_loss_meters": 1.0
+  },
+  {
+   "lap_number": 4,
+   "distance_meters": 1000,
+   "duration_seconds": 330,
+   "avg_hr_bpm": 141,
+   "avg_power_watts": 232,
+   "avg_cadence": 172.0,
+   "intensity_type": "ACTIVE",
+   "elevation_gain_meters": 1.0,
+   "elevation_loss_meters": 1.0
+  },
+  {
+   "lap_number": 5,
+   "distance_meters": 1000,
+   "duration_seconds": 329,
+   "avg_hr_bpm": 142,
+   "avg_power_watts": 232,
+   "avg_cadence": 172.0,
+   "intensity_type": "ACTIVE",
+   "elevation_gain_meters": 1.0,
+   "elevation_loss_meters": 1.0
+  },
+  {
+   "lap_number": 6,
+   "distance_meters": 1000,
+   "duration_seconds": 328,
+   "avg_hr_bpm": 143,
+   "avg_power_watts": 232,
+   "avg_cadence": 172.0,
+   "intensity_type": "ACTIVE",
+   "elevation_gain_meters": 1.0,
+   "elevation_loss_meters": 1.0
+  },
+  {
+   "lap_number": 7,
+   "distance_meters": 1000,
+   "duration_seconds": 330,
+   "avg_hr_bpm": 144,
+   "avg_power_watts": 232,
+   "avg_cadence": 172.0,
+   "intensity_type": "ACTIVE",
+   "elevation_gain_meters": 1.0,
+   "elevation_loss_meters": 1.0
+  },
+  {
+   "lap_number": 8,
+   "distance_meters": 1000,
+   "duration_seconds": 329,
+   "avg_hr_bpm": 144,
+   "avg_power_watts": 232,
+   "avg_cadence": 172.0,
+   "intensity_type": "ACTIVE",
+   "elevation_gain_meters": 1.0,
+   "elevation_loss_meters": 1.0
+  },
+  {
+   "lap_number": 9,
+   "distance_meters": 1000,
+   "duration_seconds": 328,
+   "avg_hr_bpm": 144,
+   "avg_power_watts": 232,
+   "avg_cadence": 172.0,
+   "intensity_type": "ACTIVE",
+   "elevation_gain_meters": 1.0,
+   "elevation_loss_meters": 1.0
+  },
+  {
+   "lap_number": 10,
+   "distance_meters": 1000,
+   "duration_seconds": 330,
+   "avg_hr_bpm": 144,
+   "avg_power_watts": 232,
+   "avg_cadence": 172.0,
+   "intensity_type": "ACTIVE",
+   "elevation_gain_meters": 1.0,
+   "elevation_loss_meters": 1.0
+  },
+  {
+   "lap_number": 11,
+   "distance_meters": 1000,
+   "duration_seconds": 329,
+   "avg_hr_bpm": 144,
+   "avg_power_watts": 232,
+   "avg_cadence": 172.0,
+   "intensity_type": "ACTIVE",
+   "elevation_gain_meters": 1.0,
+   "elevation_loss_meters": 1.0
+  },
+  {
+   "lap_number": 12,
+   "distance_meters": 1000,
+   "duration_seconds": 328,
+   "avg_hr_bpm": 144,
+   "avg_power_watts": 232,
+   "avg_cadence": 172.0,
+   "intensity_type": "ACTIVE",
+   "elevation_gain_meters": 1.0,
+   "elevation_loss_meters": 1.0
+  },
+  {
+   "lap_number": 13,
+   "distance_meters": 1000,
+   "duration_seconds": 282,
+   "avg_hr_bpm": 154,
+   "avg_power_watts": 270,
+   "avg_cadence": 172.0,
+   "intensity_type": "ACTIVE",
+   "elevation_gain_meters": 1.0,
+   "elevation_loss_meters": 1.0
+  },
+  {
+   "lap_number": 14,
+   "distance_meters": 1000,
+   "duration_seconds": 282,
+   "avg_hr_bpm": 155,
+   "avg_power_watts": 270,
+   "avg_cadence": 172.0,
+   "intensity_type": "ACTIVE",
+   "elevation_gain_meters": 1.0,
+   "elevation_loss_meters": 1.0
+  },
+  {
+   "lap_number": 15,
+   "distance_meters": 1000,
+   "duration_seconds": 282,
+   "avg_hr_bpm": 156,
+   "avg_power_watts": 270,
+   "avg_cadence": 172.0,
+   "intensity_type": "ACTIVE",
+   "elevation_gain_meters": 1.0,
+   "elevation_loss_meters": 1.0
+  },
+  {
+   "lap_number": 16,
+   "distance_meters": 1000,
+   "duration_seconds": 282,
+   "avg_hr_bpm": 157,
+   "avg_power_watts": 270,
+   "avg_cadence": 172.0,
+   "intensity_type": "ACTIVE",
+   "elevation_gain_meters": 1.0,
+   "elevation_loss_meters": 1.0
+  }
+ ]
+}

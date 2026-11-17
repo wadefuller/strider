@@ -1,0 +1,13 @@
+{
+ "fetched_at": "2027-03-26T07:15:00",
+ "result": [
+  {
+   "date": "2027-03-26",
+   "timestamp": "2027-03-26T07:12:00.0",
+   "context": "AFTER_WAKEUP_RESET",
+   "score": 71,
+   "level": "HIGH",
+   "recovery_time_hours": 9.0
+  }
+ ]
+}

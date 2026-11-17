@@ -1,0 +1,7 @@
+{
+  "name": "strider",
+  "owner": {"name": "strider contributors"},
+  "plugins": [
+    {"name": "strider", "source": "./", "description": "AI running coach for Garmin runners: plan, log, review, race."}
+  ]
+}

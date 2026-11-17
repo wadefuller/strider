@@ -1,0 +1,328 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//strider//training plan//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-03-22@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270322
+DTEND;VALUE=DATE:20270323
+SUMMARY:Done: W1 Easy 8 km + 6 strides
+DESCRIPTION:8.0 km easy\; 6 x 20 s strides. HR cap 150.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-03-24@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270324
+DTEND;VALUE=DATE:20270325
+SUMMARY:Done: W1 4 x 5 min at threshold
+DESCRIPTION:2.5 km warm-up\; 4 x (5:00 min at 4:01 to 4:09/km\, HR cap 16
+ 8\, 1:00 min jog)\; 2.0 km cool-down.\nGo/no-go: under 12h of recovery t
+ ime left\, go. 12 to 24h\, the heart-rate cap is absolute. Over 24h\, mo
+ ve it a day.\nStrength: Strength\, after the session: maintenance only (
+ 2 sets of your usual lower-body lifts\, nothing new).
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-03-25@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270325
+DTEND;VALUE=DATE:20270326
+SUMMARY:Done: W1 Easy 8 km
+DESCRIPTION:8.0 km easy. HR cap 150.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-03-27@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270327
+DTEND;VALUE=DATE:20270328
+SUMMARY:Done: W1 Long 12 km easy
+DESCRIPTION:12.0 km easy. HR cap 150.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-03-29@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270329
+DTEND;VALUE=DATE:20270330
+SUMMARY:Done: W2 Easy 8 km + 6 strides
+DESCRIPTION:8.0 km easy\; 6 x 20 s strides. HR cap 150.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-03-31@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270331
+DTEND;VALUE=DATE:20270401
+SUMMARY:Done: W2 3 x 8 min at threshold
+DESCRIPTION:2.5 km warm-up\; 3 x (8:00 min at 4:01 to 4:09/km\, HR cap 16
+ 8\, 1:30 min jog)\; 2.0 km cool-down.\nGo/no-go: under 12h of recovery t
+ ime left\, go. 12 to 24h\, the heart-rate cap is absolute. Over 24h\, mo
+ ve it a day.\nStrength: Strength\, after the session: maintenance only (
+ 2 sets of your usual lower-body lifts\, nothing new).
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-04-01@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270401
+DTEND;VALUE=DATE:20270402
+SUMMARY:Done: W2 Easy 8 km
+DESCRIPTION:8.0 km easy. HR cap 150.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-04-03@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270403
+DTEND;VALUE=DATE:20270404
+SUMMARY:Done: W2 Long 13.5 km easy
+DESCRIPTION:13.5 km easy. HR cap 150.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-04-05@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270405
+DTEND;VALUE=DATE:20270406
+SUMMARY:Done: W3 Easy 8.5 km + 6 strides
+DESCRIPTION:8.5 km easy\; 6 x 20 s strides. HR cap 150.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-04-07@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270407
+DTEND;VALUE=DATE:20270408
+SUMMARY:Moved: W3 3 x 10 min at threshold
+DESCRIPTION:2.5 km warm-up\; 3 x (10:00 min at 4:01 to 4:09/km\, HR cap 1
+ 68\, 2:00 min jog)\; 2.0 km cool-down.\nGo/no-go: under 12h of recovery 
+ time left\, go. 12 to 24h\, the heart-rate cap is absolute. Over 24h\, m
+ ove it a day.\nStrength: Strength\, after the session: maintenance only 
+ (2 sets of your usual lower-body lifts\, nothing new).
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-04-08@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270408
+DTEND;VALUE=DATE:20270409
+SUMMARY:Moved: W3 Easy 8.5 km
+DESCRIPTION:8.5 km easy. HR cap 150.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-04-10@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270410
+DTEND;VALUE=DATE:20270411
+SUMMARY:Done: W3 Long 14.5 km easy
+DESCRIPTION:14.5 km easy. HR cap 150.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-04-12@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270412
+DTEND;VALUE=DATE:20270413
+SUMMARY:Done: W4 Easy 7 km + 6 strides
+DESCRIPTION:7.0 km easy\; 6 x 20 s strides. HR cap 150.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-04-14@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270414
+DTEND;VALUE=DATE:20270415
+SUMMARY:Done: W4 5 x 3 min at 5K effort
+DESCRIPTION:2.5 km warm-up\; 5 x (3:00 min at 3:45 to 3:53/km\, HR cap 17
+ 6\, 2:30 min jog)\; 2.0 km cool-down.\nGo/no-go: under 12h of recovery t
+ ime left\, go. 12 to 24h\, the heart-rate cap is absolute. Over 24h\, mo
+ ve it a day.\nStrength: Strength\, after the session: maintenance only (
+ 2 sets of your usual lower-body lifts\, nothing new).
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-04-15@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270415
+DTEND;VALUE=DATE:20270416
+SUMMARY:Done: W4 Easy 7 km
+DESCRIPTION:7.0 km easy. HR cap 150.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-04-17@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270417
+DTEND;VALUE=DATE:20270418
+SUMMARY:Done: W4 Long 11 km easy
+DESCRIPTION:11.0 km easy. HR cap 150.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-04-19@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270419
+DTEND;VALUE=DATE:20270420
+SUMMARY:Done: W5 Easy 9 km + 6 strides
+DESCRIPTION:9.0 km easy\; 6 x 20 s strides. HR cap 150.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-04-21@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270421
+DTEND;VALUE=DATE:20270422
+SUMMARY:Done: W5 4 x 2 km at race pace
+DESCRIPTION:2.5 km warm-up\; 4 x (2.0 km at 4:03 to 4:06/km\, HR cap 171\
+ , 2:00 min jog)\; 2.0 km cool-down.\nGo/no-go: under 12h of recovery tim
+ e left\, go. 12 to 24h\, the heart-rate cap is absolute. Over 24h\, move
+  it a day.\nStrength: Strength\, after the session: maintenance only (2 
+ sets of your usual lower-body lifts\, nothing new).
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-04-22@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270422
+DTEND;VALUE=DATE:20270423
+SUMMARY:Done: W5 Easy 9 km
+DESCRIPTION:9.0 km easy. HR cap 150.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-04-24@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270424
+DTEND;VALUE=DATE:20270425
+SUMMARY:W5 Long 15.5 km easy
+DESCRIPTION:15.5 km easy. HR cap 150.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-04-26@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270426
+DTEND;VALUE=DATE:20270427
+SUMMARY:W6 Easy 8.5 km + 6 strides
+DESCRIPTION:8.5 km easy\; 6 x 20 s strides. HR cap 150.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-04-28@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270428
+DTEND;VALUE=DATE:20270429
+SUMMARY:W6 3 x 3 km at race pace\, the decision session
+DESCRIPTION:2.5 km warm-up\; 3 x (3.0 km at 4:01 to 4:06/km\, HR cap 171\
+ , 2:30 min jog)\; 2.0 km cool-down.\nGo/no-go: under 12h of recovery tim
+ e left\, go. 12 to 24h\, the heart-rate cap is absolute. Over 24h\, move
+  it a day.\nDecides the race goal. Run it rested\, in race shoes\, by ef
+ fort inside the band\; the heart-rate cap matters more than the fast end
+  of the band.\nStrength: Strength\, after the session: maintenance only 
+ (2 sets of your usual lower-body lifts\, nothing new).\nShoes: Run the d
+ ecision session in the shoes you intend to race in. Decide today\, not r
+ ace week.\nCaffeine: If you will use caffeine on race day\, take the sam
+ e dose at the same lead time before this session.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-04-29@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270429
+DTEND;VALUE=DATE:20270430
+SUMMARY:W6 Easy 8.5 km
+DESCRIPTION:8.5 km easy. HR cap 150.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-05-01@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270501
+DTEND;VALUE=DATE:20270502
+SUMMARY:W6 Long 15.5 km easy
+DESCRIPTION:15.5 km easy. HR cap 150.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-05-03@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270503
+DTEND;VALUE=DATE:20270504
+SUMMARY:W7 Easy 4 km + 6 strides
+DESCRIPTION:4.0 km easy\; 6 x 20 s strides. HR cap 150.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-05-05@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270505
+DTEND;VALUE=DATE:20270506
+SUMMARY:W7 4 x 2 km at race pace
+DESCRIPTION:2.5 km warm-up\; 4 x (2.0 km at 4:03 to 4:06/km\, HR cap 171\
+ , 2:00 min jog)\; 2.0 km cool-down.\nGo/no-go: under 12h of recovery tim
+ e left\, go. 12 to 24h\, the heart-rate cap is absolute. Over 24h\, move
+  it a day.\nStrength: Strength\, after the session: maintenance only (2 
+ sets of your usual lower-body lifts\, nothing new).
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-05-06@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270506
+DTEND;VALUE=DATE:20270507
+SUMMARY:W7 Easy 4 km
+DESCRIPTION:4.0 km easy. HR cap 150.\nStrength: Last lower-body lifting s
+ ession before the race.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-05-08@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270508
+DTEND;VALUE=DATE:20270509
+SUMMARY:W7 Long 11 km easy
+DESCRIPTION:11.0 km easy. HR cap 150.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-05-09-notes@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270509
+DTEND;VALUE=DATE:20270510
+SUMMARY:Check
+DESCRIPTION:Check: First look at the race-day forecast. Note start-time t
+ emperature and wind.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-05-10@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270510
+DTEND;VALUE=DATE:20270511
+SUMMARY:W8 Easy 4.5 km
+DESCRIPTION:4.5 km easy. HR cap 150.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-05-12@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270512
+DTEND;VALUE=DATE:20270513
+SUMMARY:W8 3 x 1 km at race pace\, sharpen
+DESCRIPTION:2.5 km warm-up\; 3 x (1.0 km at 4:03 to 4:06/km\, HR cap 171\
+ , 2:00 min jog)\; 2.0 km cool-down.\nGo/no-go: under 12h of recovery tim
+ e left\, go. 12 to 24h\, the heart-rate cap is absolute. Over 24h\, move
+  it a day.\nLast run in race shoes. Short on purpose: you are checking t
+ he pace\, not building.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-05-13@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270513
+DTEND;VALUE=DATE:20270514
+SUMMARY:W8 Easy 4.5 km
+DESCRIPTION:4.5 km easy. HR cap 150.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-05-14-notes@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270514
+DTEND;VALUE=DATE:20270515
+SUMMARY:Check
+DESCRIPTION:Check: Final forecast\, final kit choice\, and confirm the ra
+ ce workout and pace chart are on the watch.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-05-15@strider
+DTSTAMP:20000101T000000Z
+DTSTART;VALUE=DATE:20270515
+DTEND;VALUE=DATE:20270516
+SUMMARY:W8 Easy 4.5 km + 6 strides
+DESCRIPTION:4.5 km easy\; 6 x 20 s strides. HR cap 150.\nGear: Lay out ki
+ t\, bib\, shoes\, gels. Charge the watch.
+END:VEVENT
+BEGIN:VEVENT
+UID:strider-2027-05-16-2027-05-16@strider
+DTSTAMP:20000101T000000Z
+DTSTART;TZID=Etc/UTC:20270516T090000
+DURATION:PT4H
+LOCATION:Example Town
+SUMMARY:W8 Harbour Lights 10K (example): goal 40:45
+DESCRIPTION:10.0 km at 4:03 to 4:06/km\, HR cap 171.\nPace by the elapsed
+ -time chart at course markers\, not the watch's average pace.
+END:VEVENT
+END:VCALENDAR

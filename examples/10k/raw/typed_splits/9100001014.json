@@ -1,0 +1,203 @@
+{
+ "fetched_at": "2027-04-23T07:15:00",
+ "result": {
+  "activityId": 9100001014,
+  "splits": [
+   {
+    "type": "INTERVAL_WARMUP",
+    "lapIndexes": [
+     1,
+     2,
+     3
+    ],
+    "distance": 2510.0,
+    "duration": 782.942,
+    "averageSpeed": 3.206,
+    "averageHR": 140,
+    "averagePower": 243,
+    "averageRunCadence": 171.35,
+    "groundContactTime": 241.6,
+    "strideLength": 112.3,
+    "verticalOscillation": 0.81,
+    "verticalRatio": 7.2
+   },
+   {
+    "type": "INTERVAL_ACTIVE",
+    "lapIndexes": [
+     4
+    ],
+    "distance": 815.68,
+    "duration": 180.0,
+    "averageSpeed": 4.532,
+    "averageHR": 172,
+    "averagePower": 345,
+    "averageRunCadence": 176.19,
+    "groundContactTime": 218.8,
+    "strideLength": 154.3,
+    "verticalOscillation": 0.96,
+    "verticalRatio": 6.2
+   },
+   {
+    "type": "INTERVAL_RECOVERY",
+    "lapIndexes": [
+     5
+    ],
+    "distance": 373.91,
+    "duration": 150.0,
+    "averageSpeed": 2.493,
+    "averageHR": 144,
+    "averagePower": 189,
+    "averageRunCadence": 169.18,
+    "groundContactTime": 255.3,
+    "strideLength": 88.4,
+    "verticalOscillation": 0.68,
+    "verticalRatio": 7.73
+   },
+   {
+    "type": "INTERVAL_ACTIVE",
+    "lapIndexes": [
+     6
+    ],
+    "distance": 819.69,
+    "duration": 180.0,
+    "averageSpeed": 4.554,
+    "averageHR": 173,
+    "averagePower": 344,
+    "averageRunCadence": 175.92,
+    "groundContactTime": 218.8,
+    "strideLength": 155.3,
+    "verticalOscillation": 0.96,
+    "verticalRatio": 6.18
+   },
+   {
+    "type": "INTERVAL_RECOVERY",
+    "lapIndexes": [
+     7
+    ],
+    "distance": 373.91,
+    "duration": 150.0,
+    "averageSpeed": 2.493,
+    "averageHR": 145,
+    "averagePower": 189,
+    "averageRunCadence": 168.75,
+    "groundContactTime": 254.5,
+    "strideLength": 88.6,
+    "verticalOscillation": 0.69,
+    "verticalRatio": 7.73
+   },
+   {
+    "type": "INTERVAL_ACTIVE",
+    "lapIndexes": [
+     8
+    ],
+    "distance": 815.7,
+    "duration": 180.0,
+    "averageSpeed": 4.532,
+    "averageHR": 174,
+    "averagePower": 342,
+    "averageRunCadence": 176.03,
+    "groundContactTime": 218.3,
+    "strideLength": 154.5,
+    "verticalOscillation": 0.96,
+    "verticalRatio": 6.2
+   },
+   {
+    "type": "INTERVAL_RECOVERY",
+    "lapIndexes": [
+     9
+    ],
+    "distance": 373.91,
+    "duration": 150.0,
+    "averageSpeed": 2.493,
+    "averageHR": 146,
+    "averagePower": 189,
+    "averageRunCadence": 169.24,
+    "groundContactTime": 255.6,
+    "strideLength": 88.4,
+    "verticalOscillation": 0.68,
+    "verticalRatio": 7.73
+   },
+   {
+    "type": "INTERVAL_ACTIVE",
+    "lapIndexes": [
+     10
+    ],
+    "distance": 812.8,
+    "duration": 180.0,
+    "averageSpeed": 4.516,
+    "averageHR": 175,
+    "averagePower": 341,
+    "averageRunCadence": 175.98,
+    "groundContactTime": 217.8,
+    "strideLength": 154.0,
+    "verticalOscillation": 0.96,
+    "verticalRatio": 6.21
+   },
+   {
+    "type": "INTERVAL_RECOVERY",
+    "lapIndexes": [
+     11
+    ],
+    "distance": 373.91,
+    "duration": 150.0,
+    "averageSpeed": 2.493,
+    "averageHR": 148,
+    "averagePower": 190,
+    "averageRunCadence": 168.91,
+    "groundContactTime": 254.3,
+    "strideLength": 88.5,
+    "verticalOscillation": 0.68,
+    "verticalRatio": 7.73
+   },
+   {
+    "type": "INTERVAL_ACTIVE",
+    "lapIndexes": [
+     12
+    ],
+    "distance": 813.88,
+    "duration": 180.0,
+    "averageSpeed": 4.522,
+    "averageHR": 177,
+    "averagePower": 344,
+    "averageRunCadence": 176.72,
+    "groundContactTime": 218.7,
+    "strideLength": 153.5,
+    "verticalOscillation": 0.95,
+    "verticalRatio": 6.21
+   },
+   {
+    "type": "INTERVAL_RECOVERY",
+    "lapIndexes": [
+     13
+    ],
+    "distance": 373.91,
+    "duration": 150.0,
+    "averageSpeed": 2.493,
+    "averageHR": 150,
+    "averagePower": 189,
+    "averageRunCadence": 168.97,
+    "groundContactTime": 254.7,
+    "strideLength": 88.5,
+    "verticalOscillation": 0.68,
+    "verticalRatio": 7.73
+   },
+   {
+    "type": "INTERVAL_COOLDOWN",
+    "lapIndexes": [
+     14,
+     15
+    ],
+    "distance": 2008.0,
+    "duration": 630.165,
+    "averageSpeed": 3.186,
+    "averageHR": 139,
+    "averagePower": 242,
+    "averageRunCadence": 171.56,
+    "groundContactTime": 241.9,
+    "strideLength": 111.4,
+    "verticalOscillation": 0.8,
+    "verticalRatio": 7.21
+   }
+  ]
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "units": "km",
+ "race": {
+  "name": "Harbour Lights 10K (example)",
+  "date": "2027-05-16",
+  "start": "09:00",
+  "tz": "Etc/UTC",
+  "distance": "10k",
+  "location": "Example Town",
+  "terrain": "rolling",
+  "course_notes": "Invented race. Two laps, one short hill each lap."
+ },
+ "goal_time_s": 2445,
+ "athlete": {
+  "name": "Kai Example",
+  "lthr": 168,
+  "max_hr": 186,
+  "max_hr_verified": true,
+  "resting_hr": 52,
+  "hrv_baseline_ms": [
+   61,
+   75
+  ],
+  "watch_distance_factor": 1.004
+ },
+ "threshold_pace_s_per_km": 245,
+ "threshold_source": "synthetic example: 5 reps of 5+ min at 158-168 bpm in the month before the block",
+ "baseline_pace_s_per_km": 252,
+ "current_weekly_m": 38000,
+ "longest_recent_m": 12000,
+ "start": "2027-03-22",
+ "run_days": [
+  "Mon",
+  "Wed",
+  "Thu",
+  "Sat"
+ ],
+ "key_day": "Wed",
+ "long_day": "Sat",
+ "blocked_weekdays": [
+  "Fri"
+ ],
+ "strength": "lifts"
+}

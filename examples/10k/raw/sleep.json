@@ -1,0 +1,35 @@
+{
+ "fetched_at": "2027-04-23T07:15:00",
+ "result": {
+  "nights": [
+   {
+    "date": "2027-04-17",
+    "sleep_score": 76
+   },
+   {
+    "date": "2027-04-18",
+    "sleep_score": 80
+   },
+   {
+    "date": "2027-04-19",
+    "sleep_score": 81
+   },
+   {
+    "date": "2027-04-20",
+    "sleep_score": 72
+   },
+   {
+    "date": "2027-04-21",
+    "sleep_score": 72
+   },
+   {
+    "date": "2027-04-22",
+    "sleep_score": 76
+   },
+   {
+    "date": "2027-04-23",
+    "sleep_score": 84
+   }
+  ]
+ }
+}

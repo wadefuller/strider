@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+.DS_Store
+# A runner's own data never belongs in this repository.
+/athlete.md
+/plan.json
+/plan.ics
+/data/
+/workouts/
+*.fit

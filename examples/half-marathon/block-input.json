@@ -1,0 +1,41 @@
+{
+ "units": "mi",
+ "race": {
+  "name": "Riverbend Half Marathon (example)",
+  "date": "2027-04-18",
+  "start": "08:00",
+  "tz": "Etc/UTC",
+  "distance": "half",
+  "location": "Example City",
+  "terrain": "flat",
+  "course_notes": "Invented race. Flat out-and-back."
+ },
+ "goal_time_s": 5880,
+ "athlete": {
+  "name": "Robin Example",
+  "lthr": 166,
+  "max_hr": 185,
+  "max_hr_verified": false,
+  "resting_hr": 47,
+  "hrv_baseline_ms": [
+   48,
+   60
+  ],
+  "watch_distance_factor": 1.008
+ },
+ "threshold_pace_s_per_km": 271,
+ "threshold_source": "synthetic example: 4 reps of 5+ min at 156-166 bpm in the month before the block",
+ "baseline_pace_s_per_km": 289,
+ "current_weekly_m": 42000,
+ "longest_recent_m": 15000,
+ "start": "2027-02-08",
+ "run_days": [
+  "Tue",
+  "Wed",
+  "Fri",
+  "Sun"
+ ],
+ "key_day": "Wed",
+ "long_day": "Sun",
+ "strength": "none"
+}

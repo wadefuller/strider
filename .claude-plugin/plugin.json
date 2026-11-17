@@ -1,0 +1,7 @@
+{
+  "name": "strider",
+  "version": "0.1.0",
+  "description": "An AI running coach for Garmin runners: builds a training block for a 5K to marathon as one plan file, puts the workouts on your watch, judges every run from its laps, and keeps a static dashboard current.",
+  "license": "MIT",
+  "keywords": ["running", "training", "garmin", "coach", "marathon", "half-marathon", "10k", "5k", "hrv"]
+}

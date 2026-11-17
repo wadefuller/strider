@@ -1,0 +1,175 @@
+{
+ "fetched_at": "2027-03-26T07:15:00",
+ "result": {
+  "trend": [
+   {
+    "date": "2027-02-27",
+    "last_night_avg_hrv_ms": 58,
+    "weekly_avg_hrv_ms": 58,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-02-28",
+    "last_night_avg_hrv_ms": 58,
+    "weekly_avg_hrv_ms": 58,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-01",
+    "last_night_avg_hrv_ms": 55,
+    "weekly_avg_hrv_ms": 57,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-02",
+    "last_night_avg_hrv_ms": 57,
+    "weekly_avg_hrv_ms": 57,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-03",
+    "last_night_avg_hrv_ms": 54,
+    "weekly_avg_hrv_ms": 56,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-04",
+    "last_night_avg_hrv_ms": 52,
+    "weekly_avg_hrv_ms": 56,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-05",
+    "last_night_avg_hrv_ms": 52,
+    "weekly_avg_hrv_ms": 55,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-06",
+    "last_night_avg_hrv_ms": 52,
+    "weekly_avg_hrv_ms": 54,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-07",
+    "last_night_avg_hrv_ms": 49,
+    "weekly_avg_hrv_ms": 53,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-08",
+    "last_night_avg_hrv_ms": 55,
+    "weekly_avg_hrv_ms": 53,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-09",
+    "last_night_avg_hrv_ms": 53,
+    "weekly_avg_hrv_ms": 52,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-10",
+    "last_night_avg_hrv_ms": 58,
+    "weekly_avg_hrv_ms": 53,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-11",
+    "last_night_avg_hrv_ms": 50,
+    "weekly_avg_hrv_ms": 53,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-12",
+    "last_night_avg_hrv_ms": 57,
+    "weekly_avg_hrv_ms": 53,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-13",
+    "last_night_avg_hrv_ms": 51,
+    "weekly_avg_hrv_ms": 53,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-14",
+    "last_night_avg_hrv_ms": 52,
+    "weekly_avg_hrv_ms": 54,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-15",
+    "last_night_avg_hrv_ms": null,
+    "weekly_avg_hrv_ms": 54,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-16",
+    "last_night_avg_hrv_ms": 52,
+    "weekly_avg_hrv_ms": 53,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-17",
+    "last_night_avg_hrv_ms": 59,
+    "weekly_avg_hrv_ms": 54,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-18",
+    "last_night_avg_hrv_ms": 55,
+    "weekly_avg_hrv_ms": 54,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-19",
+    "last_night_avg_hrv_ms": 54,
+    "weekly_avg_hrv_ms": 54,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-20",
+    "last_night_avg_hrv_ms": 51,
+    "weekly_avg_hrv_ms": 53,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-21",
+    "last_night_avg_hrv_ms": 49,
+    "weekly_avg_hrv_ms": 53,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-22",
+    "last_night_avg_hrv_ms": 53,
+    "weekly_avg_hrv_ms": 53,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-23",
+    "last_night_avg_hrv_ms": 59,
+    "weekly_avg_hrv_ms": 54,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-24",
+    "last_night_avg_hrv_ms": 53,
+    "weekly_avg_hrv_ms": 53,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-25",
+    "last_night_avg_hrv_ms": 56,
+    "weekly_avg_hrv_ms": 54,
+    "status": "BALANCED"
+   },
+   {
+    "date": "2027-03-26",
+    "last_night_avg_hrv_ms": 58,
+    "weekly_avg_hrv_ms": 54,
+    "status": "BALANCED"
+   }
+  ]
+ }
+}

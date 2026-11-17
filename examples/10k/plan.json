@@ -1,0 +1,1233 @@
+{
+  "schema_version": 1,
+  "units": "km",
+  "athlete": {
+    "name": "Kai Example",
+    "lthr": 168,
+    "max_hr": 186,
+    "max_hr_verified": true,
+    "resting_hr": 52,
+    "hrv_baseline_ms": [
+      61,
+      75
+    ],
+    "watch_distance_factor": 1.004
+  },
+  "race": {
+    "name": "Harbour Lights 10K (example)",
+    "date": "2027-05-16",
+    "start": "09:00",
+    "tz": "Etc/UTC",
+    "distance": "10k",
+    "location": "Example Town",
+    "terrain": "rolling",
+    "course_notes": "Invented race. Two laps, one short hill each lap.",
+    "distance_m": 10000.0
+  },
+  "goal": {
+    "time_s": 2445,
+    "status": "provisional",
+    "baseline_pace_s_per_km": 252,
+    "decision": {
+      "session_date": "2027-04-28",
+      "tiers": [
+        {
+          "id": "stretch",
+          "goal_time_s": 2410,
+          "when": {
+            "slowest_rep_pace_max_s_per_km": 240.8,
+            "highest_rep_hr_max": 169
+          }
+        },
+        {
+          "id": "goal",
+          "goal_time_s": 2445,
+          "when": {
+            "slowest_rep_pace_max_s_per_km": 245.7,
+            "highest_rep_hr_max": 171
+          }
+        },
+        {
+          "id": "conservative",
+          "goal_time_s": 2480,
+          "when": "otherwise"
+        }
+      ],
+      "borderline": {
+        "pace_s_per_km": 1.5,
+        "hr_bpm": 1,
+        "default": "slower_tier"
+      },
+      "runner_confirms": true
+    }
+  },
+  "bands": {
+    "easy": {
+      "pace_s_per_km": [
+        294.0,
+        338.1
+      ],
+      "hr_cap": 150,
+      "source": "threshold pace +20% to +38%; cap is the top of zone 2 (heuristic)"
+    },
+    "steady": {
+      "pace_s_per_km": [
+        264.6,
+        279.3
+      ],
+      "hr_cap": 158,
+      "source": "threshold pace +8% to +14%; cap is the top of zone 3 (heuristic)"
+    },
+    "threshold": {
+      "pace_s_per_km": [
+        241.3,
+        248.7
+      ],
+      "hr_cap": 168,
+      "source": "synthetic example: 5 reps of 5+ min at 158-168 bpm in the month before the block"
+    },
+    "vo2": {
+      "pace_s_per_km": [
+        225.4,
+        232.8
+      ],
+      "hr_cap": 176,
+      "source": "threshold pace -5% to -8% (heuristic); heart rate lags in short reps, so read the cap on the last rep"
+    },
+    "goal": {
+      "pace_s_per_km": [
+        243.3,
+        245.7
+      ],
+      "hr_cap": 171,
+      "source": "goal time over the race distance, +/-0.5%"
+    }
+  },
+  "rules": {
+    "recovery_go_h": 12,
+    "recovery_move_h": 24,
+    "match_window_days": 2,
+    "pace_tolerance_s_per_km": 3,
+    "fade_pct": 3,
+    "rep_spread_s_per_km": 12,
+    "sleep_floor": 70,
+    "readiness_floor": 50,
+    "rhr_rise_bpm": 5,
+    "vo2_noise": 0.5,
+    "max_snapshot_age_h": 26,
+    "blocked_weekdays": [
+      "Fri"
+    ]
+  },
+  "weeks": [
+    {
+      "n": 1,
+      "start": "2027-03-22",
+      "phase": "base",
+      "planned_m": 38000,
+      "days": [
+        {
+          "kind": "easy",
+          "session": "strides",
+          "title": "Easy 8 km + 6 strides",
+          "distance_m": 8000.0,
+          "hr_cap": 150,
+          "steps": [
+            {
+              "type": "easy",
+              "distance_m": 8000.0,
+              "hr_cap": 150,
+              "band": "easy"
+            },
+            {
+              "type": "strides",
+              "count": 6,
+              "time_s": 20,
+              "note": "6 x 20 s relaxed and fast, walk back"
+            }
+          ],
+          "date": "2027-03-22",
+          "status": "done",
+          "actual": {
+            "distance_m": 8032.0,
+            "pace_s_per_km": 312.9,
+            "hr": 141,
+            "verdict": "on_target",
+            "activity_id": 9100001001
+          }
+        },
+        {
+          "kind": "key",
+          "session": "threshold",
+          "title": "4 x 5 min at threshold",
+          "steps": [
+            {
+              "type": "warmup",
+              "distance_m": 2500,
+              "hr_cap": 150,
+              "note": "easy, then 4 strides"
+            },
+            {
+              "type": "repeat",
+              "count": 4,
+              "steps": [
+                {
+                  "type": "work",
+                  "pace_s_per_km": [
+                    241.3,
+                    248.7
+                  ],
+                  "hr_cap": 168,
+                  "band": "threshold",
+                  "time_s": 300
+                },
+                {
+                  "type": "recovery",
+                  "time_s": 60,
+                  "note": "jog"
+                }
+              ]
+            },
+            {
+              "type": "cooldown",
+              "distance_m": 2000,
+              "hr_cap": 150
+            }
+          ],
+          "distance_m": 10000,
+          "date": "2027-03-24",
+          "status": "done",
+          "actual": {
+            "pace_s_per_km": 244.8,
+            "hr": 164,
+            "reps_pace_s_per_km": [
+              244.7,
+              245.1,
+              244.0,
+              245.2
+            ],
+            "verdict": "on_target",
+            "activity_id": 9100001002
+          }
+        },
+        {
+          "kind": "easy",
+          "session": "easy",
+          "title": "Easy 8 km",
+          "distance_m": 8000.0,
+          "hr_cap": 150,
+          "steps": [
+            {
+              "type": "easy",
+              "distance_m": 8000.0,
+              "hr_cap": 150,
+              "band": "easy"
+            }
+          ],
+          "date": "2027-03-25",
+          "status": "done",
+          "actual": {
+            "distance_m": 8032.0,
+            "pace_s_per_km": 316.2,
+            "hr": 141,
+            "verdict": "on_target",
+            "activity_id": 9100001003
+          }
+        },
+        {
+          "kind": "long",
+          "session": "long",
+          "title": "Long 12 km easy",
+          "distance_m": 12000.0,
+          "hr_cap": 150,
+          "steps": [
+            {
+              "type": "easy",
+              "distance_m": 12000.0,
+              "hr_cap": 150,
+              "band": "easy"
+            }
+          ],
+          "date": "2027-03-27",
+          "status": "done",
+          "actual": {
+            "distance_m": 12048.0,
+            "pace_s_per_km": 316.1,
+            "hr": 145,
+            "verdict": "on_target",
+            "activity_id": 9100001004
+          }
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "start": "2027-03-29",
+      "phase": "base",
+      "planned_m": 40600,
+      "days": [
+        {
+          "kind": "easy",
+          "session": "strides",
+          "title": "Easy 8 km + 6 strides",
+          "distance_m": 8000.0,
+          "hr_cap": 150,
+          "steps": [
+            {
+              "type": "easy",
+              "distance_m": 8000.0,
+              "hr_cap": 150,
+              "band": "easy"
+            },
+            {
+              "type": "strides",
+              "count": 6,
+              "time_s": 20,
+              "note": "6 x 20 s relaxed and fast, walk back"
+            }
+          ],
+          "date": "2027-03-29",
+          "status": "done",
+          "actual": {
+            "distance_m": 8032.0,
+            "pace_s_per_km": 319.3,
+            "hr": 146,
+            "verdict": "on_target",
+            "activity_id": 9100001005
+          }
+        },
+        {
+          "kind": "key",
+          "session": "threshold",
+          "title": "3 x 8 min at threshold",
+          "steps": [
+            {
+              "type": "warmup",
+              "distance_m": 2500,
+              "hr_cap": 150,
+              "note": "easy, then 4 strides"
+            },
+            {
+              "type": "repeat",
+              "count": 3,
+              "steps": [
+                {
+                  "type": "work",
+                  "pace_s_per_km": [
+                    241.3,
+                    248.7
+                  ],
+                  "hr_cap": 168,
+                  "band": "threshold",
+                  "time_s": 480
+                },
+                {
+                  "type": "recovery",
+                  "time_s": 90,
+                  "note": "jog"
+                }
+              ]
+            },
+            {
+              "type": "cooldown",
+              "distance_m": 2000,
+              "hr_cap": 150
+            }
+          ],
+          "distance_m": 11100,
+          "date": "2027-03-31",
+          "status": "done",
+          "actual": {
+            "pace_s_per_km": 246.7,
+            "hr": 164,
+            "reps_pace_s_per_km": [
+              245.8,
+              245.8,
+              248.4
+            ],
+            "verdict": "on_target",
+            "activity_id": 9100001006
+          }
+        },
+        {
+          "kind": "easy",
+          "session": "easy",
+          "title": "Easy 8 km",
+          "distance_m": 8000.0,
+          "hr_cap": 150,
+          "steps": [
+            {
+              "type": "easy",
+              "distance_m": 8000.0,
+              "hr_cap": 150,
+              "band": "easy"
+            }
+          ],
+          "date": "2027-04-01",
+          "status": "done",
+          "actual": {
+            "distance_m": 8032.0,
+            "pace_s_per_km": 309.4,
+            "hr": 141,
+            "verdict": "on_target",
+            "activity_id": 9100001007
+          }
+        },
+        {
+          "kind": "long",
+          "session": "long",
+          "title": "Long 13.5 km easy",
+          "distance_m": 13500.0,
+          "hr_cap": 150,
+          "steps": [
+            {
+              "type": "easy",
+              "distance_m": 13500.0,
+              "hr_cap": 150,
+              "band": "easy"
+            }
+          ],
+          "date": "2027-04-03",
+          "status": "done",
+          "actual": {
+            "distance_m": 13554.0,
+            "pace_s_per_km": 310.4,
+            "hr": 145,
+            "verdict": "on_target",
+            "activity_id": 9100001008
+          }
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "start": "2027-04-05",
+      "phase": "build",
+      "planned_m": 44300,
+      "days": [
+        {
+          "kind": "easy",
+          "session": "strides",
+          "title": "Easy 8.5 km + 6 strides",
+          "distance_m": 8500.0,
+          "hr_cap": 150,
+          "steps": [
+            {
+              "type": "easy",
+              "distance_m": 8500.0,
+              "hr_cap": 150,
+              "band": "easy"
+            },
+            {
+              "type": "strides",
+              "count": 6,
+              "time_s": 20,
+              "note": "6 x 20 s relaxed and fast, walk back"
+            }
+          ],
+          "date": "2027-04-05",
+          "status": "done",
+          "actual": {
+            "distance_m": 8534.0,
+            "pace_s_per_km": 314.3,
+            "hr": 142,
+            "verdict": "on_target",
+            "activity_id": 9100001009
+          }
+        },
+        {
+          "kind": "key",
+          "session": "threshold",
+          "title": "3 x 10 min at threshold",
+          "steps": [
+            {
+              "type": "warmup",
+              "distance_m": 2500,
+              "hr_cap": 150,
+              "note": "easy, then 4 strides"
+            },
+            {
+              "type": "repeat",
+              "count": 3,
+              "steps": [
+                {
+                  "type": "work",
+                  "pace_s_per_km": [
+                    241.3,
+                    248.7
+                  ],
+                  "hr_cap": 168,
+                  "band": "threshold",
+                  "time_s": 600
+                },
+                {
+                  "type": "recovery",
+                  "time_s": 120,
+                  "note": "jog"
+                }
+              ]
+            },
+            {
+              "type": "cooldown",
+              "distance_m": 2000,
+              "hr_cap": 150
+            }
+          ],
+          "distance_m": 12800,
+          "date": "2027-04-07",
+          "status": "moved",
+          "ran_on": "2027-04-08",
+          "actual": {
+            "pace_s_per_km": 243.7,
+            "hr": 164,
+            "reps_pace_s_per_km": [
+              243.1,
+              243.6,
+              244.4
+            ],
+            "verdict": "on_target",
+            "activity_id": 9100001010
+          }
+        },
+        {
+          "kind": "easy",
+          "session": "easy",
+          "title": "Easy 8.5 km",
+          "distance_m": 8500.0,
+          "hr_cap": 150,
+          "steps": [
+            {
+              "type": "easy",
+              "distance_m": 8500.0,
+              "hr_cap": 150,
+              "band": "easy"
+            }
+          ],
+          "date": "2027-04-08",
+          "status": "moved",
+          "ran_on": "2027-04-07",
+          "actual": {
+            "distance_m": 8534.0,
+            "pace_s_per_km": 316.5,
+            "hr": 144,
+            "verdict": "on_target",
+            "activity_id": 9100001011
+          }
+        },
+        {
+          "kind": "long",
+          "session": "long",
+          "title": "Long 14.5 km easy",
+          "distance_m": 14500.0,
+          "hr_cap": 150,
+          "steps": [
+            {
+              "type": "easy",
+              "distance_m": 14500.0,
+              "hr_cap": 150,
+              "band": "easy"
+            }
+          ],
+          "date": "2027-04-10",
+          "status": "done",
+          "actual": {
+            "distance_m": 14558.0,
+            "pace_s_per_km": 314.0,
+            "hr": 144,
+            "verdict": "on_target",
+            "activity_id": 9100001012
+          }
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "start": "2027-04-12",
+      "phase": "build",
+      "planned_m": 35300,
+      "days": [
+        {
+          "kind": "easy",
+          "session": "strides",
+          "title": "Easy 7 km + 6 strides",
+          "distance_m": 7000.0,
+          "hr_cap": 150,
+          "steps": [
+            {
+              "type": "easy",
+              "distance_m": 7000.0,
+              "hr_cap": 150,
+              "band": "easy"
+            },
+            {
+              "type": "strides",
+              "count": 6,
+              "time_s": 20,
+              "note": "6 x 20 s relaxed and fast, walk back"
+            }
+          ],
+          "date": "2027-04-12",
+          "status": "done",
+          "actual": {
+            "distance_m": 7028.0,
+            "pace_s_per_km": 315.9,
+            "hr": 146,
+            "verdict": "on_target",
+            "activity_id": 9100001013
+          }
+        },
+        {
+          "kind": "key",
+          "session": "vo2",
+          "title": "5 x 3 min at 5K effort",
+          "steps": [
+            {
+              "type": "warmup",
+              "distance_m": 2500,
+              "hr_cap": 150,
+              "note": "easy, then 4 strides"
+            },
+            {
+              "type": "repeat",
+              "count": 5,
+              "steps": [
+                {
+                  "type": "work",
+                  "pace_s_per_km": [
+                    225.4,
+                    232.8
+                  ],
+                  "hr_cap": 176,
+                  "band": "vo2",
+                  "time_s": 180
+                },
+                {
+                  "type": "recovery",
+                  "time_s": 150,
+                  "note": "jog"
+                }
+              ]
+            },
+            {
+              "type": "cooldown",
+              "distance_m": 2000,
+              "hr_cap": 150
+            }
+          ],
+          "distance_m": 10300,
+          "date": "2027-04-14",
+          "status": "done",
+          "actual": {
+            "pace_s_per_km": 221.6,
+            "hr": 174,
+            "reps_pace_s_per_km": [
+              221.6,
+              220.5,
+              221.6,
+              222.3,
+              222.0
+            ],
+            "verdict": "over_hr_cap",
+            "activity_id": 9100001014
+          }
+        },
+        {
+          "kind": "easy",
+          "session": "easy",
+          "title": "Easy 7 km",
+          "distance_m": 7000.0,
+          "hr_cap": 150,
+          "steps": [
+            {
+              "type": "easy",
+              "distance_m": 7000.0,
+              "hr_cap": 150,
+              "band": "easy"
+            }
+          ],
+          "date": "2027-04-15",
+          "status": "done",
+          "actual": {
+            "distance_m": 7028.0,
+            "pace_s_per_km": 313.4,
+            "hr": 142,
+            "verdict": "on_target",
+            "activity_id": 9100001015
+          }
+        },
+        {
+          "kind": "long",
+          "session": "long",
+          "title": "Long 11 km easy",
+          "distance_m": 11000.0,
+          "hr_cap": 150,
+          "steps": [
+            {
+              "type": "easy",
+              "distance_m": 11000.0,
+              "hr_cap": 150,
+              "band": "easy"
+            }
+          ],
+          "date": "2027-04-17",
+          "status": "done",
+          "actual": {
+            "distance_m": 11044.0,
+            "pace_s_per_km": 320.1,
+            "hr": 144,
+            "verdict": "on_target",
+            "activity_id": 9100001016
+          }
+        }
+      ],
+      "down_week": true
+    },
+    {
+      "n": 5,
+      "start": "2027-04-19",
+      "phase": "specific",
+      "planned_m": 47200,
+      "days": [
+        {
+          "kind": "easy",
+          "session": "strides",
+          "title": "Easy 9 km + 6 strides",
+          "distance_m": 9000.0,
+          "hr_cap": 150,
+          "steps": [
+            {
+              "type": "easy",
+              "distance_m": 9000.0,
+              "hr_cap": 150,
+              "band": "easy"
+            },
+            {
+              "type": "strides",
+              "count": 6,
+              "time_s": 20,
+              "note": "6 x 20 s relaxed and fast, walk back"
+            }
+          ],
+          "date": "2027-04-19",
+          "status": "done",
+          "actual": {
+            "distance_m": 9036.0,
+            "pace_s_per_km": 312.2,
+            "hr": 144,
+            "verdict": "on_target",
+            "activity_id": 9100001017
+          }
+        },
+        {
+          "kind": "key",
+          "session": "goal_pace",
+          "title": "4 x 2 km at race pace",
+          "steps": [
+            {
+              "type": "warmup",
+              "distance_m": 2500,
+              "hr_cap": 150,
+              "note": "easy, then 4 strides"
+            },
+            {
+              "type": "repeat",
+              "count": 4,
+              "steps": [
+                {
+                  "type": "work",
+                  "pace_s_per_km": [
+                    243.3,
+                    245.7
+                  ],
+                  "hr_cap": 171,
+                  "band": "goal",
+                  "distance_m": 2000.0
+                },
+                {
+                  "type": "recovery",
+                  "time_s": 120,
+                  "note": "jog"
+                }
+              ]
+            },
+            {
+              "type": "cooldown",
+              "distance_m": 2000,
+              "hr_cap": 150
+            }
+          ],
+          "distance_m": 13700,
+          "date": "2027-04-21",
+          "status": "done",
+          "actual": {
+            "pace_s_per_km": 235.5,
+            "hr": 169,
+            "reps_pace_s_per_km": [
+              235.0,
+              234.8,
+              236.1,
+              236.1
+            ],
+            "verdict": "faster_than_prescribed",
+            "activity_id": 9100001018
+          }
+        },
+        {
+          "kind": "easy",
+          "session": "easy",
+          "title": "Easy 9 km",
+          "distance_m": 9000.0,
+          "hr_cap": 150,
+          "steps": [
+            {
+              "type": "easy",
+              "distance_m": 9000.0,
+              "hr_cap": 150,
+              "band": "easy"
+            }
+          ],
+          "date": "2027-04-22",
+          "status": "done",
+          "actual": {
+            "distance_m": 9036.0,
+            "pace_s_per_km": 311.7,
+            "hr": 145,
+            "verdict": "on_target",
+            "activity_id": 9100001019
+          }
+        },
+        {
+          "kind": "long",
+          "session": "long",
+          "title": "Long 15.5 km easy",
+          "distance_m": 15500.0,
+          "hr_cap": 150,
+          "steps": [
+            {
+              "type": "easy",
+              "distance_m": 15500.0,
+              "hr_cap": 150,
+              "band": "easy"
+            }
+          ],
+          "date": "2027-04-24",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "start": "2027-04-26",
+      "phase": "specific",
+      "planned_m": 47100,
+      "days": [
+        {
+          "kind": "easy",
+          "session": "strides",
+          "title": "Easy 8.5 km + 6 strides",
+          "distance_m": 8500.0,
+          "hr_cap": 150,
+          "steps": [
+            {
+              "type": "easy",
+              "distance_m": 8500.0,
+              "hr_cap": 150,
+              "band": "easy"
+            },
+            {
+              "type": "strides",
+              "count": 6,
+              "time_s": 20,
+              "note": "6 x 20 s relaxed and fast, walk back"
+            }
+          ],
+          "date": "2027-04-26",
+          "status": "planned"
+        },
+        {
+          "kind": "key",
+          "session": "goal_pace",
+          "title": "3 x 3 km at race pace, the decision session",
+          "steps": [
+            {
+              "type": "warmup",
+              "distance_m": 2500,
+              "hr_cap": 150,
+              "note": "easy, then 4 strides"
+            },
+            {
+              "type": "repeat",
+              "count": 3,
+              "steps": [
+                {
+                  "type": "work",
+                  "pace_s_per_km": [
+                    240.8,
+                    245.7
+                  ],
+                  "hr_cap": 171,
+                  "band": "goal",
+                  "distance_m": 3000.0
+                },
+                {
+                  "type": "recovery",
+                  "time_s": 150,
+                  "note": "jog"
+                }
+              ]
+            },
+            {
+              "type": "cooldown",
+              "distance_m": 2000,
+              "hr_cap": 150
+            }
+          ],
+          "distance_m": 14600,
+          "decision": true,
+          "date": "2027-04-28",
+          "status": "planned",
+          "notes": "Decides the race goal. Run it rested, in race shoes, by effort inside the band; the heart-rate cap matters more than the fast end of the band."
+        },
+        {
+          "kind": "easy",
+          "session": "easy",
+          "title": "Easy 8.5 km",
+          "distance_m": 8500.0,
+          "hr_cap": 150,
+          "steps": [
+            {
+              "type": "easy",
+              "distance_m": 8500.0,
+              "hr_cap": 150,
+              "band": "easy"
+            }
+          ],
+          "date": "2027-04-29",
+          "status": "planned"
+        },
+        {
+          "kind": "long",
+          "session": "long",
+          "title": "Long 15.5 km easy",
+          "distance_m": 15500.0,
+          "hr_cap": 150,
+          "steps": [
+            {
+              "type": "easy",
+              "distance_m": 15500.0,
+              "hr_cap": 150,
+              "band": "easy"
+            }
+          ],
+          "date": "2027-05-01",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "start": "2027-05-03",
+      "phase": "taper",
+      "planned_m": 32700,
+      "days": [
+        {
+          "kind": "easy",
+          "session": "strides",
+          "title": "Easy 4 km + 6 strides",
+          "distance_m": 4000.0,
+          "hr_cap": 150,
+          "steps": [
+            {
+              "type": "easy",
+              "distance_m": 4000.0,
+              "hr_cap": 150,
+              "band": "easy"
+            },
+            {
+              "type": "strides",
+              "count": 6,
+              "time_s": 20,
+              "note": "6 x 20 s relaxed and fast, walk back"
+            }
+          ],
+          "date": "2027-05-03",
+          "status": "planned"
+        },
+        {
+          "kind": "key",
+          "session": "goal_pace",
+          "title": "4 x 2 km at race pace",
+          "steps": [
+            {
+              "type": "warmup",
+              "distance_m": 2500,
+              "hr_cap": 150,
+              "note": "easy, then 4 strides"
+            },
+            {
+              "type": "repeat",
+              "count": 4,
+              "steps": [
+                {
+                  "type": "work",
+                  "pace_s_per_km": [
+                    243.3,
+                    245.7
+                  ],
+                  "hr_cap": 171,
+                  "band": "goal",
+                  "distance_m": 2000.0
+                },
+                {
+                  "type": "recovery",
+                  "time_s": 120,
+                  "note": "jog"
+                }
+              ]
+            },
+            {
+              "type": "cooldown",
+              "distance_m": 2000,
+              "hr_cap": 150
+            }
+          ],
+          "distance_m": 13700,
+          "date": "2027-05-05",
+          "status": "planned"
+        },
+        {
+          "kind": "easy",
+          "session": "easy",
+          "title": "Easy 4 km",
+          "distance_m": 4000.0,
+          "hr_cap": 150,
+          "steps": [
+            {
+              "type": "easy",
+              "distance_m": 4000.0,
+              "hr_cap": 150,
+              "band": "easy"
+            }
+          ],
+          "date": "2027-05-06",
+          "status": "planned"
+        },
+        {
+          "kind": "long",
+          "session": "long",
+          "title": "Long 11 km easy",
+          "distance_m": 11000.0,
+          "hr_cap": 150,
+          "steps": [
+            {
+              "type": "easy",
+              "distance_m": 11000.0,
+              "hr_cap": 150,
+              "band": "easy"
+            }
+          ],
+          "date": "2027-05-08",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "start": "2027-05-10",
+      "phase": "taper",
+      "planned_m": 31900,
+      "days": [
+        {
+          "kind": "easy",
+          "session": "easy",
+          "title": "Easy 4.5 km",
+          "distance_m": 4500.0,
+          "hr_cap": 150,
+          "steps": [
+            {
+              "type": "easy",
+              "distance_m": 4500.0,
+              "hr_cap": 150,
+              "band": "easy"
+            }
+          ],
+          "date": "2027-05-10",
+          "status": "planned"
+        },
+        {
+          "kind": "key",
+          "session": "goal_pace",
+          "title": "3 x 1 km at race pace, sharpen",
+          "steps": [
+            {
+              "type": "warmup",
+              "distance_m": 2500,
+              "hr_cap": 150,
+              "note": "easy, then 4 strides"
+            },
+            {
+              "type": "repeat",
+              "count": 3,
+              "steps": [
+                {
+                  "type": "work",
+                  "pace_s_per_km": [
+                    243.3,
+                    245.7
+                  ],
+                  "hr_cap": 171,
+                  "band": "goal",
+                  "distance_m": 1000.0
+                },
+                {
+                  "type": "recovery",
+                  "time_s": 120,
+                  "note": "jog"
+                }
+              ]
+            },
+            {
+              "type": "cooldown",
+              "distance_m": 2000,
+              "hr_cap": 150
+            }
+          ],
+          "distance_m": 8400,
+          "notes": "Last run in race shoes. Short on purpose: you are checking the pace, not building.",
+          "date": "2027-05-12",
+          "status": "planned"
+        },
+        {
+          "kind": "easy",
+          "session": "easy",
+          "title": "Easy 4.5 km",
+          "distance_m": 4500.0,
+          "hr_cap": 150,
+          "steps": [
+            {
+              "type": "easy",
+              "distance_m": 4500.0,
+              "hr_cap": 150,
+              "band": "easy"
+            }
+          ],
+          "date": "2027-05-13",
+          "status": "planned"
+        },
+        {
+          "kind": "easy",
+          "session": "strides",
+          "title": "Easy 4.5 km + 6 strides",
+          "distance_m": 4500.0,
+          "hr_cap": 150,
+          "steps": [
+            {
+              "type": "easy",
+              "distance_m": 4500.0,
+              "hr_cap": 150,
+              "band": "easy"
+            },
+            {
+              "type": "strides",
+              "count": 6,
+              "time_s": 20,
+              "note": "6 x 20 s relaxed and fast, walk back"
+            }
+          ],
+          "date": "2027-05-15",
+          "status": "planned"
+        },
+        {
+          "date": "2027-05-16",
+          "kind": "race",
+          "session": "race",
+          "title": "Harbour Lights 10K (example): goal 40:45",
+          "distance_m": 10000.0,
+          "status": "planned",
+          "steps": [
+            {
+              "type": "work",
+              "distance_m": 10000.0,
+              "pace_s_per_km": [
+                243.3,
+                245.7
+              ],
+              "hr_cap": 171,
+              "band": "goal"
+            }
+          ],
+          "notes": "Pace by the elapsed-time chart at course markers, not the watch's average pace."
+        }
+      ]
+    }
+  ],
+  "logistics": [
+    {
+      "date": "2027-03-24",
+      "kind": "strength",
+      "text": "Strength, after the session: maintenance only (2 sets of your usual lower-body lifts, nothing new)."
+    },
+    {
+      "date": "2027-03-31",
+      "kind": "strength",
+      "text": "Strength, after the session: maintenance only (2 sets of your usual lower-body lifts, nothing new)."
+    },
+    {
+      "date": "2027-04-07",
+      "kind": "strength",
+      "text": "Strength, after the session: maintenance only (2 sets of your usual lower-body lifts, nothing new)."
+    },
+    {
+      "date": "2027-04-14",
+      "kind": "strength",
+      "text": "Strength, after the session: maintenance only (2 sets of your usual lower-body lifts, nothing new)."
+    },
+    {
+      "date": "2027-04-21",
+      "kind": "strength",
+      "text": "Strength, after the session: maintenance only (2 sets of your usual lower-body lifts, nothing new)."
+    },
+    {
+      "date": "2027-04-28",
+      "kind": "strength",
+      "text": "Strength, after the session: maintenance only (2 sets of your usual lower-body lifts, nothing new)."
+    },
+    {
+      "date": "2027-04-28",
+      "kind": "shoes",
+      "text": "Run the decision session in the shoes you intend to race in. Decide today, not race week."
+    },
+    {
+      "date": "2027-04-28",
+      "kind": "caffeine",
+      "text": "If you will use caffeine on race day, take the same dose at the same lead time before this session."
+    },
+    {
+      "date": "2027-05-05",
+      "kind": "strength",
+      "text": "Strength, after the session: maintenance only (2 sets of your usual lower-body lifts, nothing new)."
+    },
+    {
+      "date": "2027-05-06",
+      "kind": "strength",
+      "text": "Last lower-body lifting session before the race."
+    },
+    {
+      "date": "2027-05-09",
+      "kind": "check",
+      "text": "First look at the race-day forecast. Note start-time temperature and wind."
+    },
+    {
+      "date": "2027-05-14",
+      "kind": "check",
+      "text": "Final forecast, final kit choice, and confirm the race workout and pace chart are on the watch."
+    },
+    {
+      "date": "2027-05-15",
+      "kind": "gear",
+      "text": "Lay out kit, bib, shoes, gels. Charge the watch."
+    }
+  ],
+  "log": [],
+  "synthetic": true
+}
