@@ -1,6 +1,6 @@
 ---
 name: session-brief
-description: Morning-of brief for a key session or race: recovery go/no-go, the exact workout and targets, a check that the watch has it, weather, and one pacing cue from recent history. Use for "what's my workout today", on race morning, or as a scheduled task early on key-session days.
+description: "Morning-of brief for a key session or race: recovery go/no-go, the exact workout and targets, a check that the watch has it, weather, and one pacing cue from recent history. Use for \"what's my workout today\", on race morning, or as a scheduled task early on key-session days."
 ---
 
 # Session brief

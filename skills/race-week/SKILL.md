@@ -1,6 +1,6 @@
 ---
 name: race-week
-description: Race-week preparation, seven days out through race morning: confirm the goal, taper check, forecast, pace chart at course markers, watch workout check, fueling and kit from what was rehearsed, logistics timeline. Use for "race week", "race plan", "what should I do this week before my race", or as a scheduled task seven days before the race.
+description: "Race-week preparation, seven days out through race morning: confirm the goal, taper check, forecast, pace chart at course markers, watch workout check, fueling and kit from what was rehearsed, logistics timeline. Use for \"race week\", \"race plan\", \"what should I do this week before my race\", or as a scheduled task seven days before the race."
 ---
 
 # Race week

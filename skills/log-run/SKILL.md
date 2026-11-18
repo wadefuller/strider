@@ -1,6 +1,6 @@
 ---
 name: log-run
-description: After a run (or several), pull Garmin laps, judge each session against the plan, apply the plan's rules, and update Garmin, the calendar, the dashboard and the plan log in one pass. Use for "I ran today", "log my run", "update the plan", "refresh the dashboard".
+description: "After a run (or several), pull Garmin laps, judge each session against the plan, apply the plan's rules, and update Garmin, the calendar, the dashboard and the plan log in one pass. Use for \"I ran today\", \"log my run\", \"update the plan\", \"refresh the dashboard\"."
 ---
 
 # Log a run

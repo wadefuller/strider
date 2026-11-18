@@ -1,6 +1,6 @@
 ---
 name: weekly-review
-description: Review the training week just ended from Garmin data (planned against run, key-session reads, recovery trend, fitness direction) and set up next week on every surface. Use for "weekly review", "how did my week go", or as a scheduled task on the evening the training week ends.
+description: "Review the training week just ended from Garmin data (planned against run, key-session reads, recovery trend, fitness direction) and set up next week on every surface. Use for \"weekly review\", \"how did my week go\", or as a scheduled task on the evening the training week ends."
 ---
 
 # Weekly review

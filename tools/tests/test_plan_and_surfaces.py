@@ -326,3 +326,27 @@ def test_units_only_change_display():
     km, _ = blockgen.build_block(spec("half", "km"))
     mi, _ = blockgen.build_block(spec("half", "mi"))
     assert km["bands"] == mi["bands"]                                  # stored metric either way
+
+
+# ------------------------------------------------------- skill front matter
+
+SKILLS = sorted(glob.glob(os.path.join(ROOT, "skills", "*", "SKILL.md")))
+
+
+def front_matter(path):
+    lines = open(path).read().split("\n")
+    assert lines[0] == "---", "front matter must open on line 1"
+    return lines[1:lines.index("---", 1)]
+
+
+@pytest.mark.parametrize("path", SKILLS)
+def test_skill_front_matter_is_valid(path):
+    """GitHub and Claude both parse this as YAML. A bare ': ' inside a description breaks it,
+    so descriptions are always written as double-quoted strings."""
+    fields = dict(line.split(": ", 1) for line in front_matter(path))
+    assert set(fields) == {"name", "description"}
+    assert fields["name"] == os.path.basename(os.path.dirname(path))
+    assert fields["description"].startswith('"') and json.loads(fields["description"])
+    yaml = pytest.importorskip("yaml")
+    parsed = yaml.safe_load("\n".join(front_matter(path)))
+    assert parsed["name"] == fields["name"] and parsed["description"] == json.loads(fields["description"])

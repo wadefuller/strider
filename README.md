@@ -126,7 +126,7 @@ python3 tools/coach.py chart examples/half-marathon/plan.json
 python3 tools/coach.py sync examples/10k/plan.json --raw examples/10k/raw --out /tmp/demo --now 2027-04-23T08:00:00
 ```
 
-Run the tests with `uv run --with pytest --with jsonschema pytest`.
+Run the tests with `uv run --with pytest --with jsonschema --with pyyaml pytest`.
 
 Background reading: [how sessions are chosen, with sources](docs/methodology.md) and [what each metric means and which decision it changes](docs/metrics.md).
 

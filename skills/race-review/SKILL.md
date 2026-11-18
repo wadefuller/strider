@@ -1,6 +1,6 @@
 ---
 name: race-review
-description: Review a completed race from its laps (result against goal, pacing shape, heart-rate drift, form, conditions), record the official chip time and watch-distance correction, and run the post-race recovery check before training resumes. Use for "how did my race go", "race review", "race debrief", and as a scheduled recovery check four days after a race.
+description: "Review a completed race from its laps (result against goal, pacing shape, heart-rate drift, form, conditions), record the official chip time and watch-distance correction, and run the post-race recovery check before training resumes. Use for \"how did my race go\", \"race review\", \"race debrief\", and as a scheduled recovery check four days after a race."
 ---
 
 # Race review and recovery check

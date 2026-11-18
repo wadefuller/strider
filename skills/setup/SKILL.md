@@ -1,6 +1,6 @@
 ---
 name: setup
-description: Build a runner's athlete profile (athlete.md) from their Garmin history, asking only what cannot be derived. Use for a new runner, "set up my profile", "onboard me", or when athlete.md is missing or out of date before building a training block.
+description: "Build a runner's athlete profile (athlete.md) from their Garmin history, asking only what cannot be derived. Use for a new runner, \"set up my profile\", \"onboard me\", or when athlete.md is missing or out of date before building a training block."
 ---
 
 # Set up the athlete profile

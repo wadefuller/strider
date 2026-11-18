@@ -1,6 +1,6 @@
 ---
 name: build-block
-description: Plan a training block for a goal race (5K, 10K, half marathon or marathon) as one plan file, then generate the Garmin workouts, calendar events and dashboard from it. Use for "build me a plan", "I signed up for a race", "plan my training", or when the goal, schedule or race changes.
+description: "Plan a training block for a goal race (5K, 10K, half marathon or marathon) as one plan file, then generate the Garmin workouts, calendar events and dashboard from it. Use for \"build me a plan\", \"I signed up for a race\", \"plan my training\", or when the goal, schedule or race changes."
 ---
 
 # Build a training block
