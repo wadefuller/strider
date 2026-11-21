@@ -1,6 +1,6 @@
 # Garmin: tools, saved data, and what to do when it fails
 
-Strider reads and writes Garmin Connect through [Taxuspt/garmin_mcp](https://github.com/Taxuspt/garmin_mcp) (MIT licence), an MCP server built on the unofficial `python-garminconnect` library. It is a dependency you install yourself; nothing from it is copied here. Because the API is unofficial, any of this can break when Garmin changes something.
+Strider reads and writes Garmin Connect through [Taxuspt/garmin_mcp](https://github.com/Taxuspt/garmin_mcp) (MIT license), an MCP server built on the unofficial `python-garminconnect` library. It is a dependency you install yourself; nothing from it is copied here. Because the API is unofficial, any of this can break when Garmin changes something.
 
 ## Tools this project calls
 

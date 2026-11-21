@@ -536,7 +536,7 @@ function renderSpine(){
       (a == null ? "&nbsp;" : dist(a) + " run") + '</div><div class="bar"><i style="width:' + pct.toFixed(1) + '%"></i></div></div>';
   });
   $("spine").innerHTML = h;
-  $("spineCap").textContent = "Planned " + U + " per week, with distance run so far underneath. The week in colour holds the decision session.";
+  $("spineCap").textContent = "Planned " + U + " per week, with distance run so far underneath. The week in color holds the decision session.";
   var phases = {}; P.weeks.forEach(function(w){ phases[w.phase] = (phases[w.phase] || 0) + 1; });
   $("planCap").textContent = P.weeks.length + " weeks: " + Object.keys(phases).map(function(k){ return phases[k] + " " + k; }).join(", ") + ". Every quality session has a pace band and a heart-rate cap.";
 }
@@ -657,7 +657,7 @@ function vo2Chart(){
   row("Threshold pace band", pace(P.bands.threshold.pace_s_per_km[0]) + " to " + pace(P.bands.threshold.pace_s_per_km[1]) + " /" + U);
   $("refRows").innerHTML = rows;
   $("notices").innerHTML = (S.notices || []).map(function(n){ return '<li>' + esc(n.detail) + '</li>'; }).join("");
-  $("volTitle").textContent = "Weekly " + (U === "mi" ? "miles" : "kilometres");
+  $("volTitle").textContent = "Weekly " + (U === "mi" ? "miles" : "kilometers");
   $("foot").textContent = "Generated " + new Date(S.generated_at).toLocaleString() + " from the plan file and the last Garmin sync. To refresh, ask Claude to log your run or run `coach.py sync`. Not medical advice.";
 })();
 

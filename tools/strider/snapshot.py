@@ -167,7 +167,7 @@ def build(plan, raw, fetched, now):
             terrain = day.get("terrain") or ("track" if "track" in str(acts[aid].get("type")) else "rolling")
             use_factor = 1.0 if terrain == "track" else factor
             if day["kind"] in ("key", "test"):
-                summary = L.summarise(lap_list, use_factor, terrain)
+                summary = L.summarize(lap_list, use_factor, terrain)
                 if summary:
                     judgement = J.judge_key(summary, day, plan)
                     form = L.form_by_rep(typed.get(str(aid)), summary)

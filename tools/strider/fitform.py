@@ -27,7 +27,7 @@ FIELDS = {"distance": "distance_m", "enhanced_speed": "speed_mps", "speed": "spe
           "vertical_oscillation": "vert_osc_mm", "vertical_ratio": "vert_ratio_pct"}
 
 
-def _normalise(rows):
+def _normalize(rows):
     """rows: dicts of FIT record field name -> value. Returns records with seconds from the start."""
     out, t0 = [], None
     for row in rows:
@@ -55,7 +55,7 @@ def records_from_messages(payload):
     for msg in payload.get("messages") or []:
         if msg.get("type") == "record":
             rows.append(dict((f["name"], f.get("value")) for f in msg.get("fields") or []))
-    return _normalise(rows)
+    return _normalize(rows)
 
 
 def records_from_fit(path):
@@ -65,7 +65,7 @@ def records_from_fit(path):
         raise SystemExit("Reading .fit files needs the fitparse package: pip install fitparse\n"
                          "Or save get_activity_fit_messages output as JSON and pass that instead.")
     fit = fitparse.FitFile(path)
-    return _normalise([dict((f.name, f.value) for f in m) for m in fit.get_messages("record")])
+    return _normalize([dict((f.name, f.value) for f in m) for m in fit.get_messages("record")])
 
 
 def load_records(path):
@@ -79,7 +79,7 @@ def load_records(path):
         return records_from_messages(body)
     if isinstance(body, dict) and "records" in body:
         body = body["records"]
-    return _normalise(body) if body and "t" not in body[0] else body
+    return _normalize(body) if body and "t" not in body[0] else body
 
 
 def windows_from_laps(lap_list, summary, records):
@@ -161,7 +161,7 @@ def rep_form(records, window):
     return out
 
 
-def analyse(records, windows=None):
+def analyze(records, windows=None):
     windows = windows or detect_windows(records)
     reps = [x for x in (rep_form(records, w) for w in windows) if x]
     broken = [i + 1 for i, r in enumerate(reps) if r["breakdown"]]

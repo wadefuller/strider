@@ -5,7 +5,7 @@ Everything in this folder is **synthetic**. The runners, races, heart rates, pac
 | Folder | Runner | Units | Block | Shown at |
 |---|---|---|---|---|
 | `half-marathon/` | Robin Example | miles | 10 weeks, max heart rate unverified | week 7, the day after the decision session |
-| `10k/` | Kai Example | kilometres | 8 weeks, one blocked weekday, lifts | week 5, two sessions in a row faster than prescribed |
+| `10k/` | Kai Example | kilometers | 8 weeks, one blocked weekday, lifts | week 5, two sessions in a row faster than prescribed |
 
 Each folder holds what a real training folder holds:
 

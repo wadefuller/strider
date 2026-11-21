@@ -75,7 +75,7 @@ def cmd_threshold(a):
     data, _ = snapshot.load_raw(a.raw)
     dates = dict((str(x["id"]), str(x.get("start_time", ""))[:10]) for x in data["activities"])
     for aid, lap_list in data["splits"].items():
-        s = laps.summarise(lap_list, a.factor)
+        s = laps.summarize(lap_list, a.factor)
         for r in (s or {}).get("reps", []):
             if r["hr_reliable"]:
                 reps.append({"pace_s_per_km": r["pace_s_per_km"], "hr": r["hr"], "duration_s": r["duration_s"],
@@ -130,7 +130,7 @@ def cmd_analyze(a):
     factor = 1.0 if terrain == "track" else plan["athlete"]["watch_distance_factor"]
     out = {"date": a.date, "title": day["title"]}
     if day["kind"] in ("key", "test"):
-        s = laps.summarise(lap_list, factor, terrain)
+        s = laps.summarize(lap_list, factor, terrain)
         if not s:
             print("no usable work laps")
             return 1
@@ -174,9 +174,9 @@ def cmd_form(a):
     windows = None
     if a.splits:
         lap_list = _laps(a.splits)
-        s = laps.summarise(lap_list)
+        s = laps.summarize(lap_list)
         windows = fitform.windows_from_laps(lap_list, s, records) if s else None
-    _json(fitform.analyse(records, windows))
+    _json(fitform.analyze(records, windows))
     return 0
 
 

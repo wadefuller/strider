@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:strider:plan:1",
   "title": "Strider training plan",
-  "description": "One file is the source of truth for a training block. Garmin workouts, calendar events and the dashboard are generated from it. All distances are metres, all durations seconds, all paces seconds per kilometre as [fast, slow]. The `units` field only changes how values are displayed.",
+  "description": "One file is the source of truth for a training block. Garmin workouts, calendar events and the dashboard are generated from it. All distances are meters, all durations seconds, all paces seconds per kilometer as [fast, slow]. The `units` field only changes how values are displayed.",
   "type": "object",
   "required": ["schema_version", "units", "athlete", "race", "goal", "bands", "rules", "weeks"],
   "additionalProperties": false,
@@ -35,7 +35,7 @@
     "date": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
     "paceBand": {
       "type": "array",
-      "description": "[fast, slow] in seconds per kilometre of true distance.",
+      "description": "[fast, slow] in seconds per kilometer of true distance.",
       "minItems": 2,
       "maxItems": 2,
       "items": {"type": "number", "minimum": 120, "maximum": 900}

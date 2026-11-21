@@ -9,7 +9,7 @@ description: "Plan a training block for a goal race (5K, 10K, half marathon or m
 
 Shared rules: `../../reference/decision-rules.md`, `../../reference/propagation.md`, `../../reference/garmin.md`. Method and sources: `../../docs/methodology.md`. Tools: `../../tools/coach.py`. Schema: `../../schema/plan.schema.json`.
 
-**Scope.** Road races from 5K to the marathon. Out of scope, and say so plainly if asked: ultras, trail and mountain races, triathlon and other multisport, track racing under 5K, walking plans, and return-from-injury programmes. Do not stretch a marathon plan to cover them.
+**Scope.** Road races from 5K to the marathon. Out of scope, and say so plainly if asked: ultras, trail and mountain races, triathlon and other multisport, track racing under 5K, walking plans, and return-from-injury programs. Do not stretch a marathon plan to cover them.
 
 ## 1. Inputs
 

@@ -14,7 +14,7 @@ A decision rule turns a result into an action without anyone improvising on the 
 
 1. Run `coach.py analyze plan.json --date <decision date> --splits <file>`. The `decision` block gives `qualified_tier`, `borderline`, `applied_tier` and `goal_time_s`.
 2. Tell the runner: the reps, the tier they qualified for, whether it was borderline, and the goal that follows. Give the conservative reading first.
-3. Ask: "Do you want the goal set to <time>?" Wait for the answer.
+3. Ask: "Do you want the goal set to {time}?" Wait for the answer.
 4. On yes: set `goal.time_s`, `goal.status: "confirmed"`, `goal.set_on`, store the result in `goal.decision.result`, rebuild the `goal` band, regenerate what changed, and sweep (reference/propagation.md).
 5. On no, or no answer: leave the goal provisional and log that the decision is open.
 

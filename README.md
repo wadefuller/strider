@@ -8,13 +8,23 @@ An AI running coach for runners with a Garmin watch. Claude builds a training bl
 
 ## What you get
 
-- **A profile built from your own history.** Heart-rate zones, pace bands from sessions you actually ran, HRV baseline, and how far your watch over-reads distance.
-- **A block for your race and your week.** Block length, session types, long-run growth, taper and fueling depend on the distance. Every hard session has a pace band and a heart-rate cap.
-- **One plan file.** Garmin workouts, calendar events and the dashboard are generated from `plan.json`. Changing the goal is one edit and a regenerate.
-- **Runs judged from laps.** Rep pace, heart rate, power fade, recovery heart rate, efficiency, ground contact and cadence, with data-quality checks before any verdict.
-- **Rules instead of improvisation.** A go/no-go rule before hard sessions, and a goal-setting rule that covers every outcome and waits for your yes.
-- **Race week, race review, and a recovery check** before training resumes.
-- **A dashboard that opens from a file.** No account, no server, no network requests.
+Each step produces something you can open, keep and change.
+
+| You ask Claude | You get | Where it lives |
+|---|---|---|
+| "Set up my running profile" | An **athlete profile**: threshold and max heart rate (with where each came from), heart-rate zones, pace bands taken from sessions you actually ran, HRV baseline, your watch's distance error, and official PRs | `athlete.md` |
+| "Build a plan for my race" | A **training plan**, week by week, for a 5K, 10K, half or marathon. Every hard session has a pace band and a heart-rate cap. It includes a max-heart-rate test, the taper, and dated strength, shoe, caffeine and fueling rehearsals. | `plan.json` |
+| | **Structured workouts on your watch**, scheduled on their dates, with pace targets adjusted for your watch's distance error | Garmin Connect |
+| | **A calendar event for every run**: targets, the go/no-go rule on hard days, and that day's to-dos | Your calendar, or `plan.ics` to import |
+| | **A rule that sets your race goal** from one key session, covering every possible result. The goal only changes when you say yes. | `plan.json` |
+| | **A dashboard**: days to race, pace against goal, next key session, "ready for a hard session?", this week, rep-by-rep tables, the plan, and trends | `dashboard/index.html` |
+| "I ran today" | A **verdict on each run** from its laps: pace against the band, heart rate against the cap, power fade, recovery heart rate, and form late in the reps. Data-quality warnings come first. Every surface is updated in one pass. | In chat; `plan.json` log; dashboard |
+| "Weekly review" | **Planned against run**, recovery trend, fitness direction, and next week's sessions adjusted and pushed to your watch | In chat, or sent to you on a schedule |
+| "What's my workout today?" | A **morning brief**: go, cap firm, or move it a day, with the number behind the call, the exact session, a check that your watch has it, weather, and one pacing cue from your recent runs | In chat, or sent on hard-session mornings |
+| "It's race week" | A **race plan**: goal confirmed, elapsed time at every course marker, an effort plan, the forecast, kit and fueling (only what you rehearsed), and a timeline to the start | In chat; race-day calendar event |
+| "How did my race go?" | A **race review** from your laps, then a **recovery check** four days later that says when hard training can resume | In chat; `athlete.md` PRs |
+
+The dashboard is a single HTML file. It opens from your disk with no account, no server and no network requests.
 
 ## Quickstart
 
@@ -39,13 +49,17 @@ You need: a Garmin watch that syncs to Garmin Connect, [Claude Code](https://cla
 
 4. **Make a training folder and build your profile.** Create an empty folder for your own data (it will hold health data, so keep it private), open Claude there, and say: *"Set up my running profile."* Claude reads your Garmin history and asks a handful of questions.
 
-5. **Build your block.** *"Build a plan for the <race> on <date>, goal <time>."* Claude drafts the plan, shows it to you, then puts the workouts on your watch and writes the dashboard to `dashboard/index.html` in your folder.
+5. **Build your block.** Tell Claude the race, its date and what you want from it, for example:
+
+   > *"Build a plan for the Lakeside Half Marathon on April 18, 2027. I'd like to break 1:40. I can run Tuesday, Wednesday, Friday and Sunday, and Thursdays are out."*
+
+   Any race works; leave out the goal for a finish-focused plan, and leave out the days and Claude asks. It drafts the plan and shows it to you week by week. Only after you approve does it put the workouts on your watch, create the calendar events and write the dashboard to `dashboard/index.html` in your folder.
 
 After that: *"I ran today"* after a run, *"weekly review"* at the end of the week, *"what's my workout today"* on a hard day.
 
 ## Garmin setup
 
-Strider talks to Garmin through [Taxuspt/garmin_mcp](https://github.com/Taxuspt/garmin_mcp), an open-source MCP server (MIT licence). It is a separate project that you install; none of its code is included here.
+Strider talks to Garmin through [Taxuspt/garmin_mcp](https://github.com/Taxuspt/garmin_mcp), an open-source MCP server (MIT license). It is a separate project that you install; none of its code is included here.
 
 1. Authenticate once (command above). Your email, password and any MFA code go to Garmin from your machine. Tokens are saved in `~/.garminconnect` and last about six months.
 2. Add the server to your Claude configuration, without credentials:
@@ -130,15 +144,33 @@ Run the tests with `uv run --with pytest --with jsonschema --with pyyaml pytest`
 
 Background reading: [how sessions are chosen, with sources](docs/methodology.md) and [what each metric means and which decision it changes](docs/metrics.md).
 
-**Optional surfaces.** Google Calendar (or any calendar connector) is optional; without one, Strider writes `plan.ics` for you to import. Publishing the dashboard as a Claude artifact is optional too; the file works on its own. Units are a profile setting: the plan stores metric values and displays kilometres or miles.
+**Optional surfaces.** Google Calendar (or any calendar connector) is optional; without one, Strider writes `plan.ics` for you to import. Publishing the dashboard as a Claude artifact is optional too; the file works on its own. Units are a profile setting: the plan stores metric values and displays kilometers or miles.
+
+## The research behind it
+
+Each rule in Strider either rests on a published study or is labeled a coaching heuristic: common practice written down as a simple rule. The specific numbers (for example, an 8% weekly rise or a 3% fade limit) are heuristics unless a paper below supports them. Full references, and which rule uses each, are in [docs/methodology.md](docs/methodology.md) and [docs/metrics.md](docs/metrics.md).
+
+| What it shapes | Source |
+|---|---|
+| Most running easy, one or two hard sessions a week | Seiler, *IJSPP* 2010: training intensity distribution in endurance athletes |
+| Taper: cut volume by about half over the final weeks, keep intensity and frequency | Bosquet et al., *MSSE* 2007: meta-analysis of tapering |
+| Cap on how fast weekly distance rises | Nielsen et al., *JOSPT* 2014: weekly distance progression and injury in novice runners |
+| Threshold pace estimated from a race when there are no qualifying sessions | Riegel, *American Scientist* 1981: the endurance time model |
+| Reading HRV as a 7-day trend against your own baseline | Plews et al., *Sports Medicine* 2013: HRV monitoring in elite endurance athletes |
+| Strength work alongside running | Blagrove, Howatson & Hayes, *Sports Medicine* 2018: strength training and running performance |
+| Carbohydrate before and during long races | Thomas, Erdman & Burke, *MSSE* 2016: ACSM position on nutrition and performance |
+| Caffeine dose and timing, rehearsed before race day | Guest et al., *JISSN* 2021: ISSN position on caffeine |
+| Not chasing a cadence number | Moore, *Sports Medicine* 2016: running technique and economy |
+| Not acting on Garmin's acute:chronic load ratio | Impellizzeri et al., *IJSPP* 2020: conceptual problems with the ratio |
+| Heart-rate zones anchored to threshold heart rate; session types by distance | Friel, *The Triathlete's Training Bible*; Daniels, *Daniels' Running Formula*; Pfitzinger and co-authors, *Faster Road Racing* and *Advanced Marathoning* (coaching books, not trials) |
 
 ## Limits
 
-- **Distances.** Road 5K, 10K, half marathon and marathon. Not ultras, trail or mountain races, triathlon, track racing under 5K, walking plans, or return-from-injury programmes.
+- **Distances.** Road 5K, 10K, half marathon and marathon. Not ultras, trail or mountain races, triathlon, track racing under 5K, walking plans, or return-from-injury programs.
 - **Field testing.** The system was developed over one real half-marathon block. The 5K, 10K and marathon templates are built from published coaching sources and have not yet been through a full block with this system. Treat them as a first draft.
-- **Who it is for.** Healthy adults who already run regularly. It is not a beginner programme.
+- **Who it is for.** Healthy adults who already run regularly. It is not a beginner program.
 - **Garmin only**, through an unofficial API (below). Running power and form metrics need a watch that records them; everything degrades to pace and heart rate without them.
-- **The lap-analysis tools were rewritten for this release** from the behaviour of the original private scripts, and are covered by tests against synthetic laps. Garmin workout upload follows the server's documented format but has been exercised less than the read path.
+- **The lap-analysis tools were rewritten for this release** from the behavior of the original private scripts, and are covered by tests against synthetic laps. Garmin workout upload follows the server's documented format but has been exercised less than the read path.
 - **Per-second form analysis** needs the optional `fitparse` package and a downloaded `.fit` file.
 - Claude is doing the coaching. It follows the rules in this repository, but it can still be wrong. The checks exist because it was.
 
@@ -154,6 +186,6 @@ Background reading: [how sessions are chosen, with sources](docs/methodology.md)
 - The `training-intel` plugin by Jamie, whose idea of a single athlete profile file that every skill reads first is where this started. No text from it is included here.
 - The coaches and researchers cited in [docs/methodology.md](docs/methodology.md).
 
-## Licence
+## License
 
 MIT. See [LICENSE](LICENSE).

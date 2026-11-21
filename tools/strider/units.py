@@ -1,7 +1,7 @@
 """Units and formatting.
 
-Everything stored in a plan or snapshot is metric: metres, seconds, and pace as
-seconds per kilometre. The runner's unit preference ("km" or "mi") only changes
+Everything stored in a plan or snapshot is metric: meters, seconds, and pace as
+seconds per kilometer. The runner's unit preference ("km" or "mi") only changes
 how values are displayed.
 """
 from __future__ import annotations
@@ -51,8 +51,8 @@ def fmt_band(band, units="km"):
     return "%s to %s" % (fmt_pace(band[0], units, False), fmt_pace(band[1], units))
 
 
-def fmt_dist(metres, units="km", digits=1):
-    return "%.*f %s" % (digits, metres / unit_m(units), units)
+def fmt_dist(meters, units="km", digits=1):
+    return "%.*f %s" % (digits, meters / unit_m(units), units)
 
 
 def pace_to_mps(s_per_km):

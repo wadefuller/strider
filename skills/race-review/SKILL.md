@@ -25,11 +25,11 @@ Two parts, usually days apart. Shared rules: `../../reference/data-quality.md`, 
 
 Do not adjust the GPS time yourself and call it a result.
 
-### 3. Analyse
+### 3. Analyze
 
 `coach.py review plan.json --splits data/raw/splits/<id>.json --chip <H:MM:SS>` gives halves, the opening against average pace, the close against the middle, heart rate per unit of speed between halves, the result against the goal, and the watch-distance factor. Add:
 
-- **Data quality first:** altimeter and power caveats, heart-rate lag in the first kilometre or mile.
+- **Data quality first:** altimeter and power caveats, heart-rate lag in the first kilometer or mile.
 - **Pacing against the plan:** did the opening match the race-week plan? Where did pace move, and did heart rate lead it or follow it?
 - **Conditions:** temperature and wind from `get_activity_weather` against the forecast.
 - **Form late in the race**, if per-second data was pulled: when ground contact and cadence started to change.

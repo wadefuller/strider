@@ -315,9 +315,9 @@ class Builder:
                         "heavy lifting waits for the next block.")})
                 if p["fuel"] and phase in ("build", "specific") and longs[i] >= 14000:
                     logistics.append({"date": long_date, "kind": "fuel", "text": (
-                        "Long run: practise race fueling. Take the gel or drink you will race with every 30 minutes and note "
+                        "Long run: practice race fueling. Take the gel or drink you will race with every 30 minutes and note "
                         "how your stomach handles it." if self.distance == "marathon" else
-                        "Long run: practise one race gel around 40 minutes in, with the breakfast you plan for race morning.")})
+                        "Long run: practice one race gel around 40 minutes in, with the breakfast you plan for race morning.")})
 
         # decision rule
         goal = s["goal_time_s"]
@@ -383,9 +383,9 @@ class Builder:
             notes.append(warning)
         return plan, notes
 
-    def easy(self, metres, strides=False):
+    def easy(self, meters, strides=False):
         cap = self.bands["easy"]["hr_cap"]
-        m = self.half_units(metres)
+        m = self.half_units(meters)
         steps = [{"type": "easy", "distance_m": m, "hr_cap": cap, "band": "easy"}]
         title = "Easy %s" % self.fmt(m)
         if strides:
@@ -394,9 +394,9 @@ class Builder:
         return {"kind": "easy", "session": "strides" if strides else "easy", "title": title,
                 "distance_m": m, "hr_cap": cap, "steps": steps}
 
-    def long(self, metres, phase, index):
+    def long(self, meters, phase, index):
         cap = self.bands["easy"]["hr_cap"]
-        m = self.half_units(metres)
+        m = self.half_units(meters)
         finish_band = None
         if self.distance == "marathon" and phase in ("build", "specific") and index % 2 == 1:
             finish_band, share, label = "goal", 0.35, "marathon pace"
@@ -413,12 +413,12 @@ class Builder:
                           {"type": "steady", "distance_m": fin, "pace_s_per_km": b["pace_s_per_km"], "hr_cap": b["hr_cap"],
                            "band": finish_band}]}
 
-    def half_units(self, metres):
-        """Round to half a kilometre or half a mile, so titles and distances agree."""
-        return round(round(metres / self.unit_m * 2) / 2.0 * self.unit_m, 1)
+    def half_units(self, meters):
+        """Round to half a kilometer or half a mile, so titles and distances agree."""
+        return round(round(meters / self.unit_m * 2) / 2.0 * self.unit_m, 1)
 
-    def fmt(self, metres):
-        return "%s %s" % (_num(round(metres / self.unit_m * 2) / 2.0), self.units)
+    def fmt(self, meters):
+        return "%s %s" % (_num(round(meters / self.unit_m * 2) / 2.0), self.units)
 
 
 def build_block(spec):

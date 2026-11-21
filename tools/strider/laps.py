@@ -124,7 +124,7 @@ def _efficiency(reps, excluded):
     return (p / pd) / (h / hd) if pd and hd else None
 
 
-def summarise(laps, distance_factor=1.0, terrain="rolling"):
+def summarize(laps, distance_factor=1.0, terrain="rolling"):
     """Describe a session by its reps.
 
     distance_factor: watch distance / true distance for this runner (1.01 means

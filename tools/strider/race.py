@@ -18,7 +18,7 @@ def pace_chart(plan, goal_time_s=None):
     dist = plan["race"]["distance_m"]
     unit = MI if plan["units"] == "mi" else KM
     factor = plan["athlete"]["watch_distance_factor"]
-    pace = goal / dist  # s per metre of course
+    pace = goal / dist  # s per meter of course
     marks, m = [], unit
     while m < dist - 1:
         marks.append(m)

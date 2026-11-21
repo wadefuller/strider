@@ -266,7 +266,7 @@ def coaching_checks(plan):
         if needed not in kinds:
             warnings.append("logistics has no dated %s entry (%s)" % (needed, why))
     if race["distance"] in ("half", "marathon") and "fuel" not in kinds:
-        warnings.append("logistics has no dated fuel rehearsal; gels and breakfast are only used on race day if practised")
+        warnings.append("logistics has no dated fuel rehearsal; gels and breakfast are only used on race day if practiced")
     return errors, warnings
 
 

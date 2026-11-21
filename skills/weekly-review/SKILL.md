@@ -16,7 +16,7 @@ Works on demand and unattended. Shared rules: `../../reference/data-quality.md`,
 
 Everything `log-run` step 1 pulls, for the Monday-to-Sunday week just ended, with 28 days of HRV and 12 weeks of VO2max. Then `get_scheduled_workouts` for the next 7 days. Save under `data/raw/` and run `coach.py sync plan.json --raw data/raw --out dashboard --write-plan`.
 
-## 2. Analyse
+## 2. Analyze
 
 Data-quality flags come first and are stated before any conclusion.
 

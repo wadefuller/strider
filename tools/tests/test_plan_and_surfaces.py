@@ -303,12 +303,12 @@ def records(drift):
 
 
 def test_form_breakdown_late_in_a_rep_is_detected_while_pace_holds():
-    recs = fitform.load_records.__globals__["_normalise"](records(drift=True))
+    recs = fitform.load_records.__globals__["_normalize"](records(drift=True))
     assert recs[200]["cadence"] == 179.0                               # per-leg cadence doubled
-    out = fitform.analyse(recs)
+    out = fitform.analyze(recs)
     assert len(out["reps"]) == 2 and out["breakdown_reps"] == [2]
     assert 250 <= out["reps"][1]["breakdown_from_s"] <= 340
-    clean = fitform.analyse(fitform.load_records.__globals__["_normalise"](records(drift=False)))
+    clean = fitform.analyze(fitform.load_records.__globals__["_normalize"](records(drift=False)))
     assert clean["breakdown_reps"] == [] and "progress" in clean["lines"][0]
 
 

@@ -35,7 +35,7 @@ Shared rules: `../../reference/data-quality.md` and `../../reference/garmin.md`.
 
 Ask these together, once:
 
-1. For each race found: "Garmin has <time> for <race>. What was your official chip time?" A PR is only recorded from a chip time. Until then the row says watch time, not confirmed.
+1. For each race found: "Garmin has {time} for {race}. What was your official chip time?" A PR is only recorded from a chip time. Until then the row says watch time, not confirmed.
 2. Which days can you run, which day suits a hard session, which day suits the long run, and are there days that are never available?
 3. Do you do strength training now? What and how often?
 4. Which shoes do you train and race in?

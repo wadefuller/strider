@@ -4,7 +4,7 @@
 Two made-up runners, two distances, two unit systems:
 
   half-marathon/   "Robin Example", miles, 10-week block, shown in week 7
-  10k/             "Kai Example", kilometres, 8-week block, shown in week 5
+  10k/             "Kai Example", kilometers, 8-week block, shown in week 5
 
 For each: block-input.json -> plan.json (blockgen) -> raw/ (simulated Garmin
 tool results in the shapes garmin_mcp returns) -> dashboard/ (sync).
@@ -107,12 +107,12 @@ class Sim:
         })
         clock[0] += dt.timedelta(seconds=dur)
 
-    def chunks(self, metres):
+    def chunks(self, meters):
         out = []
-        while metres > self.unit * 1.3:
+        while meters > self.unit * 1.3:
             out.append(self.unit)
-            metres -= self.unit
-        out.append(metres)
+            meters -= self.unit
+        out.append(meters)
         return out
 
     def run(self, week, day, ran_on):
@@ -199,11 +199,11 @@ class Sim:
 def health(plan, now, rng):
     today = now.date()
     lo, hi = plan["athlete"]["hrv_baseline_ms"]
-    centre = (lo + hi) / 2.0
+    center = (lo + hi) / 2.0
     trend, week = [], []
     for i in range(27, -1, -1):
         day = today - dt.timedelta(days=i)
-        v = None if i == 11 else round(centre + rng.uniform(-5, 5))
+        v = None if i == 11 else round(center + rng.uniform(-5, 5))
         if v is not None:
             week = (week + [v])[-7:]
         trend.append({"date": day.isoformat(), "last_night_avg_hrv_ms": v,

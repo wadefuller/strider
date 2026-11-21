@@ -39,7 +39,7 @@ def key_day(pace=(238, 244), cap=168, reps=3):
 # ---------------------------------------------------------------- lap analysis
 
 def test_reps_are_joined_and_warmup_recovery_cooldown_removed():
-    s = laps.summarise(fixture("key_3x2km_labelled.json"))
+    s = laps.summarize(fixture("key_3x2km_labelled.json"))
     assert [r["distance_m"] for r in s["reps"]] == [2000, 2000, 2000]
     assert [r["lap_indexes"] for r in s["reps"]] == [[2, 3], [6, 7], [9, 10]]   # 10 m button lap ignored
     assert s["work_distance_m"] == 6000
@@ -48,27 +48,27 @@ def test_reps_are_joined_and_warmup_recovery_cooldown_removed():
 def test_session_is_never_the_whole_run_average():
     lap_list = fixture("key_3x2km_labelled.json")
     whole = laps.whole_run(lap_list)
-    s = laps.summarise(lap_list)
+    s = laps.summarize(lap_list)
     assert s["pace_s_per_km"] == pytest.approx(240, abs=1)
     assert whole["pace_s_per_km"] > s["pace_s_per_km"] + 25      # the average hides the session
 
 
 def test_jog_hr_and_final_jog_only_when_labelled():
     lap_list = fixture("key_3x2km_labelled.json")
-    assert laps.summarise(lap_list)["jog_hr"] == [141, 144]       # cool-down after rep 3 is not a jog
+    assert laps.summarize(lap_list)["jog_hr"] == [141, 144]       # cool-down after rep 3 is not a jog
     lap_list[-1]["intensity_type"] = "RECOVERY"
-    assert len(laps.summarise(lap_list)["jog_hr"]) == 3
+    assert len(laps.summarize(lap_list)["jog_hr"]) == 3
 
 
 def test_power_fade_is_first_lap_against_last_lap_of_a_rep():
-    s = laps.summarise(fixture("key_3x2km_labelled.json"))
+    s = laps.summarize(fixture("key_3x2km_labelled.json"))
     assert s["reps"][2]["fade_pct"] == pytest.approx((302 - 288) / 302 * 100, abs=0.1)
     assert s["reps"][0]["fade_pct"] < 1
 
 
 def test_unlabelled_laps_fall_back_to_effort():
     lap_list = [lap(1000, 330), lap(1600, 400), lap(400, 160), lap(1600, 398), lap(400, 165), lap(1000, 340)]
-    s = laps.summarise(lap_list)
+    s = laps.summarize(lap_list)
     assert len(s["reps"]) == 2 and s["reps"][0]["distance_m"] == 1600
 
 
@@ -76,32 +76,32 @@ def test_cold_start_hr_lag_is_flagged_and_excluded():
     lap_list = fixture("key_3x2km_labelled.json")
     for i in (2, 3):
         lap_list[i]["avg_hr_bpm"] = 140                         # rep 1 reads 20+ beats low
-    s = laps.summarise(lap_list)
+    s = laps.summarize(lap_list)
     assert s["flags"][0]["code"] == "hr_lag" and s["reps"][0]["hr_reliable"] is False
     assert s["hr"] >= 164                                       # session HR ignores the lagging rep
-    clean = laps.summarise(fixture("key_3x2km_labelled.json"))
+    clean = laps.summarize(fixture("key_3x2km_labelled.json"))
     assert s["efficiency"] < clean["efficiency"] + 0.05         # not inflated by the low reading
 
 
 def test_hill_inflated_power_is_not_judged():
     lap_list = fixture("key_3x2km_labelled.json")
     lap_list[6]["elevation_gain_meters"] = 40
-    s = laps.summarise(lap_list)
+    s = laps.summarize(lap_list)
     assert [f["code"] for f in s["flags"]] == ["hill_power"]
     assert s["reps"][1]["power_reliable"] is False and s["reps"][0]["power_reliable"] is True
 
 
 def test_implausible_altimeter_on_a_track_switches_off_power_and_efficiency():
-    s = laps.summarise(fixture("track_bad_altimeter.json"), terrain="track")
+    s = laps.summarize(fixture("track_bad_altimeter.json"), terrain="track")
     assert s["flags"][0]["code"] == "altimeter_implausible"
     assert s["efficiency"] is None and s["power_reliable"] is False
     assert not any(f["code"] == "hill_power" for f in s["flags"])      # the "hills" are sensor error
-    assert laps.summarise(fixture("track_bad_altimeter.json"), terrain="hilly")["efficiency"] is not None
+    assert laps.summarize(fixture("track_bad_altimeter.json"), terrain="hilly")["efficiency"] is not None
 
 
 def test_watch_distance_factor_slows_the_pace():
     lap_list = fixture("key_3x2km_labelled.json")
-    assert laps.summarise(lap_list, 1.01)["pace_s_per_km"] == pytest.approx(laps.summarise(lap_list)["pace_s_per_km"] * 1.01, abs=0.1)
+    assert laps.summarize(lap_list, 1.01)["pace_s_per_km"] == pytest.approx(laps.summarize(lap_list)["pace_s_per_km"] * 1.01, abs=0.1)
 
 
 def test_finish_segment_from_laps_and_unknown_for_a_single_lap():
@@ -130,7 +130,7 @@ def test_form_drift_needs_matching_pace():
 # -------------------------------------------------------------------- judging
 
 def test_verdicts(plan):
-    s = laps.summarise(fixture("key_3x2km_labelled.json"))
+    s = laps.summarize(fixture("key_3x2km_labelled.json"))
     assert judge.judge_key(s, key_day(), plan)["verdict"] == "on_target"
     fast = judge.judge_key(s, key_day(pace=(250, 256)), plan)
     assert fast["verdict"] == "faster_than_prescribed" and fast["over_prescribed"]
@@ -143,7 +143,7 @@ def test_lagging_rep_cannot_break_or_pass_the_hr_cap(plan):
     lap_list = fixture("key_3x2km_labelled.json")
     for i in (2, 3):
         lap_list[i]["avg_hr_bpm"] = 140
-    j = judge.judge_key(laps.summarise(lap_list), key_day(), plan)
+    j = judge.judge_key(laps.summarize(lap_list), key_day(), plan)
     assert j["reps"][0]["hr_status"] == "excluded"
 
 
@@ -151,7 +151,7 @@ def test_uneven_session(plan):
     lap_list = fixture("key_3x2km_labelled.json")
     for i in (9, 10):
         lap_list[i]["duration_seconds"] = 262
-    assert judge.judge_key(laps.summarise(lap_list), key_day(), plan)["verdict"] == "uneven"
+    assert judge.judge_key(laps.summarize(lap_list), key_day(), plan)["verdict"] == "uneven"
 
 
 def test_long_run_finish_and_unknown_structure(plan):

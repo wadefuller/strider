@@ -4,7 +4,7 @@ Format rules followed here come from the garmin_mcp documentation:
   - regular steps are ExecutableStepDTO, repeats are RepeatGroupDTO with an
     iterations end condition (conditionTypeId 7);
   - stepOrder is one depth-first counter across the whole workout;
-  - pace targets are speeds in metres per second (target type 6, pace.zone);
+  - pace targets are speeds in meters per second (target type 6, pace.zone);
   - a custom heart-rate range is target type 4 with targetValueOne/Two in bpm;
   - target values sit on the step, beside targetType, never inside it.
 
