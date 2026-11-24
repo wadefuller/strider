@@ -24,6 +24,11 @@
     "course_notes": "Invented race. Two laps, one short hill each lap.",
     "distance_m": 10000.0
   },
+  "baseline": {
+    "as_of": "2027-03-21",
+    "weekly_m": 38000.0,
+    "longest_run_m": 12000.0
+  },
   "goal": {
     "time_s": 2445,
     "status": "provisional",
@@ -264,18 +269,18 @@
       "n": 2,
       "start": "2027-03-29",
       "phase": "base",
-      "planned_m": 40600,
+      "planned_m": 41100,
       "days": [
         {
           "kind": "easy",
           "session": "strides",
-          "title": "Easy 8 km + 6 strides",
-          "distance_m": 8000.0,
+          "title": "Easy 8.5 km + 6 strides",
+          "distance_m": 8500.0,
           "hr_cap": 150,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 8000.0,
+              "distance_m": 8500.0,
               "hr_cap": 150,
               "band": "easy"
             },
@@ -289,8 +294,8 @@
           "date": "2027-03-29",
           "status": "done",
           "actual": {
-            "distance_m": 8032.0,
-            "pace_s_per_km": 319.3,
+            "distance_m": 8534.0,
+            "pace_s_per_km": 319.4,
             "hr": 146,
             "verdict": "on_target",
             "activity_id": 9100001005
@@ -338,12 +343,12 @@
           "date": "2027-03-31",
           "status": "done",
           "actual": {
-            "pace_s_per_km": 246.7,
+            "pace_s_per_km": 246.9,
             "hr": 164,
             "reps_pace_s_per_km": [
-              245.8,
-              245.8,
-              248.4
+              246.4,
+              247.6,
+              246.7
             ],
             "verdict": "on_target",
             "activity_id": 9100001006
@@ -352,13 +357,13 @@
         {
           "kind": "easy",
           "session": "easy",
-          "title": "Easy 8 km",
-          "distance_m": 8000.0,
+          "title": "Easy 8.5 km",
+          "distance_m": 8500.0,
           "hr_cap": 150,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 8000.0,
+              "distance_m": 8500.0,
               "hr_cap": 150,
               "band": "easy"
             }
@@ -366,9 +371,9 @@
           "date": "2027-04-01",
           "status": "done",
           "actual": {
-            "distance_m": 8032.0,
-            "pace_s_per_km": 309.4,
-            "hr": 141,
+            "distance_m": 8534.0,
+            "pace_s_per_km": 318.5,
+            "hr": 144,
             "verdict": "on_target",
             "activity_id": 9100001007
           }
@@ -376,13 +381,13 @@
         {
           "kind": "long",
           "session": "long",
-          "title": "Long 13.5 km easy",
-          "distance_m": 13500.0,
+          "title": "Long 13 km easy",
+          "distance_m": 13000.0,
           "hr_cap": 150,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 13500.0,
+              "distance_m": 13000.0,
               "hr_cap": 150,
               "band": "easy"
             }
@@ -390,9 +395,9 @@
           "date": "2027-04-03",
           "status": "done",
           "actual": {
-            "distance_m": 13554.0,
-            "pace_s_per_km": 310.4,
-            "hr": 145,
+            "distance_m": 13052.0,
+            "pace_s_per_km": 310.0,
+            "hr": 144,
             "verdict": "on_target",
             "activity_id": 9100001008
           }
@@ -403,18 +408,18 @@
       "n": 3,
       "start": "2027-04-05",
       "phase": "build",
-      "planned_m": 44300,
+      "planned_m": 44800,
       "days": [
         {
           "kind": "easy",
           "session": "strides",
-          "title": "Easy 8.5 km + 6 strides",
-          "distance_m": 8500.0,
+          "title": "Easy 9 km + 6 strides",
+          "distance_m": 9000.0,
           "hr_cap": 150,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 8500.0,
+              "distance_m": 9000.0,
               "hr_cap": 150,
               "band": "easy"
             },
@@ -428,9 +433,9 @@
           "date": "2027-04-05",
           "status": "done",
           "actual": {
-            "distance_m": 8534.0,
-            "pace_s_per_km": 314.3,
-            "hr": 142,
+            "distance_m": 9036.0,
+            "pace_s_per_km": 311.1,
+            "hr": 141,
             "verdict": "on_target",
             "activity_id": 9100001009
           }
@@ -478,12 +483,12 @@
           "status": "moved",
           "ran_on": "2027-04-08",
           "actual": {
-            "pace_s_per_km": 243.7,
+            "pace_s_per_km": 245.0,
             "hr": 164,
             "reps_pace_s_per_km": [
-              243.1,
-              243.6,
-              244.4
+              245.0,
+              245.1,
+              244.9
             ],
             "verdict": "on_target",
             "activity_id": 9100001010
@@ -492,13 +497,13 @@
         {
           "kind": "easy",
           "session": "easy",
-          "title": "Easy 8.5 km",
-          "distance_m": 8500.0,
+          "title": "Easy 9 km",
+          "distance_m": 9000.0,
           "hr_cap": 150,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 8500.0,
+              "distance_m": 9000.0,
               "hr_cap": 150,
               "band": "easy"
             }
@@ -507,9 +512,9 @@
           "status": "moved",
           "ran_on": "2027-04-07",
           "actual": {
-            "distance_m": 8534.0,
-            "pace_s_per_km": 316.5,
-            "hr": 144,
+            "distance_m": 9036.0,
+            "pace_s_per_km": 317.8,
+            "hr": 142,
             "verdict": "on_target",
             "activity_id": 9100001011
           }
@@ -517,13 +522,13 @@
         {
           "kind": "long",
           "session": "long",
-          "title": "Long 14.5 km easy",
-          "distance_m": 14500.0,
+          "title": "Long 14 km easy",
+          "distance_m": 14000.0,
           "hr_cap": 150,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 14500.0,
+              "distance_m": 14000.0,
               "hr_cap": 150,
               "band": "easy"
             }
@@ -531,9 +536,9 @@
           "date": "2027-04-10",
           "status": "done",
           "actual": {
-            "distance_m": 14558.0,
-            "pace_s_per_km": 314.0,
-            "hr": 144,
+            "distance_m": 14056.0,
+            "pace_s_per_km": 316.8,
+            "hr": 141,
             "verdict": "on_target",
             "activity_id": 9100001012
           }
@@ -544,18 +549,18 @@
       "n": 4,
       "start": "2027-04-12",
       "phase": "build",
-      "planned_m": 35300,
+      "planned_m": 35800,
       "days": [
         {
           "kind": "easy",
           "session": "strides",
-          "title": "Easy 7 km + 6 strides",
-          "distance_m": 7000.0,
+          "title": "Easy 7.5 km + 6 strides",
+          "distance_m": 7500.0,
           "hr_cap": 150,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 7000.0,
+              "distance_m": 7500.0,
               "hr_cap": 150,
               "band": "easy"
             },
@@ -569,7 +574,7 @@
           "date": "2027-04-12",
           "status": "done",
           "actual": {
-            "distance_m": 7028.0,
+            "distance_m": 7530.0,
             "pace_s_per_km": 315.9,
             "hr": 146,
             "verdict": "on_target",
@@ -618,14 +623,14 @@
           "date": "2027-04-14",
           "status": "done",
           "actual": {
-            "pace_s_per_km": 221.6,
+            "pace_s_per_km": 221.3,
             "hr": 174,
             "reps_pace_s_per_km": [
-              221.6,
-              220.5,
-              221.6,
-              222.3,
-              222.0
+              221.7,
+              220.6,
+              221.8,
+              221.0,
+              221.2
             ],
             "verdict": "over_hr_cap",
             "activity_id": 9100001014
@@ -634,13 +639,13 @@
         {
           "kind": "easy",
           "session": "easy",
-          "title": "Easy 7 km",
-          "distance_m": 7000.0,
+          "title": "Easy 7.5 km",
+          "distance_m": 7500.0,
           "hr_cap": 150,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 7000.0,
+              "distance_m": 7500.0,
               "hr_cap": 150,
               "band": "easy"
             }
@@ -648,8 +653,8 @@
           "date": "2027-04-15",
           "status": "done",
           "actual": {
-            "distance_m": 7028.0,
-            "pace_s_per_km": 313.4,
+            "distance_m": 7530.0,
+            "pace_s_per_km": 320.6,
             "hr": 142,
             "verdict": "on_target",
             "activity_id": 9100001015
@@ -658,13 +663,13 @@
         {
           "kind": "long",
           "session": "long",
-          "title": "Long 11 km easy",
-          "distance_m": 11000.0,
+          "title": "Long 10.5 km easy",
+          "distance_m": 10500.0,
           "hr_cap": 150,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 11000.0,
+              "distance_m": 10500.0,
               "hr_cap": 150,
               "band": "easy"
             }
@@ -672,8 +677,8 @@
           "date": "2027-04-17",
           "status": "done",
           "actual": {
-            "distance_m": 11044.0,
-            "pace_s_per_km": 320.1,
+            "distance_m": 10542.0,
+            "pace_s_per_km": 321.8,
             "hr": 144,
             "verdict": "on_target",
             "activity_id": 9100001016
@@ -686,18 +691,18 @@
       "n": 5,
       "start": "2027-04-19",
       "phase": "specific",
-      "planned_m": 47200,
+      "planned_m": 47700,
       "days": [
         {
           "kind": "easy",
           "session": "strides",
-          "title": "Easy 9 km + 6 strides",
-          "distance_m": 9000.0,
+          "title": "Easy 9.5 km + 6 strides",
+          "distance_m": 9500.0,
           "hr_cap": 150,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 9000.0,
+              "distance_m": 9500.0,
               "hr_cap": 150,
               "band": "easy"
             },
@@ -711,9 +716,9 @@
           "date": "2027-04-19",
           "status": "done",
           "actual": {
-            "distance_m": 9036.0,
-            "pace_s_per_km": 312.2,
-            "hr": 144,
+            "distance_m": 9538.0,
+            "pace_s_per_km": 318.3,
+            "hr": 146,
             "verdict": "on_target",
             "activity_id": 9100001017
           }
@@ -760,13 +765,13 @@
           "date": "2027-04-21",
           "status": "done",
           "actual": {
-            "pace_s_per_km": 235.5,
+            "pace_s_per_km": 235.2,
             "hr": 169,
             "reps_pace_s_per_km": [
-              235.0,
-              234.8,
-              236.1,
-              236.1
+              235.2,
+              234.6,
+              236.4,
+              234.7
             ],
             "verdict": "faster_than_prescribed",
             "activity_id": 9100001018
@@ -775,43 +780,44 @@
         {
           "kind": "easy",
           "session": "easy",
-          "title": "Easy 9 km",
-          "distance_m": 9000.0,
+          "title": "Easy 9.5 km",
+          "distance_m": 9500.0,
           "hr_cap": 150,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 9000.0,
+              "distance_m": 9500.0,
               "hr_cap": 150,
               "band": "easy"
             }
           ],
           "date": "2027-04-22",
-          "status": "done",
-          "actual": {
-            "distance_m": 9036.0,
-            "pace_s_per_km": 311.7,
-            "hr": 145,
-            "verdict": "on_target",
-            "activity_id": 9100001019
-          }
+          "status": "planned"
         },
         {
           "kind": "long",
           "session": "long",
-          "title": "Long 15.5 km easy",
-          "distance_m": 15500.0,
+          "title": "Long 15 km easy",
+          "distance_m": 15000.0,
           "hr_cap": 150,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 15500.0,
+              "distance_m": 15000.0,
               "hr_cap": 150,
               "band": "easy"
             }
           ],
           "date": "2027-04-24",
-          "status": "planned"
+          "status": "moved",
+          "ran_on": "2027-04-22",
+          "actual": {
+            "distance_m": 9538.0,
+            "pace_s_per_km": 317.6,
+            "hr": 145,
+            "verdict": "on_target",
+            "activity_id": 9100001019
+          }
         }
       ]
     },
@@ -928,7 +934,7 @@
       "n": 7,
       "start": "2027-05-03",
       "phase": "taper",
-      "planned_m": 32700,
+      "planned_m": 32200,
       "days": [
         {
           "kind": "easy",
@@ -1015,13 +1021,13 @@
         {
           "kind": "long",
           "session": "long",
-          "title": "Long 11 km easy",
-          "distance_m": 11000.0,
+          "title": "Long 10.5 km easy",
+          "distance_m": 10500.0,
           "hr_cap": 150,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 11000.0,
+              "distance_m": 10500.0,
               "hr_cap": 150,
               "band": "easy"
             }
@@ -1163,34 +1169,54 @@
   ],
   "logistics": [
     {
+      "date": "2027-03-22",
+      "kind": "strength",
+      "text": "Strength, second session: same heavy lifts, 3 sets of 3 to 5. At least two days before the long run."
+    },
+    {
       "date": "2027-03-24",
       "kind": "strength",
-      "text": "Strength, after the session: maintenance only (2 sets of your usual lower-body lifts, nothing new)."
+      "text": "Strength, after the session: heavy lower-body work. 3 to 4 sets of 3 to 5 reps at a load you could lift about 5 times (back or trap-bar squat, deadlift, split squat), then 3 sets of 5 jumps. Heavy and combined strength work improved running performance in a 2024 meta-analysis."
+    },
+    {
+      "date": "2027-03-29",
+      "kind": "strength",
+      "text": "Strength, second session: same heavy lifts, 3 sets of 3 to 5. At least two days before the long run."
     },
     {
       "date": "2027-03-31",
       "kind": "strength",
-      "text": "Strength, after the session: maintenance only (2 sets of your usual lower-body lifts, nothing new)."
+      "text": "Strength, after the session: heavy lower-body work. 3 to 4 sets of 3 to 5 reps at a load you could lift about 5 times (back or trap-bar squat, deadlift, split squat), then 3 sets of 5 jumps. Heavy and combined strength work improved running performance in a 2024 meta-analysis."
+    },
+    {
+      "date": "2027-04-05",
+      "kind": "strength",
+      "text": "Strength, second session: same heavy lifts, 3 sets of 3 to 5. At least two days before the long run."
     },
     {
       "date": "2027-04-07",
       "kind": "strength",
-      "text": "Strength, after the session: maintenance only (2 sets of your usual lower-body lifts, nothing new)."
+      "text": "Strength, after the session: heavy lower-body work. 3 to 4 sets of 3 to 5 reps at a load you could lift about 5 times (back or trap-bar squat, deadlift, split squat), then 3 sets of 5 jumps. Heavy and combined strength work improved running performance in a 2024 meta-analysis."
+    },
+    {
+      "date": "2027-04-12",
+      "kind": "strength",
+      "text": "Strength, second session: same heavy lifts, 3 sets of 3 to 5. At least two days before the long run."
     },
     {
       "date": "2027-04-14",
       "kind": "strength",
-      "text": "Strength, after the session: maintenance only (2 sets of your usual lower-body lifts, nothing new)."
+      "text": "Strength, after the session: heavy lower-body work. 3 to 4 sets of 3 to 5 reps at a load you could lift about 5 times (back or trap-bar squat, deadlift, split squat), then 3 sets of 5 jumps. Heavy and combined strength work improved running performance in a 2024 meta-analysis."
     },
     {
       "date": "2027-04-21",
       "kind": "strength",
-      "text": "Strength, after the session: maintenance only (2 sets of your usual lower-body lifts, nothing new)."
+      "text": "Strength, after the session: keep the load heavy but drop to 2 to 3 sets, so legs are fresh for race-pace work."
     },
     {
       "date": "2027-04-28",
       "kind": "strength",
-      "text": "Strength, after the session: maintenance only (2 sets of your usual lower-body lifts, nothing new)."
+      "text": "Strength, after the session: keep the load heavy but drop to 2 to 3 sets, so legs are fresh for race-pace work."
     },
     {
       "date": "2027-04-28",
@@ -1205,7 +1231,7 @@
     {
       "date": "2027-05-05",
       "kind": "strength",
-      "text": "Strength, after the session: maintenance only (2 sets of your usual lower-body lifts, nothing new)."
+      "text": "Strength, after the session: heavy lower-body work. 3 to 4 sets of 3 to 5 reps at a load you could lift about 5 times (back or trap-bar squat, deadlift, split squat), then 3 sets of 5 jumps. Heavy and combined strength work improved running performance in a 2024 meta-analysis."
     },
     {
       "date": "2027-05-06",

@@ -19,7 +19,7 @@ import os
 from . import judge as J
 from . import laps as L
 from . import match as M
-from .plan import RUN_KINDS, all_days, d, rule
+from .plan import RUN_KINDS, SPIKE_LIMIT, all_days, d, rule, run_spikes
 
 
 def _unwrap(path):
@@ -145,12 +145,50 @@ def recovery_verdict(rec, plan, now):
     return {"verdict": verdict, "recovery_hours_now": None if hours is None else round(hours, 1)}
 
 
+def series(plan, raw, days, today):
+    """Time series for the dashboard's charts. Every value here also appears in a table view."""
+    trend = (raw.get("hrv_trend") or {}).get("trend") or []
+    hrv = [{"date": _date_of(r), "night": r.get("last_night_avg_hrv_ms"), "week": r.get("weekly_avg_hrv_ms")}
+           for r in trend if _date_of(r)]
+    sleep = [{"date": _date_of(n), "score": n["sleep_score"]} for n in (raw.get("sleep") or {}).get("nights") or []
+             if _date_of(n) and isinstance(n.get("sleep_score"), (int, float))]
+    rhr = [{"date": r["date"], "bpm": r["resting_hr_bpm"]} for r in sorted((raw.get("rhr") or {}).get("days") or [],
+                                                                            key=lambda r: r["date"])]
+    # every run since the block began, with the ceiling the spike rule allowed that day
+    kind_by_activity = {}
+    for date, e in days.items():
+        day = next((x for _, x in all_days(plan) if x["date"] == date), None)
+        for aid in e.get("activity_ids", []):
+            kind_by_activity[aid] = (day["kind"] if day else "extra", date)
+    start = d(plan["weeks"][0]["start"])
+    acts = sorted((a for a in raw["activities"] if M.is_run(a) and M.activity_date(a)
+                   and start <= d(M.activity_date(a)) <= today), key=lambda a: a["start_time"])
+    base = plan.get("baseline") or {}
+    runs = []
+    for a in acts:
+        when = d(M.activity_date(a))
+        window = [b.get("distance_meters") or 0 for b in raw["activities"]
+                  if M.is_run(b) and M.activity_date(b) and 0 < (when - d(M.activity_date(b))).days <= 30]
+        if base.get("longest_run_m") and 0 <= (when - d(base["as_of"])).days <= 30:
+            window.append(base["longest_run_m"])
+        kind, plan_date = kind_by_activity.get(a["id"], ("extra", None))
+        runs.append({"date": M.activity_date(a), "distance_m": round(a.get("distance_meters") or 0, 1),
+                     "kind": kind, "plan_date": plan_date,
+                     "ceiling_m": round(SPIKE_LIMIT * max(window), 1) if window else None})
+    return {"hrv": hrv, "sleep": sleep, "rhr": rhr, "runs": runs}
+
+
 def build(plan, raw, fetched, now):
     """Compute the snapshot. `now` is a datetime; its date is 'today'."""
     today = now.date()
     factor = plan["athlete"]["watch_distance_factor"]
     splits, typed = raw["splits"], raw["typed_splits"]
     matched, extras = M.match(plan, raw["activities"], splits, today)
+    # single-run spikes in what was actually run (races exempt), keyed by activity id
+    run_acts = [a for a in raw["activities"] if M.is_run(a) and M.activity_date(a)]
+    spikes = run_spikes([(M.activity_date(a), a.get("distance_meters") or 0, a["id"]) for a in run_acts
+                         if a.get("event_type") != "race"], plan.get("baseline"))
+    spike_by_id = dict((x["label"], x) for x in spikes)
     acts = dict((a["id"], a) for a in raw["activities"])
 
     days, judged = {}, []
@@ -188,6 +226,15 @@ def build(plan, raw, fetched, now):
             entry["flags"] = [{"code": "no_laps", "rep": None,
                                "detail": "No laps saved for this run, so it has not been judged. "
                                          "A session is never described from its whole-run average."}]
+        for aid_ in entry.get("activity_ids", []):
+            sp = spike_by_id.get(aid_)
+            if sp and day["kind"] != "race":
+                entry.setdefault("flags", []).append({
+                    "code": "distance_spike", "rep": None,
+                    "detail": "This run was %.1f km, %.0f%% longer than your longest run in the previous 30 days "
+                              "(%.1f km). Single-run jumps past %d%% raise injury risk; keep the next long run at or "
+                              "below this one." % (sp["meters"] / 1000, sp["pct_over"], sp["reference_m"] / 1000,
+                                                   round((SPIKE_LIMIT - 1) * 100))})
         days[day["date"]] = entry
 
     weeks = []
@@ -265,6 +312,7 @@ def build(plan, raw, fetched, now):
         "vo2_note": vo2_note,
         "easy_efficiency": easy[-8:],
         "max_hr_seen": max_seen,
+        "series": series(plan, raw, days, today),
     }
 
 

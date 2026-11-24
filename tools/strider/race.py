@@ -10,7 +10,8 @@ from .units import KM, MI, fmt_clock, fmt_pace
 def pace_chart(plan, goal_time_s=None):
     """Elapsed time at each course marker for an even-paced race.
 
-    The watch measures its own distance and usually reads long, so its average
+    The watch measures its own distance, which drifts from the certified course (long on open
+    roads and tracks, short among tall buildings and trees), so its average
     pace flatters you. The chart is checked against the course markers instead.
     `watch_reads` is roughly what the watch will show when you pass each marker.
     """

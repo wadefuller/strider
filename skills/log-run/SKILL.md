@@ -37,7 +37,8 @@ For each run logged, in this order:
    - `over_prescription_streak`: **say the number** whenever it is above zero ("that is the second session in a row run faster than prescribed");
    - form: if `form.drift.drift` is true, form broke down by the last rep at the same pace. For decision sessions and the block's longest reps, run the per-second check (`reference/garmin.md`).
 3. **Long and easy runs:** heart rate against the cap, and whether a prescribed finish segment was actually run. If the flag is `structure_unknown`, say you cannot tell from laps.
-4. Never describe a session from its whole-run average.
+4. **Distance spike:** if a run carries `distance_spike`, say so with the numbers, and check the next planned long run is no longer than this run. Shorten it if it is.
+5. Never describe a session from its whole-run average.
 
 ## 4. Decide plan changes
 

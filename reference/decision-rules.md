@@ -27,6 +27,7 @@ A decision rule turns a result into an action without anyone improvising on the 
 | By heart rate | last-night HRV under baseline, or readiness under 50, or sleep under 70 three nights running | Keep the session, drop the pace target, hold the heart-rate cap. |
 | Missed easy run | | Move it only if it fits without touching the next key session. Otherwise drop it. Never stack it onto a key day. |
 | Moved long run | | Free the original day (rest). |
+| Single-run spike | 10% over the longest run of the previous 30 days | Never plan a run past it; the race is exempt. A logged run past it is flagged (`distance_spike`), and the next long run stays at or below that run. Source: Frandsen et al. 2025. |
 | Faster than prescribed | | Count consecutive sessions run faster than the band and state the number every time. From two in a row, the next brief's cue is to open at the slow end of the band. |
 | Form drift | | If form broke down late in the reps while pace held, hold the rep length next week instead of extending it. |
 

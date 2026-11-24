@@ -163,7 +163,7 @@ def test_garmin_workout_follows_the_documented_dto_rules(path):
                 assert s["targetType"]["workoutTargetTypeId"] == 4 and s["targetValueOne"] < s["targetValueTwo"]
 
 
-def test_pace_target_is_converted_for_a_watch_that_reads_long():
+def test_pace_target_is_converted_for_the_watch_distance_factor():
     plan = P.load(EXAMPLES[0])
     day = [d for _, d in P.all_days(plan) if d["kind"] == "key"][0]
     plan["athlete"]["watch_distance_factor"] = 1.0
@@ -350,3 +350,74 @@ def test_skill_front_matter_is_valid(path):
     yaml = pytest.importorskip("yaml")
     parsed = yaml.safe_load("\n".join(front_matter(path)))
     assert parsed["name"] == fields["name"] and parsed["description"] == json.loads(fields["description"])
+
+
+# ------------------------------------------------------------- research rules
+
+def test_spike_rule_flags_runs_past_ten_percent_of_the_last_30_days():
+    runs = [("2027-01-03", 15000, "a"), ("2027-01-10", 16400, "b"), ("2027-01-17", 18100, "c"),
+            ("2027-02-20", 30000, "d")]
+    spikes = P.run_spikes(runs)
+    assert [s["label"] for s in spikes] == ["c"]                       # 18.1 > 1.1 x 16.4; d has no run in its window
+    assert P.run_spikes(runs, {"as_of": "2027-02-01", "longest_run_m": 20000})[-1]["label"] == "d"
+    assert P.run_spikes([("2027-01-03", 22000, "x")], {"as_of": "2027-01-01", "longest_run_m": 20000}) == []
+
+
+@pytest.mark.parametrize("distance", sorted(DISTANCES))
+@pytest.mark.parametrize("longest,weekly", [(8000, 25000), (15000, 45000), (24000, 70000)])
+def test_generated_plans_never_spike(distance, longest, weekly):
+    s = spec(distance)
+    s.update(longest_recent_m=longest, current_weekly_m=weekly)
+    plan, _ = blockgen.build_block(s)
+    runs = [(d["date"], d["distance_m"], d["title"]) for _, d in P.all_days(plan) if d["kind"] not in ("race", "rest")
+            and d["kind"] in P.RUN_KINDS]
+    assert P.run_spikes(runs, plan["baseline"]) == []
+    assert plan["baseline"]["longest_run_m"] == longest
+
+
+def test_validator_rejects_a_hand_edited_spike():
+    plan, _ = blockgen.build_block(spec("half"))
+    long_run = [d for _, d in P.all_days(plan) if d["kind"] == "long"][4]
+    long_run["distance_m"] *= 1.3
+    assert any("longer than the longest run in the previous 30 days" in e for e in P.validate(plan)[0])
+
+
+def test_snapshot_flags_an_actual_spike():
+    path = EXAMPLES[0]
+    folder = os.path.dirname(path)
+    plan = P.load(path)
+    raw, fetched = snapshot.load_raw(os.path.join(folder, "raw"))
+    shipped = P.load(os.path.join(folder, "dashboard", "snapshot.json"))
+    longs = [d for _, d in P.all_days(plan) if d["kind"] == "long" and d["status"] in ("done", "moved")]
+    target = longs[-1]
+    aid = shipped["days"][target["date"]]["activity_id"]
+    ran_on = P.d(shipped["days"][target["date"]]["ran_on"])
+    window = [a["distance_meters"] for a in raw["activities"]
+              if 0 < (ran_on - P.d(a["start_time"][:10])).days <= 30]
+    for a in raw["activities"]:
+        if a["id"] == aid:
+            a["distance_meters"] = 1.3 * max(window)
+    snap = snapshot.build(plan, raw, fetched, dt.datetime.fromisoformat(shipped["generated_at"]))
+    assert "distance_spike" in [f["code"] for f in snap["days"][target["date"]]["flags"]]
+
+
+def test_marathon_prediction_from_riegel_is_a_best_case():
+    from strider import paces
+    close = paces.race_prediction(5820, "half", "marathon", 12300)
+    assert close["best_case"] and "Vickers" in close["note"]
+    assert paces.race_prediction(5820, "half", "marathon", 13000)["note"] is None
+    assert paces.race_prediction(2500, "10k", "half", 5600)["note"] is None
+    s = spec("marathon")
+    s["recent_race"] = {"distance": "half", "time_s": 5820}
+    _, notes = blockgen.build_block(s)
+    assert any("Vickers" in n for n in notes)
+
+
+def test_lifters_get_heavy_strength_and_marathoners_build_fuel():
+    s = spec("marathon")
+    s["strength"] = "lifts"
+    plan, _ = blockgen.build_block(s)
+    strength = [i["text"] for i in plan["logistics"] if i["kind"] == "strength"]
+    assert any("3 to 5 reps" in t for t in strength) and any("second session" in t for t in strength)
+    fuel = " ".join(i["text"] for i in plan["logistics"] if i["kind"] == "fuel")
+    assert "60 g" in fuel and "90 g" in fuel

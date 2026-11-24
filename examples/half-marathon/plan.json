@@ -24,6 +24,11 @@
     "course_notes": "Invented race. Flat out-and-back.",
     "distance_m": 21097.5
   },
+  "baseline": {
+    "as_of": "2027-02-07",
+    "weekly_m": 42000.0,
+    "longest_run_m": 15000.0
+  },
   "goal": {
     "time_s": 5880,
     "status": "provisional",
@@ -60,7 +65,7 @@
       },
       "runner_confirms": true,
       "result": {
-        "slowest_rep_pace_s_per_km": 277.8,
+        "slowest_rep_pace_s_per_km": 276.3,
         "highest_rep_hr": 161,
         "qualified_tier": "goal",
         "borderline": false,
@@ -131,18 +136,18 @@
       "n": 1,
       "start": "2027-02-08",
       "phase": "base",
-      "planned_m": 41400,
+      "planned_m": 42200,
       "days": [
         {
           "kind": "easy",
           "session": "strides",
-          "title": "Easy 5 mi + 6 strides",
-          "distance_m": 8046.7,
+          "title": "Easy 5.5 mi + 6 strides",
+          "distance_m": 8851.4,
           "hr_cap": 148,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 8046.7,
+              "distance_m": 8851.4,
               "hr_cap": 148,
               "band": "easy"
             },
@@ -156,8 +161,8 @@
           "date": "2027-02-09",
           "status": "done",
           "actual": {
-            "distance_m": 8111.1,
-            "pace_s_per_km": 354.0,
+            "distance_m": 8922.2,
+            "pace_s_per_km": 354.1,
             "hr": 138,
             "verdict": "on_target",
             "activity_id": 9100002001
@@ -205,13 +210,13 @@
           "date": "2027-02-10",
           "status": "done",
           "actual": {
-            "pace_s_per_km": 272.6,
+            "pace_s_per_km": 272.5,
             "hr": 163,
             "reps_pace_s_per_km": [
-              273.2,
-              271.9,
-              271.9,
-              273.2
+              273.4,
+              273.0,
+              271.2,
+              272.6
             ],
             "verdict": "on_target",
             "activity_id": 9100002002
@@ -220,13 +225,13 @@
         {
           "kind": "easy",
           "session": "easy",
-          "title": "Easy 5 mi",
-          "distance_m": 8046.7,
+          "title": "Easy 5.5 mi",
+          "distance_m": 8851.4,
           "hr_cap": 148,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 8046.7,
+              "distance_m": 8851.4,
               "hr_cap": 148,
               "band": "easy"
             }
@@ -234,9 +239,9 @@
           "date": "2027-02-12",
           "status": "done",
           "actual": {
-            "distance_m": 8111.1,
-            "pace_s_per_km": 345.6,
-            "hr": 138,
+            "distance_m": 8922.2,
+            "pace_s_per_km": 345.7,
+            "hr": 142,
             "verdict": "on_target",
             "activity_id": 9100002003
           }
@@ -244,13 +249,13 @@
         {
           "kind": "long",
           "session": "long",
-          "title": "Long 9.5 mi easy",
-          "distance_m": 15288.8,
+          "title": "Long 9 mi easy",
+          "distance_m": 14484.1,
           "hr_cap": 148,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 15288.8,
+              "distance_m": 14484.1,
               "hr_cap": 148,
               "band": "easy"
             }
@@ -258,9 +263,9 @@
           "date": "2027-02-14",
           "status": "done",
           "actual": {
-            "distance_m": 15411.1,
-            "pace_s_per_km": 345.5,
-            "hr": 145,
+            "distance_m": 14600.0,
+            "pace_s_per_km": 353.2,
+            "hr": 139,
             "verdict": "on_target",
             "activity_id": 9100002004
           }
@@ -271,18 +276,18 @@
       "n": 2,
       "start": "2027-02-15",
       "phase": "base",
-      "planned_m": 45100,
+      "planned_m": 45900,
       "days": [
         {
           "kind": "easy",
           "session": "strides",
-          "title": "Easy 6.5 mi + 6 strides",
-          "distance_m": 10460.7,
+          "title": "Easy 7 mi + 6 strides",
+          "distance_m": 11265.4,
           "hr_cap": 148,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 10460.7,
+              "distance_m": 11265.4,
               "hr_cap": 148,
               "band": "easy"
             },
@@ -296,9 +301,9 @@
           "date": "2027-02-16",
           "status": "done",
           "actual": {
-            "distance_m": 10544.4,
-            "pace_s_per_km": 349.1,
-            "hr": 144,
+            "distance_m": 11355.5,
+            "pace_s_per_km": 351.5,
+            "hr": 143,
             "verdict": "on_target",
             "activity_id": 9100002005
           }
@@ -352,12 +357,12 @@
           "date": "2027-02-17",
           "status": "done",
           "actual": {
-            "pace_s_per_km": 248.2,
+            "pace_s_per_km": 248.5,
             "hr": 180,
             "reps_pace_s_per_km": [
-              253.0,
-              253.0,
-              234.8
+              253.6,
+              253.8,
+              234.2
             ],
             "verdict": "on_target",
             "activity_id": 9100002006
@@ -366,13 +371,13 @@
         {
           "kind": "easy",
           "session": "easy",
-          "title": "Easy 6.5 mi",
-          "distance_m": 10460.7,
+          "title": "Easy 7 mi",
+          "distance_m": 11265.4,
           "hr_cap": 148,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 10460.7,
+              "distance_m": 11265.4,
               "hr_cap": 148,
               "band": "easy"
             }
@@ -380,9 +385,9 @@
           "date": "2027-02-19",
           "status": "done",
           "actual": {
-            "distance_m": 10544.4,
-            "pace_s_per_km": 345.5,
-            "hr": 141,
+            "distance_m": 11355.5,
+            "pace_s_per_km": 352.1,
+            "hr": 143,
             "verdict": "on_target",
             "activity_id": 9100002007
           }
@@ -390,13 +395,13 @@
         {
           "kind": "long",
           "session": "long",
-          "title": "Long 10.5 mi easy",
-          "distance_m": 16898.1,
+          "title": "Long 10 mi easy",
+          "distance_m": 16093.4,
           "hr_cap": 148,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 16898.1,
+              "distance_m": 16093.4,
               "hr_cap": 148,
               "band": "easy"
             }
@@ -404,8 +409,8 @@
           "date": "2027-02-21",
           "status": "done",
           "actual": {
-            "distance_m": 17033.3,
-            "pace_s_per_km": 350.7,
+            "distance_m": 16222.2,
+            "pace_s_per_km": 354.3,
             "hr": 144,
             "verdict": "on_target",
             "activity_id": 9100002008
@@ -422,13 +427,13 @@
         {
           "kind": "easy",
           "session": "strides",
-          "title": "Easy 6 mi + 6 strides",
-          "distance_m": 9656.1,
+          "title": "Easy 6.5 mi + 6 strides",
+          "distance_m": 10460.7,
           "hr_cap": 148,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 9656.1,
+              "distance_m": 10460.7,
               "hr_cap": 148,
               "band": "easy"
             },
@@ -442,7 +447,7 @@
           "date": "2027-02-23",
           "status": "done",
           "actual": {
-            "distance_m": 9733.4,
+            "distance_m": 10544.4,
             "pace_s_per_km": 354.6,
             "hr": 140,
             "verdict": "on_target",
@@ -491,12 +496,12 @@
           "date": "2027-02-24",
           "status": "done",
           "actual": {
-            "pace_s_per_km": 261.3,
+            "pace_s_per_km": 261.6,
             "hr": 163,
             "reps_pace_s_per_km": [
-              260.8,
-              260.8,
-              262.4
+              262.9,
+              260.7,
+              261.1
             ],
             "verdict": "faster_than_prescribed",
             "activity_id": 9100002010
@@ -505,13 +510,13 @@
         {
           "kind": "easy",
           "session": "easy",
-          "title": "Easy 6 mi",
-          "distance_m": 9656.1,
+          "title": "Easy 6.5 mi",
+          "distance_m": 10460.7,
           "hr_cap": 148,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 9656.1,
+              "distance_m": 10460.7,
               "hr_cap": 148,
               "band": "easy"
             }
@@ -519,9 +524,9 @@
           "date": "2027-02-26",
           "status": "done",
           "actual": {
-            "distance_m": 9733.4,
-            "pace_s_per_km": 356.5,
-            "hr": 142,
+            "distance_m": 10544.4,
+            "pace_s_per_km": 348.7,
+            "hr": 143,
             "verdict": "on_target",
             "activity_id": 9100002011
           }
@@ -529,13 +534,13 @@
         {
           "kind": "long",
           "session": "long",
-          "title": "Long 12 mi easy",
-          "distance_m": 19312.1,
+          "title": "Long 11 mi easy",
+          "distance_m": 17702.8,
           "hr_cap": 148,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 19312.1,
+              "distance_m": 17702.8,
               "hr_cap": 148,
               "band": "easy"
             }
@@ -543,9 +548,9 @@
           "date": "2027-02-28",
           "status": "done",
           "actual": {
-            "distance_m": 19466.6,
-            "pace_s_per_km": 346.0,
-            "hr": 143,
+            "distance_m": 17844.4,
+            "pace_s_per_km": 352.4,
+            "hr": 144,
             "verdict": "on_target",
             "activity_id": 9100002012
           }
@@ -561,13 +566,13 @@
         {
           "kind": "easy",
           "session": "strides",
-          "title": "Easy 4 mi + 6 strides",
-          "distance_m": 6437.4,
+          "title": "Easy 4.5 mi + 6 strides",
+          "distance_m": 7242.0,
           "hr_cap": 148,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 6437.4,
+              "distance_m": 7242.0,
               "hr_cap": 148,
               "band": "easy"
             },
@@ -581,8 +586,8 @@
           "date": "2027-03-02",
           "status": "done",
           "actual": {
-            "distance_m": 6488.9,
-            "pace_s_per_km": 343.7,
+            "distance_m": 7299.9,
+            "pace_s_per_km": 353.0,
             "hr": 140,
             "verdict": "on_target",
             "activity_id": 9100002013
@@ -630,12 +635,12 @@
           "date": "2027-03-03",
           "status": "done",
           "actual": {
-            "pace_s_per_km": 260.5,
+            "pace_s_per_km": 261.3,
             "hr": 164,
             "reps_pace_s_per_km": [
-              261.9,
-              260.1,
-              259.6
+              261.5,
+              262.0,
+              260.4
             ],
             "verdict": "faster_than_prescribed",
             "activity_id": 9100002014
@@ -644,13 +649,13 @@
         {
           "kind": "easy",
           "session": "easy",
-          "title": "Easy 4 mi",
-          "distance_m": 6437.4,
+          "title": "Easy 4.5 mi",
+          "distance_m": 7242.0,
           "hr_cap": 148,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 6437.4,
+              "distance_m": 7242.0,
               "hr_cap": 148,
               "band": "easy"
             }
@@ -658,9 +663,9 @@
           "date": "2027-03-05",
           "status": "done",
           "actual": {
-            "distance_m": 6488.9,
-            "pace_s_per_km": 345.9,
-            "hr": 141,
+            "distance_m": 7299.9,
+            "pace_s_per_km": 348.8,
+            "hr": 140,
             "verdict": "on_target",
             "activity_id": 9100002015
           }
@@ -668,13 +673,13 @@
         {
           "kind": "long",
           "session": "long",
-          "title": "Long 9 mi easy",
-          "distance_m": 14484.1,
+          "title": "Long 8 mi easy",
+          "distance_m": 12874.8,
           "hr_cap": 148,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 14484.1,
+              "distance_m": 12874.8,
               "hr_cap": 148,
               "band": "easy"
             }
@@ -682,9 +687,9 @@
           "date": "2027-03-07",
           "status": "done",
           "actual": {
-            "distance_m": 14600.0,
-            "pace_s_per_km": 350.9,
-            "hr": 139,
+            "distance_m": 12977.8,
+            "pace_s_per_km": 347.1,
+            "hr": 143,
             "verdict": "on_target",
             "activity_id": 9100002016
           }
@@ -701,13 +706,13 @@
         {
           "kind": "easy",
           "session": "strides",
-          "title": "Easy 6 mi + 6 strides",
-          "distance_m": 9656.1,
+          "title": "Easy 6.5 mi + 6 strides",
+          "distance_m": 10460.7,
           "hr_cap": 148,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 9656.1,
+              "distance_m": 10460.7,
               "hr_cap": 148,
               "band": "easy"
             },
@@ -721,9 +726,9 @@
           "date": "2027-03-09",
           "status": "done",
           "actual": {
-            "distance_m": 9733.4,
-            "pace_s_per_km": 343.5,
-            "hr": 140,
+            "distance_m": 10544.4,
+            "pace_s_per_km": 346.0,
+            "hr": 142,
             "verdict": "on_target",
             "activity_id": 9100002017
           }
@@ -770,13 +775,13 @@
           "date": "2027-03-10",
           "status": "done",
           "actual": {
-            "pace_s_per_km": 270.8,
+            "pace_s_per_km": 271.3,
             "hr": 163,
             "reps_pace_s_per_km": [
-              270.4,
+              271.0,
+              270.8,
               271.9,
-              271.1,
-              269.6
+              271.5
             ],
             "verdict": "on_target",
             "activity_id": 9100002018
@@ -785,13 +790,13 @@
         {
           "kind": "easy",
           "session": "easy",
-          "title": "Easy 6 mi",
-          "distance_m": 9656.1,
+          "title": "Easy 6.5 mi",
+          "distance_m": 10460.7,
           "hr_cap": 148,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 9656.1,
+              "distance_m": 10460.7,
               "hr_cap": 148,
               "band": "easy"
             }
@@ -799,8 +804,8 @@
           "date": "2027-03-12",
           "status": "done",
           "actual": {
-            "distance_m": 9733.4,
-            "pace_s_per_km": 350.1,
+            "distance_m": 10544.4,
+            "pace_s_per_km": 350.3,
             "hr": 141,
             "verdict": "on_target",
             "activity_id": 9100002019
@@ -809,13 +814,13 @@
         {
           "kind": "long",
           "session": "long",
-          "title": "Long 13 mi easy",
-          "distance_m": 20921.5,
+          "title": "Long 12 mi easy",
+          "distance_m": 19312.1,
           "hr_cap": 148,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 20921.5,
+              "distance_m": 19312.1,
               "hr_cap": 148,
               "band": "easy"
             }
@@ -824,9 +829,9 @@
           "status": "moved",
           "ran_on": "2027-03-13",
           "actual": {
-            "distance_m": 21088.9,
-            "pace_s_per_km": 353.1,
-            "hr": 143,
+            "distance_m": 19466.6,
+            "pace_s_per_km": 355.5,
+            "hr": 139,
             "verdict": "on_target",
             "activity_id": 9100002020
           }
@@ -837,7 +842,7 @@
       "n": 6,
       "start": "2027-03-15",
       "phase": "specific",
-      "planned_m": 54900,
+      "planned_m": 54100,
       "days": [
         {
           "kind": "easy",
@@ -863,7 +868,7 @@
           "status": "done",
           "actual": {
             "distance_m": 8922.2,
-            "pace_s_per_km": 347.4,
+            "pace_s_per_km": 346.2,
             "hr": 141,
             "verdict": "on_target",
             "activity_id": 9100002021
@@ -911,12 +916,12 @@
           "date": "2027-03-17",
           "status": "done",
           "actual": {
-            "pace_s_per_km": 279.8,
+            "pace_s_per_km": 279.0,
             "hr": 160,
             "reps_pace_s_per_km": [
-              280.3,
-              278.6,
-              280.6
+              278.7,
+              278.3,
+              280.1
             ],
             "verdict": "on_target",
             "activity_id": 9100002022
@@ -942,13 +947,13 @@
         {
           "kind": "long",
           "session": "long_steady_finish",
-          "title": "Long 13.5 mi, last 3.5 mi steady",
-          "distance_m": 21726.1,
+          "title": "Long 13 mi, last 3.5 mi steady",
+          "distance_m": 20921.5,
           "hr_cap": 156,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 16093.399999999998,
+              "distance_m": 15288.8,
               "hr_cap": 148,
               "band": "easy"
             },
@@ -966,9 +971,9 @@
           "date": "2027-03-21",
           "status": "done",
           "actual": {
-            "distance_m": 21899.9,
-            "pace_s_per_km": 337.8,
-            "hr": 142,
+            "distance_m": 21088.9,
+            "pace_s_per_km": 338.8,
+            "hr": 146,
             "verdict": "on_target",
             "activity_id": 9100002023
           }
@@ -1005,8 +1010,8 @@
           "status": "done",
           "actual": {
             "distance_m": 8922.2,
-            "pace_s_per_km": 349.3,
-            "hr": 142,
+            "pace_s_per_km": 354.8,
+            "hr": 138,
             "verdict": "on_target",
             "activity_id": 9100002024
           }
@@ -1055,11 +1060,11 @@
           "status": "done",
           "notes": "Decides the race goal. Run it rested, in race shoes, by effort inside the band; the heart-rate cap matters more than the fast end of the band.",
           "actual": {
-            "pace_s_per_km": 277.2,
+            "pace_s_per_km": 276.3,
             "hr": 160,
             "reps_pace_s_per_km": [
-              277.8,
-              276.7
+              276.3,
+              276.3
             ],
             "verdict": "on_target",
             "activity_id": 9100002025
@@ -1232,7 +1237,7 @@
       "n": 9,
       "start": "2027-04-05",
       "phase": "taper",
-      "planned_m": 38800,
+      "planned_m": 38000,
       "days": [
         {
           "kind": "easy",
@@ -1319,13 +1324,13 @@
         {
           "kind": "long",
           "session": "long",
-          "title": "Long 9.5 mi easy",
-          "distance_m": 15288.8,
+          "title": "Long 9 mi easy",
+          "distance_m": 14484.1,
           "hr_cap": 148,
           "steps": [
             {
               "type": "easy",
-              "distance_m": 15288.8,
+              "distance_m": 14484.1,
               "hr_cap": 148,
               "band": "easy"
             }
@@ -1467,17 +1472,12 @@
     {
       "date": "2027-02-28",
       "kind": "fuel",
-      "text": "Long run: practice one race gel around 40 minutes in, with the breakfast you plan for race morning."
+      "text": "Long run: practice one or two race gels (30 to 60 g of carbohydrate per hour), the first around 40 minutes in, with the breakfast you plan for race morning."
     },
     {
       "date": "2027-03-03",
       "kind": "strength",
       "text": "Strength, 10 minutes after the run: calf raises, side planks, single-leg balance. Low soreness only; heavy lifting waits for the next block."
-    },
-    {
-      "date": "2027-03-07",
-      "kind": "fuel",
-      "text": "Long run: practice one race gel around 40 minutes in, with the breakfast you plan for race morning."
     },
     {
       "date": "2027-03-10",
@@ -1487,7 +1487,7 @@
     {
       "date": "2027-03-14",
       "kind": "fuel",
-      "text": "Long run: practice one race gel around 40 minutes in, with the breakfast you plan for race morning."
+      "text": "Long run: practice one or two race gels (30 to 60 g of carbohydrate per hour), the first around 40 minutes in, with the breakfast you plan for race morning."
     },
     {
       "date": "2027-03-17",
@@ -1497,7 +1497,7 @@
     {
       "date": "2027-03-21",
       "kind": "fuel",
-      "text": "Long run: practice one race gel around 40 minutes in, with the breakfast you plan for race morning."
+      "text": "Long run: practice one or two race gels (30 to 60 g of carbohydrate per hour), the first around 40 minutes in, with the breakfast you plan for race morning."
     },
     {
       "date": "2027-03-24",
@@ -1517,7 +1517,7 @@
     {
       "date": "2027-03-28",
       "kind": "fuel",
-      "text": "Long run: practice one race gel around 40 minutes in, with the breakfast you plan for race morning."
+      "text": "Long run: practice one or two race gels (30 to 60 g of carbohydrate per hour), the first around 40 minutes in, with the breakfast you plan for race morning."
     },
     {
       "date": "2027-03-31",
@@ -1527,7 +1527,7 @@
     {
       "date": "2027-04-04",
       "kind": "fuel",
-      "text": "Long run: practice one race gel around 40 minutes in, with the breakfast you plan for race morning."
+      "text": "Long run: practice one or two race gels (30 to 60 g of carbohydrate per hour), the first around 40 minutes in, with the breakfast you plan for race morning."
     },
     {
       "date": "2027-04-07",

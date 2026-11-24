@@ -34,7 +34,7 @@ Moving or swapping a session changes the plan: follow `reference/propagation.md`
 
 1. **Verdict** with the one number behind it.
 2. **The session:** warm-up, main set, recoveries, cool-down.
-3. **Targets:** pace band and heart-rate cap. For a race: the elapsed-time chart at course markers from `coach.py chart plan.json`, because the watch reads long.
+3. **Targets:** pace band and heart-rate cap. For a race: the elapsed-time chart at course markers from `coach.py chart plan.json`, because the watch's distance drifts from the course.
 4. **The cue:** one sentence from history, with the numbers ("Last two sessions opened 8 seconds fast. Start rep 1 at the slow end.").
 5. **Weather** and what to wear.
 6. **Today's logistics** from the plan: shoes, gel, caffeine, strength. Only what the plan dates for today.

@@ -43,6 +43,7 @@ EXAMPLES = {
             "threshold_source": "synthetic example: 4 reps of 5+ min at 156-166 bpm in the month before the block",
             "baseline_pace_s_per_km": 289,
             "current_weekly_m": 42000, "longest_recent_m": 15000,
+            "recent_race": {"distance": "10k", "time_s": 2700},
             "start": "2027-02-08",
             "run_days": ["Tue", "Wed", "Fri", "Sun"], "key_day": "Wed", "long_day": "Sun",
             "strength": "none",

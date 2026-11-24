@@ -61,12 +61,12 @@
     "type": "running",
     "event_type": "uncategorized",
     "start_time": "2027-03-29 06:30:00",
-    "distance_meters": 8032.0,
-    "duration_seconds": 2554.13,
+    "distance_meters": 8534.0,
+    "duration_seconds": 2715.05,
     "avg_hr_bpm": 146.0,
     "max_hr_bpm": 151.0,
-    "elevation_gain_meters": 18.0,
-    "elevation_loss_meters": 23.0
+    "elevation_gain_meters": 20.0,
+    "elevation_loss_meters": 24.0
    },
    {
     "id": 9100001006,
@@ -74,12 +74,12 @@
     "type": "running",
     "event_type": "uncategorized",
     "start_time": "2027-03-31 06:30:00",
-    "distance_meters": 11039.1,
-    "duration_seconds": 3149.05,
+    "distance_meters": 11054.29,
+    "duration_seconds": 3110.59,
     "avg_hr_bpm": 153.0,
     "max_hr_bpm": 169.0,
-    "elevation_gain_meters": 24.0,
-    "elevation_loss_meters": 26.0
+    "elevation_gain_meters": 27.0,
+    "elevation_loss_meters": 27.0
    },
    {
     "id": 9100001007,
@@ -87,12 +87,12 @@
     "type": "running",
     "event_type": "uncategorized",
     "start_time": "2027-04-01 06:30:00",
-    "distance_meters": 8032.0,
-    "duration_seconds": 2475.45,
-    "avg_hr_bpm": 141.0,
-    "max_hr_bpm": 146.0,
-    "elevation_gain_meters": 20.0,
-    "elevation_loss_meters": 24.0
+    "distance_meters": 8534.0,
+    "duration_seconds": 2707.3,
+    "avg_hr_bpm": 144.0,
+    "max_hr_bpm": 150.0,
+    "elevation_gain_meters": 19.0,
+    "elevation_loss_meters": 25.0
    },
    {
     "id": 9100001008,
@@ -100,12 +100,12 @@
     "type": "running",
     "event_type": "uncategorized",
     "start_time": "2027-04-03 06:30:00",
-    "distance_meters": 13554.0,
-    "duration_seconds": 4190.89,
-    "avg_hr_bpm": 145.0,
-    "max_hr_bpm": 150.0,
-    "elevation_gain_meters": 33.0,
-    "elevation_loss_meters": 38.0
+    "distance_meters": 13052.0,
+    "duration_seconds": 4030.32,
+    "avg_hr_bpm": 144.0,
+    "max_hr_bpm": 149.0,
+    "elevation_gain_meters": 32.0,
+    "elevation_loss_meters": 37.0
    },
    {
     "id": 9100001009,
@@ -113,12 +113,12 @@
     "type": "running",
     "event_type": "uncategorized",
     "start_time": "2027-04-05 06:30:00",
-    "distance_meters": 8534.0,
-    "duration_seconds": 2671.51,
-    "avg_hr_bpm": 142.0,
-    "max_hr_bpm": 147.0,
-    "elevation_gain_meters": 20.0,
-    "elevation_loss_meters": 24.0
+    "distance_meters": 9036.0,
+    "duration_seconds": 2799.8,
+    "avg_hr_bpm": 141.0,
+    "max_hr_bpm": 146.0,
+    "elevation_gain_meters": 22.0,
+    "elevation_loss_meters": 25.0
    },
    {
     "id": 9100001010,
@@ -126,12 +126,12 @@
     "type": "running",
     "event_type": "uncategorized",
     "start_time": "2027-04-08 06:30:00",
-    "distance_meters": 12839.74,
-    "duration_seconds": 3556.56,
+    "distance_meters": 12792.47,
+    "duration_seconds": 3569.25,
     "avg_hr_bpm": 153.0,
     "max_hr_bpm": 171.0,
-    "elevation_gain_meters": 35.0,
-    "elevation_loss_meters": 34.0
+    "elevation_gain_meters": 33.0,
+    "elevation_loss_meters": 36.0
    },
    {
     "id": 9100001011,
@@ -139,12 +139,12 @@
     "type": "running",
     "event_type": "uncategorized",
     "start_time": "2027-04-07 06:30:00",
-    "distance_meters": 8534.0,
-    "duration_seconds": 2690.37,
-    "avg_hr_bpm": 144.0,
-    "max_hr_bpm": 150.0,
+    "distance_meters": 9036.0,
+    "duration_seconds": 2860.6,
+    "avg_hr_bpm": 142.0,
+    "max_hr_bpm": 148.0,
     "elevation_gain_meters": 20.0,
-    "elevation_loss_meters": 24.0
+    "elevation_loss_meters": 22.0
    },
    {
     "id": 9100001012,
@@ -152,12 +152,12 @@
     "type": "running",
     "event_type": "uncategorized",
     "start_time": "2027-04-10 06:30:00",
-    "distance_meters": 14558.0,
-    "duration_seconds": 4553.45,
-    "avg_hr_bpm": 144.0,
-    "max_hr_bpm": 149.0,
-    "elevation_gain_meters": 36.0,
-    "elevation_loss_meters": 39.0
+    "distance_meters": 14056.0,
+    "duration_seconds": 4434.67,
+    "avg_hr_bpm": 141.0,
+    "max_hr_bpm": 146.0,
+    "elevation_gain_meters": 35.0,
+    "elevation_loss_meters": 37.0
    },
    {
     "id": 9100001013,
@@ -165,12 +165,12 @@
     "type": "running",
     "event_type": "uncategorized",
     "start_time": "2027-04-12 06:30:00",
-    "distance_meters": 7028.0,
-    "duration_seconds": 2211.35,
+    "distance_meters": 7530.0,
+    "duration_seconds": 2369.05,
     "avg_hr_bpm": 146.0,
     "max_hr_bpm": 151.0,
-    "elevation_gain_meters": 22.0,
-    "elevation_loss_meters": 15.0
+    "elevation_gain_meters": 23.0,
+    "elevation_loss_meters": 17.0
    },
    {
     "id": 9100001014,
@@ -178,12 +178,12 @@
     "type": "running",
     "event_type": "uncategorized",
     "start_time": "2027-04-14 06:30:00",
-    "distance_meters": 10465.3,
-    "duration_seconds": 3063.11,
-    "avg_hr_bpm": 152.0,
+    "distance_meters": 10441.44,
+    "duration_seconds": 3082.96,
+    "avg_hr_bpm": 151.0,
     "max_hr_bpm": 181.0,
-    "elevation_gain_meters": 29.0,
-    "elevation_loss_meters": 27.0
+    "elevation_gain_meters": 32.0,
+    "elevation_loss_meters": 26.0
    },
    {
     "id": 9100001015,
@@ -191,12 +191,12 @@
     "type": "running",
     "event_type": "uncategorized",
     "start_time": "2027-04-15 06:30:00",
-    "distance_meters": 7028.0,
-    "duration_seconds": 2193.98,
+    "distance_meters": 7530.0,
+    "duration_seconds": 2404.2,
     "avg_hr_bpm": 142.0,
     "max_hr_bpm": 148.0,
     "elevation_gain_meters": 22.0,
-    "elevation_loss_meters": 20.0
+    "elevation_loss_meters": 22.0
    },
    {
     "id": 9100001016,
@@ -204,11 +204,11 @@
     "type": "running",
     "event_type": "uncategorized",
     "start_time": "2027-04-17 06:30:00",
-    "distance_meters": 11044.0,
-    "duration_seconds": 3520.8,
+    "distance_meters": 10542.0,
+    "duration_seconds": 3378.98,
     "avg_hr_bpm": 144.0,
     "max_hr_bpm": 149.0,
-    "elevation_gain_meters": 27.0,
+    "elevation_gain_meters": 26.0,
     "elevation_loss_meters": 27.0
    },
    {
@@ -217,12 +217,12 @@
     "type": "running",
     "event_type": "uncategorized",
     "start_time": "2027-04-19 06:30:00",
-    "distance_meters": 9036.0,
-    "duration_seconds": 2810.2,
-    "avg_hr_bpm": 144.0,
-    "max_hr_bpm": 149.0,
-    "elevation_gain_meters": 21.0,
-    "elevation_loss_meters": 23.0
+    "distance_meters": 9538.0,
+    "duration_seconds": 3023.82,
+    "avg_hr_bpm": 146.0,
+    "max_hr_bpm": 151.0,
+    "elevation_gain_meters": 20.0,
+    "elevation_loss_meters": 27.0
    },
    {
     "id": 9100001018,
@@ -230,12 +230,12 @@
     "type": "running",
     "event_type": "uncategorized",
     "start_time": "2027-04-21 06:30:00",
-    "distance_meters": 13723.24,
-    "duration_seconds": 3814.63,
-    "avg_hr_bpm": 156.0,
+    "distance_meters": 13754.32,
+    "duration_seconds": 3767.79,
+    "avg_hr_bpm": 155.0,
     "max_hr_bpm": 175.0,
-    "elevation_gain_meters": 35.0,
-    "elevation_loss_meters": 34.0
+    "elevation_gain_meters": 37.0,
+    "elevation_loss_meters": 32.0
    },
    {
     "id": 9100001019,
@@ -243,12 +243,12 @@
     "type": "running",
     "event_type": "uncategorized",
     "start_time": "2027-04-22 06:30:00",
-    "distance_meters": 9036.0,
-    "duration_seconds": 2805.21,
+    "distance_meters": 9538.0,
+    "duration_seconds": 3016.81,
     "avg_hr_bpm": 145.0,
     "max_hr_bpm": 150.0,
-    "elevation_gain_meters": 22.0,
-    "elevation_loss_meters": 24.0
+    "elevation_gain_meters": 25.0,
+    "elevation_loss_meters": 30.0
    }
   ]
  }

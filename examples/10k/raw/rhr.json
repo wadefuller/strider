@@ -4,11 +4,11 @@
   "days": [
    {
     "date": "2027-04-17",
-    "resting_hr_bpm": 53
+    "resting_hr_bpm": 54
    },
    {
     "date": "2027-04-18",
-    "resting_hr_bpm": 53
+    "resting_hr_bpm": 54
    },
    {
     "date": "2027-04-19",
@@ -16,19 +16,19 @@
    },
    {
     "date": "2027-04-20",
-    "resting_hr_bpm": 54
+    "resting_hr_bpm": 53
    },
    {
     "date": "2027-04-21",
-    "resting_hr_bpm": 52
+    "resting_hr_bpm": 53
    },
    {
     "date": "2027-04-22",
-    "resting_hr_bpm": 52
+    "resting_hr_bpm": 54
    },
    {
     "date": "2027-04-23",
-    "resting_hr_bpm": 51
+    "resting_hr_bpm": 52
    }
   ]
  }

@@ -10,7 +10,7 @@ See docs/methodology.md.
 """
 from __future__ import annotations
 
-from .units import DISTANCES, riegel
+from .units import DISTANCES, fmt_clock, riegel
 
 # Friel's running zones are anchored to lactate-threshold heart rate (LTHR):
 # Z1 <85%, Z2 85-89%, Z3 90-94%, Z4 95-99%, Z5 100%+ (Friel, The Triathlete's Training Bible).
@@ -100,3 +100,29 @@ def goal_check(threshold_pace, distance, goal_time_s):
         return ("Goal pace is slower than current fitness suggests (%.0f%% of threshold pace, usual range %.0f-%.0f%%). "
                 "Fine for a first race at the distance; otherwise consider a faster goal." % (ratio * 100, lo * 100, hi * 100))
     return None
+
+
+MARATHON_RIEGEL_GAP_S = 600   # Riegel underestimated marathon time by 10+ minutes for about half of runners
+
+
+def race_prediction(recent_time_s, recent_distance, target_distance, goal_time_s=None):
+    """Predict a target-race time from a recent race with Riegel (1981), and say how far to trust it.
+
+    Riegel is well calibrated up to the half marathon but optimistic for the marathon: in
+    Vickers & Vertosick (2016), recreational runners' marathon times were underestimated by
+    10 minutes or more for about half of them. For a marathon the prediction is a best case.
+    Returns {"riegel_s", "best_case", "note"}; note is None when there is nothing to say.
+    """
+    pred = riegel(recent_time_s, DISTANCES[recent_distance], DISTANCES[target_distance])
+    marathon = target_distance == "marathon" and recent_distance != "marathon"
+    note = None
+    if goal_time_s is not None and goal_time_s < pred:
+        note = ("Goal %s is faster than the Riegel prediction from your recent %s (%s)%s. Keep it provisional "
+                "until the decision session." % (fmt_clock(goal_time_s), recent_distance, fmt_clock(pred),
+                                                  ", which is already a best case for a marathon" if marathon else ""))
+    elif marathon and goal_time_s is not None and goal_time_s < pred + MARATHON_RIEGEL_GAP_S:
+        note = ("Goal %s is within 10 minutes of the Riegel prediction from your %s (%s). Riegel runs optimistic "
+                "for the marathon: for about half of recreational runners the real time was 10 or more minutes "
+                "slower (Vickers & Vertosick 2016). Keep the goal provisional until the decision session."
+                % (fmt_clock(goal_time_s), recent_distance, fmt_clock(pred)))
+    return {"riegel_s": round(pred), "best_case": marathon, "note": note}

@@ -7,8 +7,8 @@ UID:strider-2027-04-18-2027-02-09@strider
 DTSTAMP:20000101T000000Z
 DTSTART;VALUE=DATE:20270209
 DTEND;VALUE=DATE:20270210
-SUMMARY:Done: W1 Easy 5 mi + 6 strides
-DESCRIPTION:5.0 mi easy\; 6 x 20 s strides. HR cap 148.
+SUMMARY:Done: W1 Easy 5.5 mi + 6 strides
+DESCRIPTION:5.5 mi easy\; 6 x 20 s strides. HR cap 148.
 END:VEVENT
 BEGIN:VEVENT
 UID:strider-2027-04-18-2027-02-10@strider
@@ -28,24 +28,24 @@ UID:strider-2027-04-18-2027-02-12@strider
 DTSTAMP:20000101T000000Z
 DTSTART;VALUE=DATE:20270212
 DTEND;VALUE=DATE:20270213
-SUMMARY:Done: W1 Easy 5 mi
-DESCRIPTION:5.0 mi easy. HR cap 148.
+SUMMARY:Done: W1 Easy 5.5 mi
+DESCRIPTION:5.5 mi easy. HR cap 148.
 END:VEVENT
 BEGIN:VEVENT
 UID:strider-2027-04-18-2027-02-14@strider
 DTSTAMP:20000101T000000Z
 DTSTART;VALUE=DATE:20270214
 DTEND;VALUE=DATE:20270215
-SUMMARY:Done: W1 Long 9.5 mi easy
-DESCRIPTION:9.5 mi easy. HR cap 148.
+SUMMARY:Done: W1 Long 9 mi easy
+DESCRIPTION:9.0 mi easy. HR cap 148.
 END:VEVENT
 BEGIN:VEVENT
 UID:strider-2027-04-18-2027-02-16@strider
 DTSTAMP:20000101T000000Z
 DTSTART;VALUE=DATE:20270216
 DTEND;VALUE=DATE:20270217
-SUMMARY:Done: W2 Easy 6.5 mi + 6 strides
-DESCRIPTION:6.5 mi easy\; 6 x 20 s strides. HR cap 148.
+SUMMARY:Done: W2 Easy 7 mi + 6 strides
+DESCRIPTION:7.0 mi easy\; 6 x 20 s strides. HR cap 148.
 END:VEVENT
 BEGIN:VEVENT
 UID:strider-2027-04-18-2027-02-17@strider
@@ -67,24 +67,24 @@ UID:strider-2027-04-18-2027-02-19@strider
 DTSTAMP:20000101T000000Z
 DTSTART;VALUE=DATE:20270219
 DTEND;VALUE=DATE:20270220
-SUMMARY:Done: W2 Easy 6.5 mi
-DESCRIPTION:6.5 mi easy. HR cap 148.
+SUMMARY:Done: W2 Easy 7 mi
+DESCRIPTION:7.0 mi easy. HR cap 148.
 END:VEVENT
 BEGIN:VEVENT
 UID:strider-2027-04-18-2027-02-21@strider
 DTSTAMP:20000101T000000Z
 DTSTART;VALUE=DATE:20270221
 DTEND;VALUE=DATE:20270222
-SUMMARY:Done: W2 Long 10.5 mi easy
-DESCRIPTION:10.5 mi easy. HR cap 148.
+SUMMARY:Done: W2 Long 10 mi easy
+DESCRIPTION:10.0 mi easy. HR cap 148.
 END:VEVENT
 BEGIN:VEVENT
 UID:strider-2027-04-18-2027-02-23@strider
 DTSTAMP:20000101T000000Z
 DTSTART;VALUE=DATE:20270223
 DTEND;VALUE=DATE:20270224
-SUMMARY:Done: W3 Easy 6 mi + 6 strides
-DESCRIPTION:6.0 mi easy\; 6 x 20 s strides. HR cap 148.
+SUMMARY:Done: W3 Easy 6.5 mi + 6 strides
+DESCRIPTION:6.5 mi easy\; 6 x 20 s strides. HR cap 148.
 END:VEVENT
 BEGIN:VEVENT
 UID:strider-2027-04-18-2027-02-24@strider
@@ -104,25 +104,26 @@ UID:strider-2027-04-18-2027-02-26@strider
 DTSTAMP:20000101T000000Z
 DTSTART;VALUE=DATE:20270226
 DTEND;VALUE=DATE:20270227
-SUMMARY:Done: W3 Easy 6 mi
-DESCRIPTION:6.0 mi easy. HR cap 148.
+SUMMARY:Done: W3 Easy 6.5 mi
+DESCRIPTION:6.5 mi easy. HR cap 148.
 END:VEVENT
 BEGIN:VEVENT
 UID:strider-2027-04-18-2027-02-28@strider
 DTSTAMP:20000101T000000Z
 DTSTART;VALUE=DATE:20270228
 DTEND;VALUE=DATE:20270301
-SUMMARY:Done: W3 Long 12 mi easy
-DESCRIPTION:12.0 mi easy. HR cap 148.\nFuel: Long run: practice one race 
- gel around 40 minutes in\, with the breakfast you plan for race morning.
+SUMMARY:Done: W3 Long 11 mi easy
+DESCRIPTION:11.0 mi easy. HR cap 148.\nFuel: Long run: practice one or tw
+ o race gels (30 to 60 g of carbohydrate per hour)\, the first around 40 
+ minutes in\, with the breakfast you plan for race morning.
 END:VEVENT
 BEGIN:VEVENT
 UID:strider-2027-04-18-2027-03-02@strider
 DTSTAMP:20000101T000000Z
 DTSTART;VALUE=DATE:20270302
 DTEND;VALUE=DATE:20270303
-SUMMARY:Done: W4 Easy 4 mi + 6 strides
-DESCRIPTION:4.0 mi easy\; 6 x 20 s strides. HR cap 148.
+SUMMARY:Done: W4 Easy 4.5 mi + 6 strides
+DESCRIPTION:4.5 mi easy\; 6 x 20 s strides. HR cap 148.
 END:VEVENT
 BEGIN:VEVENT
 UID:strider-2027-04-18-2027-03-03@strider
@@ -142,25 +143,24 @@ UID:strider-2027-04-18-2027-03-05@strider
 DTSTAMP:20000101T000000Z
 DTSTART;VALUE=DATE:20270305
 DTEND;VALUE=DATE:20270306
-SUMMARY:Done: W4 Easy 4 mi
-DESCRIPTION:4.0 mi easy. HR cap 148.
+SUMMARY:Done: W4 Easy 4.5 mi
+DESCRIPTION:4.5 mi easy. HR cap 148.
 END:VEVENT
 BEGIN:VEVENT
 UID:strider-2027-04-18-2027-03-07@strider
 DTSTAMP:20000101T000000Z
 DTSTART;VALUE=DATE:20270307
 DTEND;VALUE=DATE:20270308
-SUMMARY:Done: W4 Long 9 mi easy
-DESCRIPTION:9.0 mi easy. HR cap 148.\nFuel: Long run: practice one race g
- el around 40 minutes in\, with the breakfast you plan for race morning.
+SUMMARY:Done: W4 Long 8 mi easy
+DESCRIPTION:8.0 mi easy. HR cap 148.
 END:VEVENT
 BEGIN:VEVENT
 UID:strider-2027-04-18-2027-03-09@strider
 DTSTAMP:20000101T000000Z
 DTSTART;VALUE=DATE:20270309
 DTEND;VALUE=DATE:20270310
-SUMMARY:Done: W5 Easy 6 mi + 6 strides
-DESCRIPTION:6.0 mi easy\; 6 x 20 s strides. HR cap 148.
+SUMMARY:Done: W5 Easy 6.5 mi + 6 strides
+DESCRIPTION:6.5 mi easy\; 6 x 20 s strides. HR cap 148.
 END:VEVENT
 BEGIN:VEVENT
 UID:strider-2027-04-18-2027-03-10@strider
@@ -180,17 +180,18 @@ UID:strider-2027-04-18-2027-03-12@strider
 DTSTAMP:20000101T000000Z
 DTSTART;VALUE=DATE:20270312
 DTEND;VALUE=DATE:20270313
-SUMMARY:Done: W5 Easy 6 mi
-DESCRIPTION:6.0 mi easy. HR cap 148.
+SUMMARY:Done: W5 Easy 6.5 mi
+DESCRIPTION:6.5 mi easy. HR cap 148.
 END:VEVENT
 BEGIN:VEVENT
 UID:strider-2027-04-18-2027-03-14@strider
 DTSTAMP:20000101T000000Z
 DTSTART;VALUE=DATE:20270314
 DTEND;VALUE=DATE:20270315
-SUMMARY:Moved: W5 Long 13 mi easy
-DESCRIPTION:13.0 mi easy. HR cap 148.\nFuel: Long run: practice one race 
- gel around 40 minutes in\, with the breakfast you plan for race morning.
+SUMMARY:Moved: W5 Long 12 mi easy
+DESCRIPTION:12.0 mi easy. HR cap 148.\nFuel: Long run: practice one or tw
+ o race gels (30 to 60 g of carbohydrate per hour)\, the first around 40 
+ minutes in\, with the breakfast you plan for race morning.
 END:VEVENT
 BEGIN:VEVENT
 UID:strider-2027-04-18-2027-03-16@strider
@@ -226,10 +227,11 @@ UID:strider-2027-04-18-2027-03-21@strider
 DTSTAMP:20000101T000000Z
 DTSTART;VALUE=DATE:20270321
 DTEND;VALUE=DATE:20270322
-SUMMARY:Done: W6 Long 13.5 mi\, last 3.5 mi steady
-DESCRIPTION:10.0 mi easy\; 3.5 mi steady at 7:51 to 8:17/mi\, HR cap 156.
-  HR cap 156.\nFuel: Long run: practice one race gel around 40 minutes in
- \, with the breakfast you plan for race morning.
+SUMMARY:Done: W6 Long 13 mi\, last 3.5 mi steady
+DESCRIPTION:9.5 mi easy\; 3.5 mi steady at 7:51 to 8:17/mi\, HR cap 156. 
+ HR cap 156.\nFuel: Long run: practice one or two race gels (30 to 60 g o
+ f carbohydrate per hour)\, the first around 40 minutes in\, with the bre
+ akfast you plan for race morning.
 END:VEVENT
 BEGIN:VEVENT
 UID:strider-2027-04-18-2027-03-23@strider
@@ -272,8 +274,9 @@ DTSTART;VALUE=DATE:20270328
 DTEND;VALUE=DATE:20270329
 SUMMARY:W7 Long 13.5 mi\, last 3.5 mi steady
 DESCRIPTION:10.0 mi easy\; 3.5 mi steady at 7:51 to 8:17/mi\, HR cap 156.
-  HR cap 156.\nFuel: Long run: practice one race gel around 40 minutes in
- \, with the breakfast you plan for race morning.
+  HR cap 156.\nFuel: Long run: practice one or two race gels (30 to 60 g 
+ of carbohydrate per hour)\, the first around 40 minutes in\, with the br
+ eakfast you plan for race morning.
 END:VEVENT
 BEGIN:VEVENT
 UID:strider-2027-04-18-2027-03-30@strider
@@ -311,8 +314,9 @@ DTSTART;VALUE=DATE:20270404
 DTEND;VALUE=DATE:20270405
 SUMMARY:W8 Long 13.5 mi\, last 3.5 mi steady
 DESCRIPTION:10.0 mi easy\; 3.5 mi steady at 7:51 to 8:17/mi\, HR cap 156.
-  HR cap 156.\nFuel: Long run: practice one race gel around 40 minutes in
- \, with the breakfast you plan for race morning.
+  HR cap 156.\nFuel: Long run: practice one or two race gels (30 to 60 g 
+ of carbohydrate per hour)\, the first around 40 minutes in\, with the br
+ eakfast you plan for race morning.
 END:VEVENT
 BEGIN:VEVENT
 UID:strider-2027-04-18-2027-04-06@strider
@@ -348,8 +352,8 @@ UID:strider-2027-04-18-2027-04-11@strider
 DTSTAMP:20000101T000000Z
 DTSTART;VALUE=DATE:20270411
 DTEND;VALUE=DATE:20270412
-SUMMARY:W9 Long 9.5 mi easy
-DESCRIPTION:9.5 mi easy. HR cap 148.\nCheck: First look at the race-day f
+SUMMARY:W9 Long 9 mi easy
+DESCRIPTION:9.0 mi easy. HR cap 148.\nCheck: First look at the race-day f
  orecast. Note start-time temperature and wind.
 END:VEVENT
 BEGIN:VEVENT

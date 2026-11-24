@@ -10,15 +10,15 @@
      2
     ],
     "distance": 3024.0,
-    "duration": 1056.291,
-    "averageSpeed": 2.863,
-    "averageHR": 138,
-    "averagePower": 215,
-    "averageRunCadence": 170.66,
-    "groundContactTime": 248.5,
-    "strideLength": 100.7,
+    "duration": 1057.833,
+    "averageSpeed": 2.859,
+    "averageHR": 139,
+    "averagePower": 216,
+    "averageRunCadence": 170.48,
+    "groundContactTime": 249.3,
+    "strideLength": 100.6,
     "verticalOscillation": 0.75,
-    "verticalRatio": 7.45
+    "verticalRatio": 7.46
    },
    {
     "type": "INTERVAL_ACTIVE",
@@ -26,32 +26,32 @@
      3,
      4
     ],
-    "distance": 1855.36,
+    "distance": 1840.44,
     "duration": 480.0,
-    "averageSpeed": 3.865,
+    "averageSpeed": 3.834,
     "averageHR": 162,
-    "averagePower": 292,
-    "averageRunCadence": 174.06,
-    "groundContactTime": 230.8,
-    "strideLength": 133.2,
+    "averagePower": 288,
+    "averageRunCadence": 173.61,
+    "groundContactTime": 231.9,
+    "strideLength": 132.5,
     "verticalOscillation": 0.89,
-    "verticalRatio": 6.7
+    "verticalRatio": 6.72
    },
    {
     "type": "INTERVAL_RECOVERY",
     "lapIndexes": [
      5
     ],
-    "distance": 201.7,
+    "distance": 200.5,
     "duration": 90.0,
-    "averageSpeed": 2.241,
+    "averageSpeed": 2.228,
     "averageHR": 142,
-    "averagePower": 168,
-    "averageRunCadence": 167.95,
-    "groundContactTime": 260.6,
-    "strideLength": 80.1,
+    "averagePower": 167,
+    "averageRunCadence": 168.34,
+    "groundContactTime": 260.4,
+    "strideLength": 79.4,
     "verticalOscillation": 0.63,
-    "verticalRatio": 7.92
+    "verticalRatio": 7.93
    },
    {
     "type": "INTERVAL_ACTIVE",
@@ -59,14 +59,14 @@
      6,
      7
     ],
-    "distance": 1854.96,
+    "distance": 1855.7,
     "duration": 480.0,
-    "averageSpeed": 3.865,
+    "averageSpeed": 3.866,
     "averageHR": 164,
-    "averagePower": 291,
-    "averageRunCadence": 173.74,
-    "groundContactTime": 230.9,
-    "strideLength": 133.5,
+    "averagePower": 292,
+    "averageRunCadence": 174.02,
+    "groundContactTime": 231.4,
+    "strideLength": 133.3,
     "verticalOscillation": 0.89,
     "verticalRatio": 6.7
    },
@@ -75,16 +75,16 @@
     "lapIndexes": [
      8
     ],
-    "distance": 201.7,
+    "distance": 200.5,
     "duration": 90.0,
-    "averageSpeed": 2.241,
+    "averageSpeed": 2.228,
     "averageHR": 143,
-    "averagePower": 171,
-    "averageRunCadence": 167.75,
-    "groundContactTime": 260.2,
-    "strideLength": 80.2,
+    "averagePower": 167,
+    "averageRunCadence": 168.47,
+    "groundContactTime": 259.5,
+    "strideLength": 79.3,
     "verticalOscillation": 0.63,
-    "verticalRatio": 7.92
+    "verticalRatio": 7.93
    },
    {
     "type": "INTERVAL_ACTIVE",
@@ -92,32 +92,32 @@
      9,
      10
     ],
-    "distance": 1843.76,
+    "distance": 1853.3,
     "duration": 480.0,
-    "averageSpeed": 3.841,
+    "averageSpeed": 3.861,
     "averageHR": 164,
-    "averagePower": 290,
-    "averageRunCadence": 173.79,
-    "groundContactTime": 231.6,
-    "strideLength": 132.6,
+    "averagePower": 292,
+    "averageRunCadence": 173.74,
+    "groundContactTime": 230.7,
+    "strideLength": 133.3,
     "verticalOscillation": 0.89,
-    "verticalRatio": 6.72
+    "verticalRatio": 6.7
    },
    {
     "type": "INTERVAL_RECOVERY",
     "lapIndexes": [
      11
     ],
-    "distance": 201.7,
+    "distance": 200.5,
     "duration": 90.0,
-    "averageSpeed": 2.241,
+    "averageSpeed": 2.228,
     "averageHR": 144,
-    "averagePower": 168,
-    "averageRunCadence": 168.36,
-    "groundContactTime": 260.5,
-    "strideLength": 79.9,
+    "averagePower": 167,
+    "averageRunCadence": 168.34,
+    "groundContactTime": 260.2,
+    "strideLength": 79.4,
     "verticalOscillation": 0.63,
-    "verticalRatio": 7.92
+    "verticalRatio": 7.93
    },
    {
     "type": "INTERVAL_COOLDOWN",
@@ -125,15 +125,15 @@
      12
     ],
     "distance": 2016.0,
-    "duration": 701.182,
-    "averageSpeed": 2.875,
-    "averageHR": 138,
-    "averagePower": 216,
-    "averageRunCadence": 170.66,
-    "groundContactTime": 248.8,
-    "strideLength": 101.1,
+    "duration": 707.027,
+    "averageSpeed": 2.851,
+    "averageHR": 139,
+    "averagePower": 217,
+    "averageRunCadence": 170.41,
+    "groundContactTime": 248.4,
+    "strideLength": 100.4,
     "verticalOscillation": 0.75,
-    "verticalRatio": 7.44
+    "verticalRatio": 7.46
    }
   ]
  }

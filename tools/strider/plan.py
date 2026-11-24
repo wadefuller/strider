@@ -12,6 +12,8 @@ import re
 
 SCHEMA_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "schema", "plan.schema.json")
 RUN_KINDS = ("key", "long", "easy", "test", "race")
+SPIKE_LIMIT = 1.10        # no run more than 10% past the longest of the previous 30 days (Frandsen et al. 2025)
+SPIKE_WINDOW_DAYS = 30
 WEEKDAYS = ("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
 
 DEFAULT_RULES = {
@@ -243,7 +245,9 @@ def coaching_checks(plan):
                           % (min(tests), limit))
 
     # Volume shape.
-    planned = [w["planned_m"] for w in weeks]
+    # training volume per week; the race itself is not training load to ramp toward
+    planned = [w["planned_m"] - sum(day.get("distance_m", 0) for day in w["days"] if day["kind"] == "race")
+               for w in weeks]
     for i, week in enumerate(weeks):
         total = sum(day.get("distance_m", 0) for day in week["days"] if day["kind"] in RUN_KINDS)
         if week["planned_m"] and abs(total - week["planned_m"]) / week["planned_m"] > 0.1:
@@ -254,11 +258,19 @@ def coaching_checks(plan):
                             % (week["n"], (planned[i] / planned[i - 1] - 1) * 100))
     if len(weeks) >= 4:
         peak = max(planned[:-1])
-        race_m = race["distance_m"]
-        final_training = planned[-1] - race_m
+        final_training = planned[-1]
         if final_training > 0.6 * peak:
             warnings.append("race week still holds %.0f%% of peak volume before the race; a taper cuts it to about half"
                             % (final_training / peak * 100))
+
+    # Single-run spikes. The race itself is exempt: it is meant to be the longest run.
+    runs = [(day["date"], day.get("distance_m", 0), day["title"]) for _, day in all_days(plan)
+            if day["kind"] in RUN_KINDS and day["kind"] != "race" and day.get("distance_m")]
+    for spike in run_spikes(runs, plan.get("baseline")):
+        errors.append("%s (%s): %.1f km is %.0f%% longer than the longest run in the previous 30 days (%.1f km); "
+                      "keep each run within %d%% of it" % (spike["date"], spike["label"], spike["meters"] / 1000,
+                                                           spike["pct_over"], spike["reference_m"] / 1000,
+                                                           round((SPIKE_LIMIT - 1) * 100)))
 
     kinds = set(item["kind"] for item in plan.get("logistics", []))
     for needed, why in (("strength", "strength work"), ("shoes", "race-shoe decision"),
@@ -268,6 +280,27 @@ def coaching_checks(plan):
     if race["distance"] in ("half", "marathon") and "fuel" not in kinds:
         warnings.append("logistics has no dated fuel rehearsal; gels and breakfast are only used on race day if practiced")
     return errors, warnings
+
+
+def run_spikes(runs, baseline=None, limit=SPIKE_LIMIT, window=SPIKE_WINDOW_DAYS):
+    """Runs longer than `limit` x the longest run in the previous `window` days.
+
+    runs: [(date_str, meters, label)]. baseline: {"as_of", "longest_run_m"} for the time before
+    the first run listed; it counts while its as_of date is inside the window.
+    Returns [{"date", "meters", "reference_m", "label", "pct_over"}]. A run with nothing to
+    compare against (no earlier run and no baseline) is not flagged.
+    """
+    out = []
+    runs = sorted(runs, key=lambda r: r[0])
+    for date, meters, label in runs:
+        day = d(date)
+        ref = [m for dt_, m, _ in runs if 0 < (day - d(dt_)).days <= window]
+        if baseline and baseline.get("longest_run_m") and 0 <= (day - d(baseline["as_of"])).days <= window:
+            ref.append(baseline["longest_run_m"])
+        if ref and meters > limit * max(ref) + 1:
+            out.append({"date": date, "meters": meters, "reference_m": max(ref), "label": label,
+                        "pct_over": round((meters / max(ref) - 1) * 100, 1)})
+    return out
 
 
 def validate(plan):

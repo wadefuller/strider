@@ -23,7 +23,7 @@ From the snapshot, after a fresh sync:
 
 ## 3. The race plan
 
-- **Pace chart:** `coach.py chart plan.json`. Give elapsed time at each course marker and at halfway. The runner paces by the markers, because the watch reads long and its average pace will flatter them. Mention what the watch will roughly show.
+- **Pace chart:** `coach.py chart plan.json`. Give elapsed time at each course marker and at halfway. The runner paces by the markers, because the watch's distance drifts from the certified course (long in the open, short among buildings and trees) and its average pace will mislead them. Mention what the watch will roughly show.
 - **Effort plan in three parts**, from the runner's own history rather than a template: the opening (at or just slower than goal pace; quote their fastest recent opener as the thing not to repeat), the middle (hold the band; the heart-rate cap is the brake), the close (when they may go, by distance).
 - **Heart-rate cap** for the race from `bands.goal.hr_cap`, and that heart rate drifts up late in long races so the cap applies to the first two thirds.
 - **Course:** hills, turns, wind exposure from the plan's course notes. If the notes are thin, ask.

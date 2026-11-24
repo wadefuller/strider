@@ -8,9 +8,10 @@ lives in PROFILE; the reasoning and sources are in docs/methodology.md.
 from __future__ import annotations
 
 import datetime as dt
+import math
 
 from . import paces as P
-from .plan import DEFAULT_RULES, WEEKDAYS
+from .plan import DEFAULT_RULES, SPIKE_LIMIT, WEEKDAYS
 from .units import DISTANCES, DISTANCE_NAMES, MI, fmt_clock
 
 PROFILE = {
@@ -212,16 +213,24 @@ class Builder:
             vols.append(top * f)
             down.append(False)
 
-        # long run
-        longs, cur = [], max(float(s.get("longest_recent_m") or 0), v0 * 0.25)
-        cur = min(cur, p["long_cap_m"])
+        # long run. No single run more than 10% past the longest run of the previous 30 days
+        # (Frandsen et al. 2025): long runs are weekly, so the window is the last four long runs,
+        # plus the runner's longest recent run for the first four weeks.
+        baseline_long = float(s.get("longest_recent_m") or 0)
+        longs, cur = [], min(max(baseline_long, v0 * 0.25), p["long_cap_m"])
+
+        def spike_cap(i):
+            window = longs[max(0, i - 4):i] + ([baseline_long] if baseline_long and i < 4 else [])
+            return SPIKE_LIMIT * max(window) if window else float("inf")
+
         for i in range(build_n):
             if down[i]:
-                longs.append(cur * 0.75)
+                longs.append(min(cur, spike_cap(i)) * 0.75)
                 continue
             if i:
                 cur = min(p["long_cap_m"], cur + p["long_step_m"])
-            longs.append(min(cur, vols[i] * p["long_share"]))
+            cur = min(cur, spike_cap(i))
+            longs.append(self.half_units(min(cur, vols[i] * p["long_share"]), down_only=True))
         peak_long = max(longs) if longs else cur
         for j, f in enumerate(taper):
             longs.append(peak_long * (0.7 if j == len(taper) - 1 else 0.8))
@@ -234,6 +243,8 @@ class Builder:
             test_week = 1
         used = {"threshold": 0, "vo2": 0, "goal": 0}
         weeks, logistics, decision_date = [], [], None
+        history = []   # (date, meters) of every planned run so far, for the spike rule
+        baseline_as_of = start - dt.timedelta(days=1)
 
         for i in range(n):
             wk = i + 1
@@ -297,6 +308,16 @@ class Builder:
                     days.append(e)
                 days += [key, long_sess]
             days.sort(key=lambda x: x["date"])
+            for day in days:
+                if day["kind"] == "race":
+                    continue
+                day_date = dt.date.fromisoformat(day["date"])
+                window = [m for when, m in history if 0 < (day_date - when).days <= 30]
+                if baseline_long and (day_date - baseline_as_of).days <= 30:
+                    window.append(baseline_long)
+                if window:
+                    self.fit(day, SPIKE_LIMIT * max(window), decision=bool(day.get("decision")))
+                history.append((day_date, day["distance_m"]))
             week = {"n": wk, "start": monday.isoformat(), "phase": phase,
                     "planned_m": round(sum(x.get("distance_m", 0) for x in days) / 100.0) * 100, "days": days}
             if i < len(down) and down[i]:
@@ -309,15 +330,24 @@ class Builder:
                 lifts = s.get("strength") == "lifts"
                 if (race_date - dt.date.fromisoformat(date_of(key_day))).days > 10:
                     logistics.append({"date": date_of(key_day), "kind": "strength", "text": (
-                        "Strength, after the session: maintenance only (2 sets of your usual lower-body lifts, nothing new)."
+                        ("Strength, after the session: heavy lower-body work. 3 to 4 sets of 3 to 5 reps at a load you "
+                         "could lift about 5 times (back or trap-bar squat, deadlift, split squat), then 3 sets of 5 jumps. "
+                         "Heavy and combined strength work improved running performance in a 2024 meta-analysis." if phase != "specific"
+                         else "Strength, after the session: keep the load heavy but drop to 2 to 3 sets, so legs are fresh for race-pace work.")
                         if lifts else
                         "Strength, 10 minutes after the run: calf raises, side planks, single-leg balance. Low soreness only; "
                         "heavy lifting waits for the next block.")})
+                    second = self.second_strength_day(run_days, key_day, long_day)
+                    if lifts and phase in ("base", "build") and second:
+                        logistics.append({"date": date_of(second), "kind": "strength", "text": (
+                            "Strength, second session: same heavy lifts, 3 sets of 3 to 5. At least two days before the long run.")})
                 if p["fuel"] and phase in ("build", "specific") and longs[i] >= 14000:
                     logistics.append({"date": long_date, "kind": "fuel", "text": (
-                        "Long run: practice race fueling. Take the gel or drink you will race with every 30 minutes and note "
-                        "how your stomach handles it." if self.distance == "marathon" else
-                        "Long run: practice one race gel around 40 minutes in, with the breakfast you plan for race morning.")})
+                        "Long run: practice race fueling at 60 g of carbohydrate per hour (about one 25 to 30 g gel every 25 to "
+                        "30 minutes), with what you will race with. Over the block build toward 90 g per hour if your stomach "
+                        "handles it, and note what it tolerates." if self.distance == "marathon" else
+                        "Long run: practice one or two race gels (30 to 60 g of carbohydrate per hour), the first around 40 "
+                        "minutes in, with the breakfast you plan for race morning.")})
 
         # decision rule
         goal = s["goal_time_s"]
@@ -375,13 +405,87 @@ class Builder:
             rules["blocked_weekdays"] = s["blocked_weekdays"]
         race = dict(s["race"])
         race["distance_m"] = DISTANCES[self.distance]
-        plan = {"schema_version": 1, "units": self.units, "athlete": s["athlete"], "race": race,
+        baseline = {"as_of": (start - dt.timedelta(days=1)).isoformat(), "weekly_m": v0}
+        if baseline_long:
+            baseline["longest_run_m"] = baseline_long
+        plan = {"schema_version": 1, "units": self.units, "athlete": s["athlete"], "race": race, "baseline": baseline,
                 "goal": plan_goal, "bands": self.bands, "rules": rules, "weeks": weeks,
                 "logistics": logistics, "log": []}
+        recent = s.get("recent_race")
+        if recent:
+            pred = P.race_prediction(recent["time_s"], recent["distance"], self.distance, goal)
+            if pred["note"]:
+                notes.append(pred["note"])
         warning = P.goal_check(s["threshold_pace_s_per_km"], self.distance, goal)
         if warning:
             notes.append(warning)
         return plan, notes
+
+    @staticmethod
+    def second_strength_day(run_days, key_day, long_day):
+        """An easy day at least two days from the key session and before the long run, or None."""
+        k, lg = WEEKDAYS.index(key_day), WEEKDAYS.index(long_day)
+        best = None
+        for x in run_days:
+            i = WEEKDAYS.index(x)
+            if x in (key_day, long_day):
+                continue
+            gap_key = min((i - k) % 7, (k - i) % 7)
+            to_long = (lg - i) % 7
+            if gap_key >= 2 and to_long >= 2 and (best is None or gap_key > best[0]):
+                best = (gap_key, x)
+        return best[1] if best else None
+
+    def fit(self, sess, cap_m, decision=False):
+        """Shorten a planned run that would exceed cap_m (the spike rule).
+
+        Order: trim the cool-down and warm-up, then drop reps (a decision session keeps two),
+        then shorten each rep. The title is rebuilt and a note says why.
+        """
+        if sess["distance_m"] <= cap_m:
+            return
+        steps = sess.get("steps") or []
+        if sess["kind"] in ("easy", "long") or len(steps) < 3:
+            m = self.half_units(cap_m, down_only=True)
+            for st in steps:
+                if st["type"] in ("easy", "steady"):
+                    st["distance_m"] = round(max(0.0, st["distance_m"] - (sess["distance_m"] - m)), 1)
+                    break
+            sess["distance_m"] = m
+            return
+
+        def total():
+            return sum(self.step_m(x) for x in steps)
+
+        for st, floor in ((steps[-1], 1000.0), (steps[0], 1500.0)):
+            cut = min(total() - cap_m, st.get("distance_m", 0) - floor)
+            if cut > 0:
+                st["distance_m"] = math.floor((st["distance_m"] - cut) / 100.0) * 100
+        groups = [x for x in steps if x["type"] == "repeat"]
+        for g in groups:
+            while total() > cap_m and g["count"] > (2 if decision else 1):
+                g["count"] -= 1
+        work = [leaf for g in groups for leaf in g["steps"] if leaf["type"] == "work"] + \
+               [x for x in steps if x["type"] == "work"]
+        if total() > cap_m and work:
+            reps = sum(g["count"] for g in groups) or 1
+            excess = total() - cap_m
+            for leaf in work:
+                if leaf.get("distance_m"):
+                    leaf["distance_m"] = self.half_units(leaf["distance_m"] - excess / reps, down_only=True) \
+                        if leaf["distance_m"] - excess / reps >= self.unit_m / 2 else round(leaf["distance_m"] - excess / reps, -2)
+                elif leaf.get("time_s"):
+                    pace = _mid(leaf["pace_s_per_km"]) if leaf.get("pace_s_per_km") else self.easy_pace
+                    leaf["time_s"] = max(60, int((leaf["time_s"] - excess / reps / 1000 * pace) // 15 * 15))
+        sess["distance_m"] = math.floor(total() / 100.0) * 100
+        lead = work[0] if work else None
+        if lead and " at " in sess["title"]:
+            n = groups[0]["count"] if groups else 1
+            label = self.dist_label(n, round(lead["distance_m"] / self.unit_m, 2)) if lead.get("distance_m") \
+                else self.time_label(n, lead["time_s"])
+            sess["title"] = label + sess["title"][sess["title"].index(" at "):]
+        sess["notes"] = ((sess.get("notes") or "") + " Shortened to stay within 10% of your longest run in the "
+                         "previous 30 days.").strip()
 
     def easy(self, meters, strides=False):
         cap = self.bands["easy"]["hr_cap"]
@@ -396,7 +500,7 @@ class Builder:
 
     def long(self, meters, phase, index):
         cap = self.bands["easy"]["hr_cap"]
-        m = self.half_units(meters)
+        m = self.half_units(meters, down_only=True)
         finish_band = None
         if self.distance == "marathon" and phase in ("build", "specific") and index % 2 == 1:
             finish_band, share, label = "goal", 0.35, "marathon pace"
@@ -413,9 +517,13 @@ class Builder:
                           {"type": "steady", "distance_m": fin, "pace_s_per_km": b["pace_s_per_km"], "hr_cap": b["hr_cap"],
                            "band": finish_band}]}
 
-    def half_units(self, meters):
-        """Round to half a kilometer or half a mile, so titles and distances agree."""
-        return round(round(meters / self.unit_m * 2) / 2.0 * self.unit_m, 1)
+    def half_units(self, meters, down_only=False):
+        """Round to half a kilometer or half a mile, so titles and distances agree.
+
+        down_only rounds down, for distances that sit at a limit (the long-run spike cap)."""
+        halves = meters / self.unit_m * 2
+        halves = math.floor(halves + 1e-3) if down_only else round(halves)
+        return round(halves / 2.0 * self.unit_m, 1)
 
     def fmt(self, meters):
         return "%s %s" % (_num(round(meters / self.unit_m * 2) / 2.0), self.units)

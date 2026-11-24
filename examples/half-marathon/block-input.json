@@ -28,6 +28,10 @@
  "baseline_pace_s_per_km": 289,
  "current_weekly_m": 42000,
  "longest_recent_m": 15000,
+ "recent_race": {
+  "distance": "10k",
+  "time_s": 2700
+ },
  "start": "2027-02-08",
  "run_days": [
   "Tue",

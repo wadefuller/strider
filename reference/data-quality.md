@@ -25,7 +25,7 @@ A session is described by its work reps, with warm-up, recoveries and cool-down 
 
 ## 4. Distance and pace
 
-- **The watch measures its own distance.** GPS usually reads long. Each runner has a `watch_distance_factor` (watch distance divided by certified distance, from races). Paces from GPS laps are corrected to true distance before they are compared with a band. Track sessions use the measured distance and no correction.
+- **The watch measures its own distance, and it drifts.** GPS distance can be long or short depending on the surroundings: in an independent test of eight sport watches it ran short by up to 9% among buildings and trees and long on a track (Gilgen-Ammann et al. 2020). Each runner has a `watch_distance_factor` (watch distance divided by certified distance, from races). It is an average for the courses they race on; on a very different route (dense city center, forest trail) treat corrected pace as approximate. Paces from GPS laps are corrected to true distance before they are compared with a band. Track sessions use the measured distance and no correction.
 - **Garmin's lactate-threshold speed and race predictor are not targets.** Do not quote them as a pace to train or race at. Pace bands come from recent reps at or under threshold heart rate (`coach.py threshold`).
 - **PRs are official chip times.** A GPS time is never recorded as a PR. After every race, ask for the chip time.
 

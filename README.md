@@ -13,11 +13,11 @@ Each step produces something you can open, keep and change.
 | You ask Claude | You get | Where it lives |
 |---|---|---|
 | "Set up my running profile" | An **athlete profile**: threshold and max heart rate (with where each came from), heart-rate zones, pace bands taken from sessions you actually ran, HRV baseline, your watch's distance error, and official PRs | `athlete.md` |
-| "Build a plan for my race" | A **training plan**, week by week, for a 5K, 10K, half or marathon. Every hard session has a pace band and a heart-rate cap. It includes a max-heart-rate test, the taper, and dated strength, shoe, caffeine and fueling rehearsals. | `plan.json` |
+| "Build a plan for my race" | A **training plan**, week by week, for a 5K, 10K, half or marathon. Every hard session has a pace band and a heart-rate cap, and no run is more than 10% longer than your longest run of the previous 30 days. It includes a max-heart-rate test, the taper, and dated strength, shoe, caffeine and fueling rehearsals. | `plan.json` |
 | | **Structured workouts on your watch**, scheduled on their dates, with pace targets adjusted for your watch's distance error | Garmin Connect |
 | | **A calendar event for every run**: targets, the go/no-go rule on hard days, and that day's to-dos | Your calendar, or `plan.ics` to import |
 | | **A rule that sets your race goal** from one key session, covering every possible result. The goal only changes when you say yes. | `plan.json` |
-| | **A dashboard**: days to race, pace against goal, next key session, "ready for a hard session?", this week, rep-by-rep tables, the plan, and trends | `dashboard/index.html` |
+| | **A dashboard**: days to race and the block's phases; pace against goal; the next key session drawn to scale; a recovery meter with the go/no-go rule marked; HRV against your baseline, sleep and resting heart rate; per-rep pace and heart-rate charts for every key session; where your decision session lands among the goal tiers; the block week by week; and every run against the 10% ceiling. Each chart has a tooltip and a table view. | `dashboard/index.html` |
 | "I ran today" | A **verdict on each run** from its laps: pace against the band, heart rate against the cap, power fade, recovery heart rate, and form late in the reps. Data-quality warnings come first. Every surface is updated in one pass. | In chat; `plan.json` log; dashboard |
 | "Weekly review" | **Planned against run**, recovery trend, fitness direction, and next week's sessions adjusted and pushed to your watch | In chat, or sent to you on a schedule |
 | "What's my workout today?" | A **morning brief**: go, cap firm, or move it a day, with the number behind the call, the exact session, a check that your watch has it, weather, and one pacing cue from your recent runs | In chat, or sent on hard-session mornings |
@@ -30,7 +30,7 @@ The dashboard is a single HTML file. It opens from your disk with no account, no
 
 You need: a Garmin watch that syncs to Garmin Connect, [Claude Code](https://claude.com/claude-code) or the Claude desktop app, Python 3.9 or newer, and [uv](https://docs.astral.sh/uv/) (for the Garmin server).
 
-1. **See it first.** Clone this repository and open `dashboard/index.html` in a browser. It shows a synthetic half-marathon runner. Add `?example=10k` to the address for the other example.
+1. **See it first.** Clone this repository and open `dashboard/index.html` in a browser. It shows a synthetic half-marathon runner. Add `?example=10k` to the address for the other example, or `?theme=light` / `?theme=dark` to override your system's color scheme.
 
 2. **Connect Garmin.** Sign in once, then add the server to Claude (details in [Garmin setup](#garmin-setup)):
 
@@ -152,13 +152,18 @@ Each rule in Strider either rests on a published study or is labeled a coaching 
 
 | What it shapes | Source |
 |---|---|
-| Most running easy, one or two hard sessions a week | Seiler, *IJSPP* 2010: training intensity distribution in endurance athletes |
-| Taper: cut volume by about half over the final weeks, keep intensity and frequency | Bosquet et al., *MSSE* 2007: meta-analysis of tapering |
+| Long runs that grow no more than 10% past the longest run of the previous 30 days; a flag on any run that does | Frandsen et al., *BJSM* 2025: single-session spikes and injury in 5,205 runners tracked with Garmin devices |
+| Most running easy, one or two hard sessions a week | Seiler, *IJSPP* 2010; Haugen et al., *Sports Medicine - Open* 2022 (world-class distance runners); Casado et al., *IJSPP* 2022 (elite periodization) |
+| Not claiming one intensity mix is best | Oliveira, Boppre & Fonseca, *Sports Medicine* 2024: polarized training helped VO2max only in programs under 12 weeks |
+| Taper: cut volume by about half over the final weeks, keep intensity and frequency; three weeks for the marathon | Bosquet et al., *MSSE* 2007 and Wang et al., *PLoS ONE* 2023 (meta-analyses of tapering); Smyth & Lawlor, *Frontiers* 2021 (158,117 recreational marathoners) |
 | Cap on how fast weekly distance rises | Nielsen et al., *JOSPT* 2014: weekly distance progression and injury in novice runners |
 | Threshold pace estimated from a race when there are no qualifying sessions | Riegel, *American Scientist* 1981: the endurance time model |
-| Reading HRV as a 7-day trend against your own baseline | Plews et al., *Sports Medicine* 2013: HRV monitoring in elite endurance athletes |
-| Strength work alongside running | Blagrove, Howatson & Hayes, *Sports Medicine* 2018: strength training and running performance |
-| Carbohydrate before and during long races | Thomas, Erdman & Burke, *MSSE* 2016: ACSM position on nutrition and performance |
+| Treating a Riegel marathon prediction as a best case | Vickers & Vertosick, *BMC Sports Sci Med Rehabil* 2016: Riegel underestimated marathon time by 10+ minutes for about half of runners |
+| A per-runner watch-distance correction, and pacing races by course markers | Gilgen-Ammann et al., *JMIR mHealth* 2020: sport-watch GPS runs short among buildings and trees, long in the open |
+| Reading HRV as a 7-day trend against your own baseline, used to adjust sessions rather than drive the plan | Plews et al., *Sports Medicine* 2013; Manresa-Rocamora et al., *IJERPH* 2021 (meta-analysis of HRV-guided training) |
+| Checking whether form holds late in reps and races | Maunder et al., *Sports Medicine* 2021: durability in endurance athletes |
+| Heavy strength work for runners who already lift | Blagrove, Howatson & Hayes, *Sports Medicine* 2018; Llanos-Lagos et al., *Sports Medicine* 2024 (heavy and combined training improved performance) |
+| Carbohydrate before and during long races, rehearsed and built up in training | Thomas, Erdman & Burke, *MSSE* 2016 (ACSM position); Podlogar & Wallis, *Sports Medicine* 2022 (personalized carbohydrate) |
 | Caffeine dose and timing, rehearsed before race day | Guest et al., *JISSN* 2021: ISSN position on caffeine |
 | Not chasing a cadence number | Moore, *Sports Medicine* 2016: running technique and economy |
 | Not acting on Garmin's acute:chronic load ratio | Impellizzeri et al., *IJSPP* 2020: conceptual problems with the ratio |

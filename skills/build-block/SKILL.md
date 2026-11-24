@@ -17,13 +17,14 @@ Shared rules: `../../reference/decision-rules.md`, `../../reference/propagation.
 - The race: name, date, start time, time zone, distance, location, terrain, course notes.
 - The goal: a time, a personal best, or to finish. For a first race at the distance, a finish goal is the default.
 - Constraints: available days, key-session day, long-run day, days that are never available, travel and other dated commitments inside the block.
-- Current fitness from Garmin, from laps: the last 6 to 8 weeks of workouts and long runs, weekly distance, longest run. Refresh `data/raw/` first.
+- Current fitness from Garmin, from laps: the last 6 to 8 weeks of workouts and long runs, weekly distance, and the **longest single run in the last 30 days** (`longest_recent_m`; the spike rule builds from it). Refresh `data/raw/` first.
+- A recent race result if there is one (`recent_race`: distance and official time). The generator compares the goal with a Riegel prediction from it and says when the goal is optimistic, always for the marathon, where Riegel runs fast.
 - Ask only what cannot be derived.
 
 ## 2. Draft
 
 1. Threshold pace: `coach.py threshold --raw data/raw --lthr <LTHR> --factor <watch factor>`. Never Garmin's threshold speed, never a whole-run average.
-2. Write `block-input.json` (see `../../examples/half-marathon/block-input.json` for the shape) and run `coach.py block block-input.json -o plan.json`. The generator picks block length, key-session types, long-run growth, taper and fueling items for the distance. Read its notes: it says when the block is shorter than the distance needs, and when the goal is ambitious against current threshold pace.
+2. Write `block-input.json` (see `../../examples/half-marathon/block-input.json` for the shape) and run `coach.py block block-input.json -o plan.json`. The generator picks block length, key-session types, long-run growth, taper and fueling items for the distance. Read its notes: it says when the block is shorter than the distance needs, when the goal is ambitious against current threshold pace or a recent race, and which workouts it shortened to keep every run within 10% of the longest run of the previous 30 days.
 3. If the block is shorter than the minimum for the distance, tell the runner what that means (hold and sharpen, not build) before going further.
 
 ## 3. Adjust the draft to the runner
@@ -44,6 +45,7 @@ Run `coach.py validate plan.json` and fix every error. It enforces:
 - The goal-setting rule covers every outcome, ends in `otherwise`, names the borderline default, and requires the runner's confirmation (`reference/decision-rules.md`).
 - If max heart rate is unverified, a max-heart-rate test sits in the first third of the block. Do not move it late. If the runner will not do one, set `rules.max_hr_test_waived` to their reason.
 - No key session on a blocked weekday.
+- No run more than 10% longer than the longest run of the previous 30 days (the race is exempt). If you move or lengthen a run by hand, run `validate` again.
 
 Read the warnings too: volume jumps over 12%, a race week that is not a taper, missing logistics.
 

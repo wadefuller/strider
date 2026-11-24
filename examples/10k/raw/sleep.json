@@ -4,23 +4,23 @@
   "nights": [
    {
     "date": "2027-04-17",
-    "sleep_score": 76
+    "sleep_score": 87
    },
    {
     "date": "2027-04-18",
-    "sleep_score": 80
+    "sleep_score": 73
    },
    {
     "date": "2027-04-19",
-    "sleep_score": 81
+    "sleep_score": 72
    },
    {
     "date": "2027-04-20",
-    "sleep_score": 72
+    "sleep_score": 73
    },
    {
     "date": "2027-04-21",
-    "sleep_score": 72
+    "sleep_score": 75
    },
    {
     "date": "2027-04-22",
@@ -28,7 +28,7 @@
    },
    {
     "date": "2027-04-23",
-    "sleep_score": 84
+    "sleep_score": 88
    }
   ]
  }
