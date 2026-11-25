@@ -10,7 +10,8 @@ permissions:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    # Python 3.9 is not available for ubuntu-latest (26.04); 24.04 still has it.
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
@@ -41,4 +42,4 @@ jobs:
         if: matrix.python == '3.13' && matrix.extras == 'none'
         run: |
           python examples/generate.py
-          git diff --exit-code -- examples dashboard/data.js
+          python scripts/examples_match.py
