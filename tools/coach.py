@@ -12,7 +12,7 @@
   coach.py chart PLAN [--goal H:MM:SS]
   coach.py review PLAN --splits FILE [--chip H:MM:SS]
   coach.py recovery-check PLAN --raw DIR [--now ISO]
-  coach.py today PLAN --raw DIR [--now ISO] [--json] [--decisions FILE]       exit 3 when there is no fresh data
+  coach.py today PLAN --raw DIR [--now ISO | --date DATE] [--json] [--decisions FILE]       exit 3 when there is no fresh data
   coach.py goal --distance D --goal H:MM:SS --weeks N [--recent D:H:MM:SS] [--threshold M:SS] [--units km|mi]
   coach.py decisions FILE [--on DATE] [--json]
   coach.py decide FILE --kind K --what TEXT --why TEXT [--applies standing|once|until:DATE] [--source runner|data|coach] [--date DATE] [--replaces DATE]
@@ -213,7 +213,8 @@ def cmd_recovery(a):
 def cmd_today(a):
     plan = P.load(a.plan)
     raw, fetched = snapshot.load_raw(a.raw)
-    c = today.call(plan, raw, fetched, _now(a.now))
+    now = _now(a.now) if a.now or not a.date else dt.datetime.fromisoformat(a.date + "T07:00:00")
+    c = today.call(plan, raw, fetched, now)
     path = a.decisions or os.path.join(os.path.dirname(os.path.abspath(a.plan)), "decisions.md")
     if os.path.exists(path):
         with open(path) as fh:
@@ -311,7 +312,8 @@ def main(argv=None):
     p = add("chart", cmd_chart); p.add_argument("--goal")
     p = add("review", cmd_review); p.add_argument("--splits", required=True); p.add_argument("--chip")
     p = add("recovery-check", cmd_recovery); p.add_argument("--raw", required=True); p.add_argument("--now")
-    p = add("today", cmd_today); p.add_argument("--raw", required=True); p.add_argument("--now"); p.add_argument("--json", action="store_true")
+    p = add("today", cmd_today); p.add_argument("--raw", required=True); p.add_argument("--now")
+    p.add_argument("--date", help="YYYY-MM-DD, read as 07:00 that day (--now wins)"); p.add_argument("--json", action="store_true")
     p.add_argument("--decisions", help="decisions.md (default: next to the plan)")
     p = add("goal", cmd_goal, plan=False)
     p.add_argument("--distance", required=True, choices=sorted(paces.DISTANCES)); p.add_argument("--goal", required=True)

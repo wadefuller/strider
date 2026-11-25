@@ -97,6 +97,7 @@ def test_cli_exit_code_three_when_stale(capsys):
     assert coach.main(["today"] + args + ["--now", "2027-03-26T08:00:00"]) == 0
     assert coach.main(["today"] + args + ["--now", "2027-03-29T08:00:00"]) == 3
     assert "UNKNOWN" in capsys.readouterr().out
+    assert coach.main(["today"] + args + ["--date", "2027-03-26"]) == 0
 
 
 # ----------------------------------------------------------------- goal realism
