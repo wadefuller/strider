@@ -10,3 +10,4 @@ __pycache__/
 /data/
 /workouts/
 *.fit
+/decisions.md

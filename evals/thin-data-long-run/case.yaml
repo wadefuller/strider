@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: thin-data-long-run
+expected_outcome: |
+  Only HRV and Garmin recovery time are available (no sleep, resting HR or readiness). HRV is normal.
+  The coach lets the long run go ahead but with the heart-rate cap absolute (156 bpm), and says why:
+  one recovery signal is not enough for a full go.
+context:
+  scaffold_script: place-files.sh

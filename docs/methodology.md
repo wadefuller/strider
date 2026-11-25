@@ -29,7 +29,9 @@ Goal-pace heart-rate caps as a share of LTHR: 5K 105%, 10K 102%, half marathon 9
 
 When there are no qualifying reps, threshold pace is estimated as one-hour race pace from a race result using Riegel's model (Riegel 1981) and marked as an estimate to confirm.
 
-**Predicting a goal from a recent race.** Riegel's model is well calibrated up to the half marathon but optimistic for the marathon: in a study of recreational runners it underestimated marathon time by 10 minutes or more for about half of them (Vickers & Vertosick 2016). When `build-block` is given a recent race, a marathon goal within 10 minutes of the Riegel prediction, or faster, is flagged and stays provisional until the decision session.
+**Is the goal realistic?** Before a block is drafted, `coach.py goal` (and the generator, which stores the result in `goal.realism`) predicts the race from a recent race result, or from threshold pace treated as one-hour race pace, using Riegel's model (Riegel 1981). It then allows for improvement during the block: about 1% of race time per four weeks, capped at 4%. That allowance is a heuristic, chosen to be modest so the runner hears an honest answer early. The verdict is *within reach* (within 0.5% of the prediction), *realistic* (needs no more than the allowance), *stretch* (up to twice it), *unlikely* (more), or *conservative* (more than 3% slower than the prediction). A stretch or unlikely goal comes with three options: a softer goal for this block, the same goal for a later block, or more training time. The runner chooses; the decision session can still move the goal.
+
+Riegel's model is well calibrated up to the half marathon but optimistic for the marathon: in a study of recreational runners it underestimated marathon time by 10 minutes or more for about half of them (Vickers & Vertosick 2016). For a marathon predicted from a shorter race, the check therefore adds 10 minutes to the Riegel time and uses that typical case, not the best case.
 
 ## What changes with the distance
 

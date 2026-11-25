@@ -66,6 +66,8 @@ For a run under about ten minutes, `get_activity_fit_messages(activity_id, messa
 
 The connection is the weakest link. The server runs on the runner's computer: it stops when the computer sleeps, tokens expire about every six months, and a tool call can sit waiting on an approval prompt nobody sees.
 
+If the Garmin tools are not in this session at all and the runner says the files in `data/raw/` are what they have, work from those files: say so in the first line, and let `coach.py today` and `coach.py sync` judge their age (stale data gives `unknown`, never a verdict). Otherwise:
+
 1. Retry the failed call once.
 2. If it fails again, stop. Do not continue from memory, from the last snapshot, or from a guess.
 3. Tell the runner what to do: wake the computer and open the Claude desktop app; check the Garmin server is listed and connected; if it reports a login error, re-run `garmin-mcp-auth` in a terminal.

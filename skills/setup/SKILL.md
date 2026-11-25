@@ -7,7 +7,7 @@ description: "Build a runner's athlete profile (athlete.md) from their Garmin hi
 
 Produce `athlete.md` in the runner's training folder, following the template at `../../schema/athlete.md`. Assume nothing about the runner: not their zones, paces, schedule, units or location. Everything is either read from Garmin, asked, or marked unknown.
 
-Shared rules: `../../reference/data-quality.md` and `../../reference/garmin.md`. The tools are in `../../tools/` (`${CLAUDE_PLUGIN_ROOT}/tools` when installed as a plugin).
+Shared rules: `../../reference/decisions.md`, `../../reference/data-quality.md` and `../../reference/garmin.md`. The tools are in `../../tools/` (`${CLAUDE_PLUGIN_ROOT}/tools` when installed as a plugin).
 
 ## 1. Check the connection and choose a folder
 
@@ -45,6 +45,6 @@ Ask these together, once:
 
 ## 5. Write and report
 
-Write `athlete.md`. Then give a short summary: what came from Garmin, what was estimated, what is unverified, and the single most useful next step (usually: confirm max heart rate with the test the block schedules in week 2, or supply a chip time). Offer to run `build-block` next.
+Write `athlete.md`. Start `decisions.md` with anything from step 4 that should hold beyond this profile (a blocked day, a preference, a correction to a Garmin reading), one `coach.py decide` per item, and tell the runner the file exists and what it is for (`reference/decisions.md`). Then give a short summary: what came from Garmin, what was estimated, what is unverified, and the single most useful next step (usually: confirm max heart rate with the test the block schedules in week 2, or supply a chip time). Offer to run `build-block` next.
 
 Never write a number you did not read or derive. An honest blank is better than a plausible guess that later sessions build on.

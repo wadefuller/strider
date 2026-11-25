@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: long-run-spike
+expected_outcome: |
+  The runner wants Sunday's long run raised to 16 miles. The longest run in the previous 30 days was
+  about 13.1 miles (21.1 km on 21 March), so the 10% single-run limit is about 14.4 miles (23.2 km).
+  The coach declines 16 miles, offers up to about 14.4, cites the single-run spike rule, and runs
+  validate if it edits the plan.
+context:
+  scaffold_script: place-files.sh

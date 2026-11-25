@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: decisions-applied
+expected_outcome: |
+  decisions.md says: paces in min/km; the canal path reads 2% long; a knee niggle means keep the long
+  run flat and stop past 3/10 until 3 April. The morning brief for the long run applies all three:
+  gives paces per km (about 4:53-5:09/km for the long run band), says flat route and the 3/10 stop
+  rule, without the runner repeating them.
+context:
+  scaffold_script: place-files.sh

@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: unrealistic-goal
+expected_outcome: |
+  Building a block for a half marathon in 10 weeks with a 1:30 goal from a recent 48:30 10K. The coach
+  checks the goal first and says plainly it is unlikely: 1:30 needs 4:16/km, the 10K points to about
+  1:47, a gap of about 16%, far beyond what 10 weeks can bring. It offers a softer goal (about
+  1:44-1:45), the same goal for a later block, or more training time, and does not build a plan to
+  1:30 before the runner chooses.

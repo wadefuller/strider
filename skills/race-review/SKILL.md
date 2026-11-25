@@ -5,12 +5,13 @@ description: "Review a completed race from its laps (result against goal, pacing
 
 # Race review and recovery check
 
-Two parts, usually days apart. Shared rules: `../../reference/data-quality.md`, `../../reference/propagation.md`, `../../reference/garmin.md`. Tools: `../../tools/coach.py`.
+Two parts, usually days apart. Shared rules: `../../reference/decisions.md`, `../../reference/data-quality.md`, `../../reference/propagation.md`, `../../reference/garmin.md`. Tools: `../../tools/coach.py`.
 
 ## Part 1: the race (as soon as it has synced)
 
 ### 1. Find it and pull it
 
+- Run `coach.py decisions decisions.md` and apply every active entry (`reference/decisions.md`).
 - `get_activities_by_date` for race day. The race is the long one; warm-up and cool-down are separate activities. Do not rely on `event_type` being `race`; many runners never tag it.
 - `get_activity_splits`, `get_activity_typed_splits`, `get_activity`, `get_activity_weather`. Save under `data/raw/`.
 - Per-second form (`reference/garmin.md`) is worth pulling for a half marathon or marathon.

@@ -5,13 +5,14 @@ description: "Race-week preparation, seven days out through race morning: confir
 
 # Race week
 
-Run it seven days out, then again two days out (forecast, kit, watch). Race morning is `session-brief`. Shared rules: `../../reference/decision-rules.md`, `../../reference/propagation.md`, `../../reference/garmin.md`. Method: `../../docs/methodology.md`. Tools: `../../tools/coach.py`.
+Run it seven days out, then again two days out (forecast, kit, watch). Race morning is `session-brief`. Shared rules: `../../reference/decisions.md`, `../../reference/decision-rules.md`, `../../reference/propagation.md`, `../../reference/garmin.md`. Method: `../../docs/methodology.md`. Tools: `../../tools/coach.py`.
 
 ## 1. Is the goal settled?
 
+- Run `coach.py decisions decisions.md` and apply every active entry (`reference/decisions.md`).
 - If `goal.status` is `provisional`, settle it now. If the decision session was run, apply the rule and ask the runner to confirm. If it was never run, do not invent a result: propose the conservative tier and ask.
 - Nothing about the goal changes after this point without the runner asking. Race week is not the time to chase a faster tier.
-- After a confirmed change: regenerate and sweep (`reference/propagation.md`).
+- After a confirmed change: regenerate and sweep (`reference/propagation.md`), and record it with `coach.py decide --kind goal`.
 
 ## 2. Taper check
 

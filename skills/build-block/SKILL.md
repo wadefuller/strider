@@ -7,27 +7,47 @@ description: "Plan a training block for a goal race (5K, 10K, half marathon or m
 
 `plan.json` is the single source of truth. Garmin workouts, calendar events and the dashboard are generated from it. Later changes are made by editing the plan and regenerating, never by hand-editing one surface.
 
-Shared rules: `../../reference/decision-rules.md`, `../../reference/propagation.md`, `../../reference/garmin.md`. Method and sources: `../../docs/methodology.md`. Tools: `../../tools/coach.py`. Schema: `../../schema/plan.schema.json`.
+Shared rules: `../../reference/decisions.md`, `../../reference/decision-rules.md`, `../../reference/propagation.md`, `../../reference/garmin.md`. Method and sources: `../../docs/methodology.md`. Tools: `../../tools/coach.py`. Schema: `../../schema/plan.schema.json`.
 
 **Scope.** Road races from 5K to the marathon. Out of scope, and say so plainly if asked: ultras, trail and mountain races, triathlon and other multisport, track racing under 5K, walking plans, and return-from-injury programs. Do not stretch a marathon plan to cover them.
 
 ## 1. Inputs
 
-- `athlete.md`. If it is missing or older than three months, run `setup` first.
+- `athlete.md`. If it is missing or older than three months, run `setup` first. Then `coach.py decisions decisions.md`: standing preferences and corrections apply to the new block.
 - The race: name, date, start time, time zone, distance, location, terrain, course notes.
 - The goal: a time, a personal best, or to finish. For a first race at the distance, a finish goal is the default.
 - Constraints: available days, key-session day, long-run day, days that are never available, travel and other dated commitments inside the block.
 - Current fitness from Garmin, from laps: the last 6 to 8 weeks of workouts and long runs, weekly distance, and the **longest single run in the last 30 days** (`longest_recent_m`; the spike rule builds from it). Refresh `data/raw/` first.
-- A recent race result if there is one (`recent_race`: distance and official time). The generator compares the goal with a Riegel prediction from it and says when the goal is optimistic, always for the marathon, where Riegel runs fast.
+- A recent race result if there is one (`recent_race`: distance and official time).
 - Ask only what cannot be derived.
 
-## 2. Draft
+## 2. Is the goal realistic?
+
+Before drafting anything, check the goal against current fitness, and tell the runner the answer with its numbers:
+
+```
+coach.py goal --distance half --goal 1:38:00 --weeks 10 --recent 10k:45:00 [--threshold 7:16 --units mi]
+```
+
+It predicts the race from a recent race (preferred) or threshold pace, allows the improvement a block of that length can plausibly bring, and returns a verdict. For a marathon predicted from a shorter race it uses the typical case, not Riegel's best case (Vickers & Vertosick 2016).
+
+| Verdict | What you say |
+|---|---|
+| `within_reach`, `realistic` | Say so in one line with the prediction. Build it. |
+| `stretch` | Say what it needs and that it is possible but not likely. Offer the three options; the runner picks. |
+| `unlikely` | Say so plainly, with the numbers, before anything else. Offer the three options and recommend the softer goal. Do not build toward the original goal until the runner chooses it knowing this. |
+| `conservative` | Ask whether it is a first race at the distance or a comeback. If not, suggest a goal near the prediction. |
+| `unknown` | No race or threshold to check against. The goal stays provisional until the decision session. |
+
+The three options are: a softer goal this block (the decision session can still move it faster), the same goal for the following block, or more training time. Record the runner's choice with `coach.py decide --kind goal`. Honesty here is the point: agreeing with a goal the numbers do not support costs the runner a block.
+
+## 3. Draft
 
 1. Threshold pace: `coach.py threshold --raw data/raw --lthr <LTHR> --factor <watch factor>`. Never Garmin's threshold speed, never a whole-run average.
-2. Write `block-input.json` (see `../../examples/half-marathon/block-input.json` for the shape) and run `coach.py block block-input.json -o plan.json`. The generator picks block length, key-session types, long-run growth, taper and fueling items for the distance. Read its notes: it says when the block is shorter than the distance needs, when the goal is ambitious against current threshold pace or a recent race, and which workouts it shortened to keep every run within 10% of the longest run of the previous 30 days.
+2. Write `block-input.json` (see `../../examples/half-marathon/block-input.json` for the shape) and run `coach.py block block-input.json -o plan.json`. The generator picks block length, key-session types, long-run growth, taper and fueling items for the distance. Read its notes: it says when the block is shorter than the distance needs, repeats the goal check when the goal is off in either direction (and stores it in `goal.realism`), and which workouts it shortened to keep every run within 10% of the longest run of the previous 30 days.
 3. If the block is shorter than the minimum for the distance, tell the runner what that means (hold and sharpen, not build) before going further.
 
-## 3. Adjust the draft to the runner
+## 4. Adjust the draft to the runner
 
 Edit `plan.json` directly. Things the generator cannot know:
 
@@ -37,7 +57,7 @@ Edit `plan.json` directly. Things the generator cannot know:
 - Strength: if the runner lifts, maintenance on hard days and the last lower-body session about 10 days out. If they do not, low-soreness work only. Each session is a dated `logistics` entry.
 - Shoes, caffeine and gels: each rehearsal is a dated `logistics` entry. Nothing is used on race day that has no rehearsal date in the plan.
 
-## 4. Checks the plan must pass
+## 5. Checks the plan must pass
 
 Run `coach.py validate plan.json` and fix every error. It enforces:
 
@@ -51,7 +71,7 @@ Read the warnings too: volume jumps over 12%, a race week that is not a taper, m
 
 Then show the runner the plan: the weeks, each key session with its exact targets, the decision rule as a table, and the taper. The goal starts **provisional**. Ask for changes before generating anything.
 
-## 5. Generate every surface
+## 6. Generate every surface
 
 Follow `reference/propagation.md`. For a new block:
 
@@ -60,6 +80,6 @@ Follow `reference/propagation.md`. For a new block:
 - **Dashboard:** `coach.py sync plan.json --raw data/raw --out dashboard`, then tell the runner to open `dashboard/index.html`. Publishing it as a Claude artifact is optional.
 - **Scheduled tasks** (offer, do not assume): a daily Garmin sync, `weekly-review` on the evening the training week ends, `session-brief` early on key-session days and race morning, `race-week` seven days out, and the recovery check four days after the race.
 
-## 6. Changing the plan later
+## 7. Changing the plan later
 
 Copy `plan.json` to `plan.before.json`, edit, validate, regenerate only the changed days, then sweep for the old values (`reference/propagation.md`, step 6). A goal change is one edit to `goal.time_s` plus a regenerate, and it needs the runner's explicit yes.

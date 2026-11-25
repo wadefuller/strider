@@ -74,6 +74,14 @@
         "goal_time_s": 5880,
         "needs_runner_confirmation": true
       }
+    },
+    "realism": {
+      "verdict": "realistic",
+      "predicted_s": 5957,
+      "from": "your recent 10k in 45:00",
+      "gap_pct": 1.3,
+      "block_gain_pct": 2.5,
+      "summary": "Goal 1:38:00 needs 4:39/km. Current fitness (from your recent 10k in 45:00) points to about 1:39:17 (4:42/km). The goal needs 1.3% improvement; 10 weeks can plausibly bring about 2.5%."
     }
   },
   "bands": {

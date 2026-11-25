@@ -232,6 +232,53 @@
         },
         "decision": {
           "$ref": "#/$defs/decision"
+        },
+        "realism": {
+          "type": "object",
+          "required": [
+            "verdict"
+          ],
+          "additionalProperties": false,
+          "description": "How the goal compared with current fitness when the block was built (paces.goal_realism).",
+          "properties": {
+            "verdict": {
+              "enum": [
+                "within_reach",
+                "realistic",
+                "stretch",
+                "unlikely",
+                "conservative",
+                "unknown"
+              ]
+            },
+            "predicted_s": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "from": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "gap_pct": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "block_gain_pct": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "summary": {
+              "type": "string"
+            }
+          }
         }
       }
     },

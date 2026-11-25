@@ -411,14 +411,15 @@ class Builder:
         plan = {"schema_version": 1, "units": self.units, "athlete": s["athlete"], "race": race, "baseline": baseline,
                 "goal": plan_goal, "bands": self.bands, "rules": rules, "weeks": weeks,
                 "logistics": logistics, "log": []}
-        recent = s.get("recent_race")
-        if recent:
-            pred = P.race_prediction(recent["time_s"], recent["distance"], self.distance, goal)
-            if pred["note"]:
-                notes.append(pred["note"])
-        warning = P.goal_check(s["threshold_pace_s_per_km"], self.distance, goal)
-        if warning:
-            notes.append(warning)
+        realism = P.goal_realism(self.distance, goal, n, s.get("recent_race"), s["threshold_pace_s_per_km"])
+        plan["goal"]["realism"] = dict((k, realism[k]) for k in
+                                       ("verdict", "predicted_s", "from", "gap_pct", "block_gain_pct", "summary"))
+        # say it when the goal is off in either direction, and for a marathon goal that leans on Riegel
+        marathon_caveat = "Vickers" in realism["summary"] and (realism["gap_pct"] or 0) > 0
+        if realism["verdict"] not in ("within_reach", "realistic") or marathon_caveat:
+            notes.append(realism["summary"])
+            for opt in realism["options"]:
+                notes.append("option: " + opt["text"])
         return plan, notes
 
     @staticmethod

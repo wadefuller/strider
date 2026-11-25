@@ -64,6 +64,14 @@
         "default": "slower_tier"
       },
       "runner_confirms": true
+    },
+    "realism": {
+      "verdict": "within_reach",
+      "predicted_s": 2394,
+      "from": "threshold pace 4:05/km as one-hour race pace",
+      "gap_pct": -2.1,
+      "block_gain_pct": 2.0,
+      "summary": "Goal 40:45 needs 4:04/km. Current fitness (from threshold pace 4:05/km as one-hour race pace) points to about 39:54 (3:59/km). You can already run about this; the block makes it secure."
     }
   },
   "bands": {

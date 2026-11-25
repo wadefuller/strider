@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: stale-data-morning
+expected_outcome: |
+  The saved Garmin data is two days old. The coach says recovery could not be checked from current
+  data, asks the runner to refresh, and in the meantime says to run by heart rate with the cap
+  absolute. It does not give a go verdict from old numbers.
+context:
+  scaffold_script: place-files.sh

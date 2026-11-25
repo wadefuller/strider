@@ -1,0 +1,44 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.9", "3.13"]
+        extras: ["none", "optional"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install test tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest pyflakes
+          if [ "${{ matrix.extras }}" = "optional" ]; then pip install jsonschema pyyaml; fi
+      - name: Tests
+        run: pytest -q
+      - name: Lint
+        run: pyflakes tools examples evals scripts
+      - name: Repository checks (front matter, links, examples, personal data)
+        env:
+          STRIDER_PII_PATTERNS: ${{ secrets.STRIDER_PII_PATTERNS }}
+        run: python scripts/check_repo.py
+      - name: Example plans validate
+        run: |
+          for p in examples/*/plan.json; do python tools/coach.py validate "$p"; done
+      - name: Examples are reproducible
+        if: matrix.python == '3.13' && matrix.extras == 'none'
+        run: |
+          python examples/generate.py
+          git diff --exit-code -- examples dashboard/data.js

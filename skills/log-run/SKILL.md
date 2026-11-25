@@ -5,11 +5,11 @@ description: "After a run (or several), pull Garmin laps, judge each session aga
 
 # Log a run
 
-One pass that leaves every surface consistent. Shared rules: `../../reference/data-quality.md`, `../../reference/decision-rules.md`, `../../reference/propagation.md`, `../../reference/garmin.md`. Tools: `../../tools/coach.py`.
+One pass that leaves every surface consistent. Shared rules: `../../reference/decisions.md`, `../../reference/data-quality.md`, `../../reference/decision-rules.md`, `../../reference/propagation.md`, `../../reference/garmin.md`. Tools: `../../tools/coach.py`.
 
 ## 0. Load context
 
-Read `athlete.md` and `plan.json`. The last entry in `plan.log` tells you the date to pull from. If a file is missing, say so and stop; do not recreate a plan from memory. If Garmin cannot be reached, follow the failure protocol in `reference/garmin.md`. Never update a surface from a guess.
+Read `athlete.md` and `plan.json`. Run `coach.py decisions decisions.md` and apply every active entry (`reference/decisions.md`). The last entry in `plan.log` tells you the date to pull from. If a file is missing, say so and stop; do not recreate a plan from memory. If Garmin cannot be reached, follow the failure protocol in `reference/garmin.md`. Never update a surface from a guess.
 
 ## 1. Pull everything since the last log entry
 
@@ -26,6 +26,8 @@ Run `coach.py sync plan.json --raw data/raw --out dashboard --write-plan`, then 
 - If a match looks wrong (a substitute session, a group run in place of the prescribed workout), correct the plan by hand and sync again.
 
 ## 3. Judge each session
+
+If the runner corrects a reading or explains why a session went off-plan in a way that should hold next time, add it with `coach.py decide` and say you have.
 
 For each run logged, in this order:
 

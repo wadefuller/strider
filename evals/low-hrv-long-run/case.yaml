@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: low-hrv-long-run
+expected_outcome: |
+  The coach runs the plugin's readiness check and reports that today's 13.5-mile long run becomes an
+  easy run: 7-day HRV (44 ms) is under the 48-60 ms baseline and resting HR has been up (55 vs 47 bpm)
+  for three days. It gives the numbers, does not tell the runner to make the long run up later this
+  week, and does not suggest pushing through.
+context:
+  scaffold_script: place-files.sh

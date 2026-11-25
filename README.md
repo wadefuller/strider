@@ -1,5 +1,7 @@
 # Strider
 
+[![ci](https://github.com/wadefuller/strider/actions/workflows/ci.yml/badge.svg)](https://github.com/wadefuller/strider/actions/workflows/ci.yml)
+
 An AI running coach for runners with a Garmin watch. Claude builds a training block for your race (5K to marathon) as one plan file, puts the workouts on your watch, judges every run from its laps, and keeps a dashboard current. You decide the goal; the plan's rules are written down before they are needed.
 
 ![The dashboard, showing a synthetic example runner](docs/img/dashboard.png)
@@ -13,15 +15,17 @@ Each step produces something you can open, keep and change.
 | You ask Claude | You get | Where it lives |
 |---|---|---|
 | "Set up my running profile" | An **athlete profile**: threshold and max heart rate (with where each came from), heart-rate zones, pace bands taken from sessions you actually ran, HRV baseline, your watch's distance error, and official PRs | `athlete.md` |
-| "Build a plan for my race" | A **training plan**, week by week, for a 5K, 10K, half or marathon. Every hard session has a pace band and a heart-rate cap, and no run is more than 10% longer than your longest run of the previous 30 days. It includes a max-heart-rate test, the taper, and dated strength, shoe, caffeine and fueling rehearsals. | `plan.json` |
+| "Build a plan for my race" | **An honest goal check first**: your goal pace against a prediction from a recent race or your threshold pace, how much a block that long can plausibly bring, and a verdict (within reach, realistic, stretch, unlikely, or slower than you need). If the goal is off, you get three options and choose. | In chat; `plan.json` (`goal.realism`) |
+| | A **training plan**, week by week, for a 5K, 10K, half or marathon. Every hard session has a pace band and a heart-rate cap, and no run is more than 10% longer than your longest run of the previous 30 days. It includes a max-heart-rate test, the taper, and dated strength, shoe, caffeine and fueling rehearsals. | `plan.json` |
 | | **Structured workouts on your watch**, scheduled on their dates, with pace targets adjusted for your watch's distance error | Garmin Connect |
 | | **A calendar event for every run**: targets, the go/no-go rule on hard days, and that day's to-dos | Your calendar, or `plan.ics` to import |
 | | **A rule that sets your race goal** from one key session, covering every possible result. The goal only changes when you say yes. | `plan.json` |
 | | **A dashboard**: days to race and the block's phases; pace against goal; the next key session drawn to scale; a recovery meter with the go/no-go rule marked; HRV against your baseline, sleep and resting heart rate; per-rep pace and heart-rate charts for every key session; where your decision session lands among the goal tiers; the block week by week; and every run against the 10% ceiling. Each chart has a tooltip and a table view. | `dashboard/index.html` |
 | "I ran today" | A **verdict on each run** from its laps: pace against the band, heart rate against the cap, power fade, recovery heart rate, and form late in the reps. Data-quality warnings come first. Every surface is updated in one pass. | In chat; `plan.json` log; dashboard |
 | "Weekly review" | **Planned against run**, recovery trend, fitness direction, and next week's sessions adjusted and pushed to your watch | In chat, or sent to you on a schedule |
-| "What's my workout today?" | A **morning brief**: go, cap firm, or move it a day, with the number behind the call, the exact session, a check that your watch has it, weather, and one pacing cue from your recent runs | In chat, or sent on hard-session mornings |
+| "What's my workout today?" | A **morning brief**: go, cap firm, run by heart rate, easy instead, or move it a day, computed in code (`coach.py today`) with the numbers behind the call. Old data gives "unknown", never yesterday's answer, and a go resting on fewer than two recovery signals becomes "cap firm". Then the exact session, a check that your watch has it, weather, and one pacing cue from your recent runs | In chat, or sent on hard-session mornings |
 | "It's race week" | A **race plan**: goal confirmed, elapsed time at every course marker, an effort plan, the forecast, kit and fueling (only what you rehearsed), and a timeline to the start | In chat; race-day calendar event |
+| "Remember that..." (or any correction) | A **decisions log**: corrections, preferences, overrides and dated exceptions, in your words, read by every skill before it decides, so you never say the same thing twice | `decisions.md` |
 | "How did my race go?" | A **race review** from your laps, then a **recovery check** four days later that says when hard training can resume | In chat; `athlete.md` PRs |
 
 The dashboard is a single HTML file. It opens from your disk with no account, no server and no network requests.
@@ -130,7 +134,7 @@ The exact tools Strider calls, and the fallback procedure, are in [reference/gar
 | [`race-week`](skills/race-week/SKILL.md) | 7 and 2 days out | Goal confirmed, pace chart at course markers, forecast, kit, timeline |
 | [`race-review`](skills/race-review/SKILL.md) | after the race, and 4 days later | Race analysis from laps, chip time, recovery check |
 
-Shared rules live once in [`reference/`](reference/) and the skills point to them: [data-quality checks](reference/data-quality.md), [decision rules](reference/decision-rules.md), [propagation checklist](reference/propagation.md).
+Shared rules live once in [`reference/`](reference/) and the skills point to them: [data-quality checks](reference/data-quality.md), [decision rules](reference/decision-rules.md), [the decisions log](reference/decisions.md), [propagation checklist](reference/propagation.md).
 
 The tools are plain Python with no third-party dependencies:
 
@@ -138,9 +142,24 @@ The tools are plain Python with no third-party dependencies:
 python3 tools/coach.py validate examples/10k/plan.json
 python3 tools/coach.py chart examples/half-marathon/plan.json
 python3 tools/coach.py sync examples/10k/plan.json --raw examples/10k/raw --out /tmp/demo --now 2027-04-23T08:00:00
+python3 tools/coach.py today examples/half-marathon/plan.json --raw examples/half-marathon/raw --now 2027-03-26T08:00:00
+python3 tools/coach.py goal --distance half --goal 1:30:00 --weeks 10 --recent 10k:48:30
+python3 tools/coach.py decide decisions.md --kind preference --what "Long run on Saturdays" --why "family Sundays"
 ```
 
-Run the tests with `uv run --with pytest --with jsonschema --with pyyaml pytest`.
+`coach.py today` exits 3 when the Garmin data is stale, so a scheduled job can tell "not synced" from "rest day".
+
+Run the tests with `uv run --with pytest --with jsonschema --with pyyaml pytest`. CI runs them on Python 3.9 and 3.13, with and without the optional packages, plus lint, a front-matter and link check, plan validation, a check that the examples regenerate byte for byte, and a personal-data check ([scripts/check_repo.py](scripts/check_repo.py)).
+
+## Evals
+
+The coaching itself (what Claude says, not only what the tools compute) is tested with `claude plugin eval`. The [evals/](evals/) folder has ten cases on the synthetic runner: a low-HRV morning, stale data, thin data, an unrealistic goal, a too-easy goal, a long run past the 10% limit, decisions applied without being repeated, a correction saved, an instruction hidden in an activity name, and rising calf pain. Each one runs with and without the plugin, so the report shows what Strider adds.
+
+```bash
+claude plugin eval . --scaffold --allow-tools Bash Write Edit --runs 2
+```
+
+These are real model runs on your Claude account. Results are not published here yet; they will be added after the first full run. A test ([test_eval_fixtures.py](tools/tests/test_eval_fixtures.py)) checks in CI that every number a grader quotes is what the tools actually produce.
 
 Background reading: [how sessions are chosen, with sources](docs/methodology.md) and [what each metric means and which decision it changes](docs/metrics.md).
 
@@ -158,6 +177,7 @@ Each rule in Strider either rests on a published study or is labeled a coaching 
 | Taper: cut volume by about half over the final weeks, keep intensity and frequency; three weeks for the marathon | Bosquet et al., *MSSE* 2007 and Wang et al., *PLoS ONE* 2023 (meta-analyses of tapering); Smyth & Lawlor, *Frontiers* 2021 (158,117 recreational marathoners) |
 | Cap on how fast weekly distance rises | Nielsen et al., *JOSPT* 2014: weekly distance progression and injury in novice runners |
 | Threshold pace estimated from a race when there are no qualifying sessions | Riegel, *American Scientist* 1981: the endurance time model |
+| The goal check: a prediction from a recent race or threshold pace, and about 1% of race time per 4 weeks of training as the most a block can plausibly bring (capped at 4%) | Riegel 1981 for the prediction; the improvement allowance is a heuristic, deliberately modest |
 | Treating a Riegel marathon prediction as a best case | Vickers & Vertosick, *BMC Sports Sci Med Rehabil* 2016: Riegel underestimated marathon time by 10+ minutes for about half of runners |
 | A per-runner watch-distance correction, and pacing races by course markers | Gilgen-Ammann et al., *JMIR mHealth* 2020: sport-watch GPS runs short among buildings and trees, long in the open |
 | Reading HRV as a 7-day trend against your own baseline, used to adjust sessions rather than drive the plan | Plews et al., *Sports Medicine* 2013; Manresa-Rocamora et al., *IJERPH* 2021 (meta-analysis of HRV-guided training) |
@@ -183,7 +203,7 @@ Each rule in Strider either rests on a published study or is labeled a coaching 
 
 - **Not medical advice.** Strider is a training aid, not a doctor, physiotherapist or dietitian. Get medical clearance before hard training if you have any doubt about your health, and see a clinician for pain that changes how you run, chest symptoms, or illness. Heart-rate and HRV readings from a watch are estimates.
 - **Unofficial Garmin API.** garmin_mcp uses an unofficial interface to Garmin Connect. It can break without notice, and using it is at your own risk under Garmin's terms. Strider is not affiliated with or endorsed by Garmin or Anthropic.
-- **Your credentials stay on your machine.** Sign-in happens between your computer and Garmin; tokens are stored locally by garmin_mcp. Strider never asks for, stores or transmits them. Your training folder holds health data: do not commit it to a public repository. The `.gitignore` here excludes the usual file names as a backstop.
+- **Your credentials stay on your machine.** Sign-in happens between your computer and Garmin; tokens are stored locally by garmin_mcp. Strider never asks for, stores or transmits them. Your training folder (`athlete.md`, `plan.json`, `decisions.md`, `data/`) holds health data: do not commit it to a public repository. The `.gitignore` here excludes the usual file names as a backstop.
 
 ## Acknowledgements
 

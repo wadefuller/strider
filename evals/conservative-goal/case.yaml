@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: conservative-goal
+expected_outcome: |
+  A 10K goal of 55:00 for a runner whose recent 5K was 21:00 (about 43:45 for 10K). The coach says the
+  goal is well slower than current fitness and asks whether it is a first race or a comeback before
+  suggesting a goal near 44-45 minutes.

@@ -126,3 +126,97 @@ def race_prediction(recent_time_s, recent_distance, target_distance, goal_time_s
                 "slower (Vickers & Vertosick 2016). Keep the goal provisional until the decision session."
                 % (fmt_clock(goal_time_s), recent_distance, fmt_clock(pred)))
     return {"riegel_s": round(pred), "best_case": marathon, "note": note}
+
+
+# How much faster a runner can plausibly get within one block (heuristic: about 1% of race time per
+# four weeks of structured training for a recreational runner, capped at 4%). Not from a trial; it is a
+# deliberately modest planning assumption, so the check errs toward telling the runner the truth early.
+BLOCK_GAIN_PER_4WK = 0.01
+BLOCK_GAIN_CAP = 0.04
+CONSERVATIVE_MARGIN = 0.03   # a goal this much slower than the prediction is probably too easy
+WITHIN_REACH = 0.005         # within half a percent of the prediction counts as already in reach
+
+
+def predict(distance, recent_race=None, threshold_pace=None):
+    """Current-fitness prediction for `distance`, from a recent race (preferred) or threshold pace.
+
+    recent_race: {"distance", "time_s"}. Threshold pace is treated as one-hour race pace and carried
+    to the distance with Riegel (1981). For a marathon from a shorter effort the typical shortfall of
+    Riegel (Vickers & Vertosick 2016) is added, so the number is a typical case, not a best case.
+    Returns {"time_s", "from", "best_case_s"} or None when there is nothing to predict from.
+    """
+    target = DISTANCES[distance]
+    if recent_race:
+        best = riegel(recent_race["time_s"], DISTANCES[recent_race["distance"]], target)
+        source = "your recent %s in %s" % (recent_race["distance"], fmt_clock(recent_race["time_s"]))
+        shorter = recent_race["distance"] != "marathon"
+    elif threshold_pace:
+        best = riegel(3600, 3600 / threshold_pace * 1000, target)
+        source = "threshold pace %s/km as one-hour race pace" % fmt_clock(threshold_pace)
+        shorter = True
+    else:
+        return None
+    typical = best + (MARATHON_RIEGEL_GAP_S if distance == "marathon" and shorter else 0)
+    return {"time_s": round(typical), "from": source, "best_case_s": round(best)}
+
+
+def _pct(x):
+    return ("%.1f" % x).rstrip("0").rstrip(".")
+
+
+def goal_realism(distance, goal_time_s, weeks, recent_race=None, threshold_pace=None):
+    """Is the goal realistic for this block? Honest in both directions, with options when it is not.
+
+    Returns {"verdict", "predicted_s", "from", "gap_pct", "block_gain_pct", "summary", "options"}.
+    verdict is one of: "within_reach" (current fitness already covers it), "realistic" (needs the
+    improvement a block can plausibly bring), "stretch" (needs up to twice that), "unlikely" (needs
+    more), "conservative" (slower than current fitness), or "unknown" (nothing to predict from).
+    """
+    pred = predict(distance, recent_race, threshold_pace)
+    if not pred:
+        return {"verdict": "unknown", "predicted_s": None, "from": None, "gap_pct": None, "block_gain_pct": None,
+                "summary": "No recent race or threshold pace to check the goal against. Keep it provisional and "
+                           "let the decision session set it.", "options": []}
+    p = pred["time_s"]
+    gain = min(BLOCK_GAIN_PER_4WK * weeks / 4.0, BLOCK_GAIN_CAP)
+    gap = (p - goal_time_s) / p            # share of race time the runner must find
+    reach = round(p * (1 - gain))          # what this block can plausibly bring
+    goal_pace = goal_time_s / (DISTANCES[distance] / 1000)
+    pred_pace = p / (DISTANCES[distance] / 1000)
+    head = "Goal %s needs %s/km. Current fitness (from %s) points to about %s (%s/km)." % (
+        fmt_clock(goal_time_s), fmt_clock(goal_pace), pred["from"], fmt_clock(p), fmt_clock(pred_pace))
+    out = {"predicted_s": p, "from": pred["from"], "gap_pct": round(gap * 100, 1),
+           "block_gain_pct": round(gain * 100, 1), "options": []}
+    if gap < -CONSERVATIVE_MARGIN:
+        out["verdict"] = "conservative"
+        out["summary"] = head + (" The goal is %.0f%% slower than that. Fine for a first race at the distance or a "
+                                 "comeback; otherwise a goal near %s would use the block better."
+                                 % (-gap * 100, fmt_clock(p)))
+    elif gap <= WITHIN_REACH:
+        out["verdict"] = "within_reach"
+        out["summary"] = head + " You can already run about this; the block makes it secure."
+    elif gap <= gain:
+        out["verdict"] = "realistic"
+        out["summary"] = head + (" The goal needs %s%% improvement; %d weeks can plausibly bring about %s%%."
+                                 % (_pct(gap * 100), weeks, _pct(gain * 100)))
+    else:
+        out["verdict"] = "stretch" if gap <= 2 * gain else "unlikely"
+        out["summary"] = head + (" The goal needs %s%% improvement, %s the %s%% that %d weeks can plausibly "
+                                 "bring." % (_pct(gap * 100), "more than" if out["verdict"] == "stretch" else "far beyond",
+                                             _pct(gain * 100), weeks))
+        out["options"] = [
+            {"id": "softer_goal", "goal_time_s": reach,
+             "text": "Aim for about %s this block, and let the decision session move it faster if the reps say so."
+                     % fmt_clock(reach)},
+            {"id": "next_block", "goal_time_s": goal_time_s,
+             "text": "Keep %s as the goal for the following block, and race this one at about %s."
+                     % (fmt_clock(goal_time_s), fmt_clock(reach))},
+            {"id": "more_time", "goal_time_s": goal_time_s,
+             "text": "Keep %s and add training time: more weeks to the race, an extra run a week, or more weekly "
+                     "volume. Even then, keep it provisional until the decision session." % fmt_clock(goal_time_s)},
+        ]
+    if distance == "marathon" and pred["best_case_s"] != p:
+        out["summary"] += (" (Riegel alone says %s; for about half of recreational runners the real marathon was 10+ "
+                           "minutes slower, so the typical case is used. Vickers & Vertosick 2016.)"
+                           % fmt_clock(pred["best_case_s"]))
+    return out

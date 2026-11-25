@@ -12,6 +12,10 @@
   coach.py chart PLAN [--goal H:MM:SS]
   coach.py review PLAN --splits FILE [--chip H:MM:SS]
   coach.py recovery-check PLAN --raw DIR [--now ISO]
+  coach.py today PLAN --raw DIR [--now ISO] [--json] [--decisions FILE]       exit 3 when there is no fresh data
+  coach.py goal --distance D --goal H:MM:SS --weeks N [--recent D:H:MM:SS] [--threshold M:SS] [--units km|mi]
+  coach.py decisions FILE [--on DATE] [--json]
+  coach.py decide FILE --kind K --what TEXT --why TEXT [--applies standing|once|until:DATE] [--source runner|data|coach] [--date DATE] [--replaces DATE]
   coach.py sweep --old VALUE ... | --before OLD.json --after NEW.json  PATH ...
 """
 from __future__ import annotations
@@ -24,7 +28,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from strider import blockgen, calendar, fitform, judge, laps, paces, race, snapshot, sweep, workout  # noqa: E402
+from strider import blockgen, calendar, decisions, fitform, judge, laps, paces, race, snapshot, sweep, today, workout  # noqa: E402
 from strider import plan as P  # noqa: E402
 from strider.units import fmt_clock, fmt_pace, parse_clock  # noqa: E402
 
@@ -206,6 +210,68 @@ def cmd_recovery(a):
     return 0
 
 
+def cmd_today(a):
+    plan = P.load(a.plan)
+    raw, fetched = snapshot.load_raw(a.raw)
+    c = today.call(plan, raw, fetched, _now(a.now))
+    path = a.decisions or os.path.join(os.path.dirname(os.path.abspath(a.plan)), "decisions.md")
+    if os.path.exists(path):
+        with open(path) as fh:
+            c["decisions"] = [dict((k, e[k]) for k in ("date", "kind", "what", "applies"))
+                              for e in decisions.active(decisions.parse(fh.read()), c["date"])]
+    if a.json:
+        _json(c)
+    else:
+        print(today.text(c))
+    return 3 if c["stale"] else 0
+
+
+def cmd_goal(a):
+    recent = None
+    if a.recent:
+        dist, _, clock = a.recent.partition(":")
+        recent = {"distance": dist, "time_s": parse_clock(clock)}
+    thr = None
+    if a.threshold:
+        thr = parse_clock(a.threshold) * (1000 / 1609.344 if a.units == "mi" else 1)
+    r = paces.goal_realism(a.distance, parse_clock(a.goal), a.weeks, recent, thr)
+    if a.json:
+        _json(r)
+        return 0
+    print("%s: %s" % (r["verdict"].upper().replace("_", " "), r["summary"]))
+    for i, opt in enumerate(r["options"], 1):
+        print("  %d. %s" % (i, opt["text"]))
+    return 0
+
+
+def cmd_decisions(a):
+    if not os.path.exists(a.file):
+        print("no decisions file at %s yet" % a.file)
+        return 0
+    with open(a.file) as fh:
+        entries = decisions.parse(fh.read())
+    on = a.on or dt.date.today().isoformat()
+    live = decisions.active(entries, on)
+    bad = decisions.problems(entries)
+    if a.json:
+        _json({"on": on, "active": live, "problems": bad})
+    else:
+        for e in live:
+            print("%s  %-10s %s  [%s; %s]" % (e["date"], e["kind"], e["what"], e["applies"], e["source"]))
+        for b in bad:
+            print("PROBLEM: " + b)
+        print("%d active of %d entries on %s" % (len(live), len(entries), on))
+    return 1 if bad else 0
+
+
+def cmd_decide(a):
+    applies = a.applies.replace("until:", "until ")
+    text = decisions.add(a.file, date=a.date or dt.date.today().isoformat(), kind=a.kind, what=a.what,
+                         why=a.why, applies=applies, source=a.source, replaces=a.replaces)
+    print(text.strip())
+    return 0
+
+
 def cmd_sweep(a):
     old = list(a.old or [])
     if a.before and a.after:
@@ -245,6 +311,17 @@ def main(argv=None):
     p = add("chart", cmd_chart); p.add_argument("--goal")
     p = add("review", cmd_review); p.add_argument("--splits", required=True); p.add_argument("--chip")
     p = add("recovery-check", cmd_recovery); p.add_argument("--raw", required=True); p.add_argument("--now")
+    p = add("today", cmd_today); p.add_argument("--raw", required=True); p.add_argument("--now"); p.add_argument("--json", action="store_true")
+    p.add_argument("--decisions", help="decisions.md (default: next to the plan)")
+    p = add("goal", cmd_goal, plan=False)
+    p.add_argument("--distance", required=True, choices=sorted(paces.DISTANCES)); p.add_argument("--goal", required=True)
+    p.add_argument("--weeks", type=int, required=True); p.add_argument("--recent", help="distance:time, e.g. 10k:45:00")
+    p.add_argument("--threshold", help="threshold pace per --units, e.g. 4:30"); p.add_argument("--units", default="km", choices=("km", "mi"))
+    p.add_argument("--json", action="store_true")
+    p = add("decisions", cmd_decisions, plan=False); p.add_argument("file"); p.add_argument("--on"); p.add_argument("--json", action="store_true")
+    p = add("decide", cmd_decide, plan=False); p.add_argument("file")
+    p.add_argument("--kind", required=True, choices=decisions.KINDS); p.add_argument("--what", required=True); p.add_argument("--why", required=True)
+    p.add_argument("--applies", default="standing"); p.add_argument("--source", default="runner", choices=decisions.SOURCES); p.add_argument("--date"); p.add_argument("--replaces")
     p = add("sweep", cmd_sweep, plan=False)
     p.add_argument("--old", action="append"); p.add_argument("--before"); p.add_argument("--after"); p.add_argument("paths", nargs="+")
     a = ap.parse_args(argv)

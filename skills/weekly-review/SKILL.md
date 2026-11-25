@@ -5,11 +5,12 @@ description: "Review the training week just ended from Garmin data (planned agai
 
 # Weekly review
 
-Works on demand and unattended. Shared rules: `../../reference/data-quality.md`, `../../reference/decision-rules.md`, `../../reference/propagation.md`, `../../reference/garmin.md`. Tools: `../../tools/coach.py`.
+Works on demand and unattended. Shared rules: `../../reference/decisions.md`, `../../reference/data-quality.md`, `../../reference/decision-rules.md`, `../../reference/propagation.md`, `../../reference/garmin.md`. Tools: `../../tools/coach.py`.
 
 ## 0. Context
 
-- Read `athlete.md` and `plan.json`. If no block is active (between races), do the recovery and load parts only and say so.
+- Read `athlete.md` and `plan.json`. Run `coach.py decisions decisions.md` and apply every active entry (`reference/decisions.md`).
+- If no block is active (between races), do the recovery and load parts only and say so.
 - If Garmin cannot be reached after one retry: stop. Unattended, send one short message saying the computer needs to be awake with the Claude desktop app open. Do not report from stale data.
 
 ## 1. Pull the week
